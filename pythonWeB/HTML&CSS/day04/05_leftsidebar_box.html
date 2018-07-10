@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="uft-8">
+		<title></title>
+		<style>
+			*{
+				margin:0px;
+				padding:0px;
+			}
+			li{
+				list-style:none;
+			}
+			a{
+				text-decoration:none;
+			}
+			#leftsidebar_box{
+				width:160px;
+				height:668px;
+				background:#f5f5f5;
+			}
+			.cmenu1{
+				background-image:url(images/myOrder/myOrder.png);	
+			}
+			.cmenu2{
+				background-image:url(images/myOrder/pcenter_icon1.png);
+			}
+			.cmenu3{
+				background-image:url(images/myOrder/pcenter_icon2.png);
+			}
+			.cmenu4{
+				background-image:url(images/myOrder/pcenter_icon3.png);
+			}
+			.menu{
+				height:36px;
+				background-color:rgb(10, 161, 237);
+				background-repeat:no-repeat;
+				/*背景图片垂直居中*/
+				background-position:10px center;
+				line-height:36px;
+				padding-left:40px;
+			}
+			.menu>a{
+				color:#f5f5f5;
+				font-size:14px;
+				font-family:"黑体";
+				font-weight:bold;
+			}
+			.submenu{
+				background:#fff;
+				padding-left:40px;
+				padding-top:10px;
+				padding-bottom:15px;
+			}
+			.submenu>li{
+				line-height:40px;
+				/*padding-top:20px;
+				padding-bottom:20px;*/
+			}
+			.submenu>li>a{
+				font-size:12px;
+				color:#808080;
+				font-family:"黑体";
+			}
+		</style>
+	</head>
+	<body>
+		<div id="leftsidebar_box">
+			<ul>
+				<li class="menu cmenu1">
+					<a href="#">我的订单</a>
+					<img src="images/myOrder/myOrder1.png">	
+				</li>
+				<ul class="submenu">
+					<li>
+						<a href="">全部订单</a>
+					</li>
+					<li>
+						<a href="">待付款</a>
+					</li>
+					<li>
+						<a href="">待收货</a>
+					</li>
+					<li>
+						<a href="">待评价</a>
+					</li>
+					<li>
+						<a href="">退货退款</a>
+					</li>
+				</ul>
+				<li class="menu cmenu2">
+					<a href="#">我的优惠券</a>
+					<img src="images/myOrder/myOrder1.png">	
+				</li>
+				<ul class="submenu">
+					<li>
+						<a href="">我的优惠券</a>
+					</li>
+				</ul>
+				<li class="menu cmenu3">
+					<a href="#">收货地址</a>
+					<img src="images/myOrder/myOrder1.png">	
+				</li>
+				<ul class="submenu">
+					<li>
+						<a href="">地址管理</a>
+					</li>
+				</ul>
+				<li class="menu cmenu4">
+					<a href="#">账号管理</a>
+					<img src="images/myOrder/myOrder1.png">	
+				</li>
+				<ul class="submenu">
+					<li>
+						<a href="">我的信息</a>
+					</li>
+					<li>
+						<a href="">安全管理</a>
+					</li>
+				</ul>
+			</ul>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,12 @@
+create table users(
+  sex tinyint(1) not null default 0
+);
+
+boolean是tinyint(1)的别名!
+
+1是指在没有达到指定位数时添加前导零,必须为zerofill组合使用.
+
+
+请问可以插入以下记录吗?
+insert users(sex) values(-128); 
+insert users(sex) values(127); 

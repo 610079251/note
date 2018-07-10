@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>String对象</title>
+	<script>
+		//构建String对象
+		//1.直接量方式
+		var str1 = '中国';
+		console.log(typeof(str1));
+		console.log(str1.length);
+		console.log('abcd'.length);
+		//2.构造函数方式
+		var str2 = new String('法国');
+		console.log(typeof(str2));
+		console.log(str2.length);
+		//关于字符串对象的方法
+		var str = 'javascript';
+		//转换成大写字母
+		console.log(str.toUpperCase());
+		//截取从1位开始(字符从0开始编号)的4个字符
+		console.log(str.substr(0,4).toUpperCase());
+		//截取从4位开始,到字符串结尾之间的字符
+		console.log(str.substr(4));
+		//截取从字符结束位置倒数的字符
+		console.log(str.substr(-3));
+		//面试题
+		//将字符串实现反转abc==>cba
+		var str = 'javascript';		
+		var temp = '';
+		for(var n=str.length-1;n>=0;n--)
+		{
+			temp += str.substr(n,1);
+		}
+		console.log(temp);
+
+		var str = 'javascript';
+		console.log(str.substring(0,4));
+		console.log(str.substring(4));
+
+		/////////////////////////////////
+		var str  ='java';
+		console.log(str.indexOf('a'));
+		console.log(str.indexOf('w'));
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

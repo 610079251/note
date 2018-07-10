@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>数组</title>
+	<script>
+		var arr = ['C','D','E'];
+		var count1 = arr.unshift('A','B');
+		console.log('数组包含' + count1 + '个成员,它们是:' + arr);
+		var count2 = arr.push('F','G');
+		console.log('数组包含' + count2 + '个成员,它们是:' + arr);
+
+		var first = arr.shift();
+		console.log('数组包含' + arr.length + '个成员,它们是:' + arr + ',成员' + first + '被删除');
+
+		var str = arr.join('|');
+		console.log(str);
+		//
+		var str = 'B|C|D|E';
+		var arr = str.split('|');
+		console.log(arr.length);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

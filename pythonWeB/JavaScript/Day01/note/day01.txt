@@ -1,0 +1,284 @@
+﻿一、JavaScript基础
+
+1.什么是JavaScript?
+
+JavaScript是运行的客户端的解释性脚本语言。
+
+客户端是浏览器(包括:IE、Firefox、Chrome、Safari、Opera)
+
+解释性脚本是指程序语言的一种执行方式;
+
+JavaScript与Java之间不存在任何关系;
+
+JavaScript最早由网景公司在其Netscape浏览器中推出.
+
+Microsoft在其IE浏览器推出JScript与其抗衡.
+
+欧洲计算机制造商协会(ECMA)在借鉴JavaScript1.5的基础上推出
+
+ECMAScript,从而成为所有脚本语言的标准.
+
+ECMAScript(ES)最新的版本为ECMAScript-6(简称ES6)
+
+2.JavaScript的语法结构
+
+<script type="text/javascript">
+   ...
+   ...
+</script>
+
+<script type="text/javascript" src="JS文件路径及名称"></script>
+
+第一步:创建JS文件并且写入相关的代码;
+
+第二步:在网页文件内调用相关的JS文件;
+
+说明:
+
+A.JS严格区分大小写;
+
+B.每行JS代码必须以分号结尾;
+
+C.JavaScript文件的扩展名为.js
+
+3.变量(Varaible)
+
+变量是指存储在计算机内存中有名称的信息,其值在程序运行期间可以发生变化;
+
+声明变量
+
+var 变量名称;
+
+var 变量名称 = 值;
+
+变量名称的命名规范
+
+A.变量名称必须以字母或下划线开头,包含字母、数字及下划线;
+
+B.变量名称禁止与系统关键字相同;
+
+C.变量名称必须遵守"驼峰标记法";
+
+D.变量名称必须含义明确;
+
+JavaScript关键字:
+
+var、if、else、switch、case、break、default、for、while、function
+
+ECMAScript关键字:
+
+class、float、boolean、object、extends、public、protected、private、interface、abstract、implements
+
+4.数据类型
+
+4.1.字符型(string):必须括在双引号或单引号之间;
+
+    转义符:
+    \n,换行
+    \r,回车
+    \t,水平制表符
+    \v,垂直制表符
+    \f,换页(走纸)
+    \\,反斜线
+    \',单引号
+    \",双引号
+
+4.2.数值型(number),包括整型和浮点型,可以带有符号位,可存储八进制、十进制、十六进制的数字;
+
+八进制的表示方法为0[0-7]+
+
+十六进制的表示方法0[x|X][0-9a-fA-F]+
+
+4.3 布尔型(boolean),只能存储true或false
+
+4.4 未定义(undefined),值只能为undefined
+
+    以下变量的值为undefined
+
+    A.声明但没有赋值的变量;
+
+    B.声明但赋值为undefined的变量;
+
+    C.引用对象不存在的属性;
+
+4.5 对象(object),属性与方法的集合体;
+
+    {
+        propert:value,
+        ....,
+        method:function([parameter,...]){
+            ...
+            ...
+        }
+    }
+
+4.6 null(空对象),其作用是为断开继承链(原型链);
+
+4.7 function(自定义函数),可以重复执行的代码段;
+
+
+二、运算符
+
+按作用划分
+
+1.字符运算符: + 
+
+2.数学运算符:+(正号)、-(负号)、*、/、%、+、-
+
+3.比较运算符:>、>=、==(等于)、!=(不等于)、===、!==(不全等)、<=、<
+
+  全等:(1)值相同(2)数据类型相同
+
+4.逻辑运算符:!、&&、||  
+  
+  短路现象:在进行&&或||运算时,只有第一个表达式的值可以
+
+  确定整个表达式结果时,后续表达式将忽略执行;
+
+5.自增/自减运算符
+
+  i++、i--,后缀形式:先使用,后加减
+
+  ++i、--i,前缀形式:先加减,后使用
+  
+6.赋值运算符:=、+=、-=、*=、/=、%=
+
+按参加运算的操作数的数量
+
+单目运算符:只有一个操作数,如负数(-)、逻辑非(!)
+
+双目运算符:有两个操作数,如加号(+)、大于(>)等
+
+三目运算符:expression ? value1 : value2
+
+运算符优先级
+
+一、二、三、赋值
+
+算术、比较、逻辑
+
+案例:
+
+var p = !true || 3 + 2 - 5 <= 7
+        false || 3 + 2 - 5 <= 7
+        false || 0 <= 7
+        false || true
+        true
+
+三、流程控制语句
+
+1.if语句
+
+if(condition){
+   ...
+   ...
+}
+
+if(condition){
+    ...
+    ...
+} else {
+    ...
+    ...
+}
+
+if(condition){
+    ...
+} else if(condition){
+    ... 
+} else if(condition){
+    ...
+} ... else{
+    ...
+}
+
+2.switch语句
+
+switch(expression){
+    case 值1:
+       ...
+       break;
+    case 值2:
+       ...
+       break;
+    case N
+       break;
+    default:
+       ...
+       break;
+}
+
+
+说明:
+
+A.if语句的条件表达式只能为布尔型(可能存在数据类型的自动转换)
+
+  switch语句的表达式可以为任意数据类型(布尔除外)
+
+B.if语句每次执行时都将对变量进行取值操作;而switch只进行一次取值操作;
+
+C.switch语句进行全等运算;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

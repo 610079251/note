@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>DOM编程</title>
+	<script type="text/javascript">
+		function changeAttr(){
+			//1.获取对象
+			var pEle = document.getElementById('p');
+			//2.设置属性
+			pEle.setAttribute('align','center');
+		}
+	</script>
+</head>
+<body>
+	<p id="p">中华人民共和国</p>
+	<p><input type="button" value="单击我,让段落居中对齐" onclick="changeAttr()"></p>
+</body>
+</html>

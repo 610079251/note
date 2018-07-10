@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>DOM编程</title>
+	<script>
+		function createImage(){
+			//1.创建图像元素
+			var imageEle = document.createElement('img');
+			//2.设置属性
+			imageEle.setAttribute('src','images/5b42bdfeN98916c29.jpg');
+			//3.为body元素追加刚刚新建的图像
+			document.body.appendChild(imageEle);
+		}
+	</script>
+</head>
+<body>
+	<input type="button" value="单击我,可以创建图像" onclick="createImage()">
+
+</body>
+</html>

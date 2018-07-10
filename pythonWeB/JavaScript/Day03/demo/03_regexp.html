@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>正则表达式</title>
+	<script type="text/javascript">
+		//反向引用
+		var str = 'a1111b2555c3d4';
+		str = str.replace(/(\d+)/g,'<span style="color:red">$1</span>');
+		document.write(str);
+		//证明捕获组的编号顺序为依次左侧括号的顺序
+		var date = '7/3/2018'; //月/日/年
+		//用一条语句将其输出成"2018-12-25"
+		var str = date.replace(/(((\d{2})\/(\d{2}))\/(\d{4}))/,'<p>1表示$1</p><p>2表示$2</p><p>3表示$3</p><p>4表示$4</p>,5表示$5');
+		document.write(str + '<hr>');
+		//面试题
+		
+		var date = '7/3/2018';
+		date = date.replace(/(\d{1,})\/(\d{1,})\/(\d{4})/,'$3-$1-$2');
+		document.write('中文日期格式是:' + date);
+	</script>
+</head>
+<body>	
+</body>
+</html>

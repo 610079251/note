@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>属性</title>
+	<script>
+		function changeLinkAttr()
+		{
+			//1.获取对象
+			var linkEle = document.getElementById('link');
+			//2.设置属性
+			linkEle.setAttribute('href','http://www.baidu.com');
+			linkEle.setAttribute('target','_blank');
+		}
+	</script>
+</head>
+<body>
+	<p><a href="#" id="link">百度</a></p>
+	<p><input type="button" value="单击我,让链接可用" onclick="changeLinkAttr()"></p>
+
+	
+</body>
+</html>

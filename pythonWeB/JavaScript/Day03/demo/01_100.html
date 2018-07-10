@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>百钱买百鸡</title>
+	<script type="text/javascript">
+		//公鸡5元/只
+		//母鸡3元/只
+		//小鸡3只/元
+		//原始分析写法
+		
+		for(var n=0;n<=20;n++){//公鸡
+			for(var i=0;i<=33;i++){//母鸡
+				for(var m=0;m<=100;m++){ //小鸡
+						//i + m + n ==100,百鸡
+						//5 * n + i * 3 + m/3 == 100,百钱	
+						if((5 * n + i * 3 + m/3 == 100) && (i + m + n ==100)){
+							console.log('公鸡:' + n + ',母鸡:' + i + ',小鸡:' + m);
+						}
+				}
+			}
+		}
+		
+		//精简的写法		
+		for(var n=0;n<=20;n++){//公鸡
+			for(var i=0;i<=33;i++){//母鸡
+				//小鸡的数量  100 - n - i 
+				//百钱: 5*n + i*3 + (100-i-n)/3 == 100
+				//百鸡: n + i + 100 -n - i == 100				
+				if(5*n + i*3 + (100-i-n)/3 == 100 ){
+					console.log('公鸡:' + n + ',母鸡:' + i + ',小鸡:' + (100-n-i));
+				}
+			}
+		}
+		//
+		var arr = ['Tom','Rose','Frank','David'];
+		var len = arr.length;
+		for(var n=0;n<len;n++){
+			console.log(arr[n]);
+		}
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

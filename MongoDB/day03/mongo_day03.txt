@@ -1,0 +1,397 @@
+
+
+练习：
+
+1. 创建数据库 名字 grade
+use grade
+
+2. 数据库中创建集合名字 class
+3. 集合中插入若干文档，文档格式如下
+  ｛name:'zhang',age:10,sex:'m',hobby:['a','b']｝
+	hobby 可以是 ： draw sing  dance  basketball  football  pingpong  computer
+
+db.class.insert(｛name:'zhang',age:10,sex:'m',hobby:['a','b']｝)
+
+4. 查找练习
+查看班级所有人信息
+db.class.find()
+
+查看班级中年龄为8岁的学生信息
+
+find({age:8})
+
+查看年龄大于10岁的学生信息
+
+find({age:{$gt:10}})
+
+查看年龄在8-11岁之间的学生信息
+
+find({age:{$gte:8,$lte:11}})
+
+找到年龄为9岁且为男生的学生
+
+find({age:9,sex:'m'})
+
+找到年龄小于7岁或者大于11岁的学生
+
+find({$or:[{age:{$lt:7}},{age:{$gt:11}}]})
+
+找到年龄是8岁或者11岁的学生
+
+find({age:{$in:[8,11]}})
+
+找到有两项兴趣爱好的学生
+
+find({hobby:{$size:2}})
+
+找到兴趣爱好中有draw的学生
+find({hobby:'draw'})
+
+找到喜欢画画和跳舞的学生
+
+find({hobby:{$all:['draw','dance']}})
+
+统计兴趣有三项的学生人数
+find({hobby:{$size:3}}).count()
+
+找出本班年龄第二大的学生
+find().sort({age:-1}).skip(1).limit(1)
+
+查看学生的兴趣范围
+
+db.class.distinct('hobby')
+
+找到班级中年龄最大的三个学生
+find().sort({age:-1}).limit(3)
+
+5. 删除所有年龄大于12或者小于6岁的学生
+db.class.remove({$or:[{age:{$lt:6}},{age:{$gt:12}}]})
+***********************************************
+
+第三天
+
+复习
+
+查找操作   find（query，field）
+           findOne（query，field）
+
+操作符 ：比较   $lt  $gt  $lte  $gte $ne  $eq                     $in  $nin
+         逻辑   $and  $or  $not  $nor
+				 数组   $all  $size 
+				 其他   $exists   $mod  $type
+
+查找函数 ： pretty()   limit()   skip()  sort()
+             count()
+
+其他函数 ： distinct（）  getCollection()
+
+删除操作   remove（query，justOne）
+==================================================
+
+修改数据
+
+update table  set  ...  where ....
+
+db.collection.update(query,update,upsert,multi)
+功能：修改文档
+参数：query ： 筛选要修改的文档，相当于where子句
+               用法同查找
+		  update： 将筛选的文档修改什么内容，相当于           set。需要配合修改操作符使用
+			upsert： bool值  默认为false  表示如果query          的文档不存在则无法修改
+			         如果设置为true 则表示如果筛选的文档不存在则根据修改内容插入一条文档
+			multi ： bool值 默认为false 表示如果有多条文          档符合筛选条件之修改第一条，如果设          置为true则表示修改全部
+
+e.g. 将Lucy年龄改为20  db.class1.update({name:'Lucy'},{$set:{age:20}})
+
+e.g. 如果没有name 为 Lily的文档则插入一条   db.class1.update({name:'Lily'},{$set:{age:20}},true)
+
+e.g.  如果匹配到的文档有多个，则都进行修改 
+db.class1.update({age:17},{$set:{age:18}},false,true)
+
+
+修改操作符
+
+$set 
+修改一个域的值，或者增加一个域
+
+e.g. 
+db.class1.update({},{$set:{sex:'w'}},false,true)
+
+e.g.
+db.class1.update({name:'Abby'},{$set:{age:19,sex:'m'}})
+
+$unset
+删除一个域
+
+e.g. 删除sex域   （后面数字0或1都表示删除）
+db.class1.update({name:'Abby'},{$unset:{sex:0}})
+
+$rename
+修改域名
+
+e.g. 将所有的sex域名改为gender
+db.class1.update({},{$rename:{sex:'gender'}},false,true)
+
+$setOnInsert 
+如果第三个参数为true 并且插入新的文档，则作为插入补充内容
+
+e.g.  如果插入了新的文档则将setOnInsert中的内容也       插入到文档中
+db.class1.update({name:'Jame'},{$set:{age:19},$setOnInsert:{gender:'m','tel':"12345"}},true)
+
+* update参数中可以写多个修改器
+
+$inc 
+加减修改器
+
+e.g.  年龄加1 
+db.class1.update({name:'Abby'},{$inc:{age:1}})
+* 操作数可以是正数负数小数
+
+$mul
+乘法修改器
+
+e.g. 将年龄乘以0.5
+db.class1.update({name:'Jame'},{$mul:{age:0.5}})
+* 操作数可以是正数负数小数
+
+$min  
+如果筛选的文档指定的值小于min则不修改，如果大于min给定的值则修改为min值
+
+e.g.
+db.class1.update({gender:'w'},{$min:{age:19}},false,true)
+
+$max
+如果筛选的文档指定域的值大于max值则不变，小于max值则修改为max值
+
+e.g. 
+db.class1.update({name:'Jame'},{$max:{age:20}})
+
+
+数组修改器
+
+$push  向数组中添加一项
+e.g.
+db.class2.update({name:'小刚'},{$push:{score:10}})
+
+$pushAll  向数组中添加多项
+e.g.
+db.class2.update({name:'小明'},{$pushAll:{score:[10,5]}} )
+
+$pull 从数组中删除一项
+e.g.
+db.class2.update({name:'小红'},{$pull:{score:'78'}})
+
+$pullAll  从数组中删除多项
+e.g.
+db.class2.update({name:'小明'},{$pullAll:{score:[10,5]}})
+
+$each   对多个值进行逐一操作
+
+e.g. 
+db.class2.update({name:'小明'},{$push:{score:{$each:[10,5]}}})
+
+$position  指定插入位置
+e.g. 需要搭配each使用，插入到1号位置
+db.class2.update({name:'小红'},
+{$push:{score:{$each:[78],$position:1}}})
+
+$sort  对数组进行排序
+
+e.g.  和each一起使用，对score数组升序排序
+db.class2.update({name:'小明'},
+{$push:{score:{$each:[],$sort:1}}})
+
+$pop  弹出一项
+
+e.g.  值为-1表示弹出第一项 1 表示弹出最后一项 
+db.class2.update({name:'小明'},{$pop:{score:1}})
+
+$addToSet  向数组中添加一项，不能和其他的项重复
+
+e.g.  如果原数组中没有5则添加，有则不做修改
+db.class2.update({name:'小明'},{$addToSet:{score:5}})
+
+
+时间类型
+
+mongo中存储事件格式 ： ISODate()
+
+方法1： new Date()   自动生成当前时间
+db.class0.insert({title:'Python入门',date:new Date()})
+
+方法2： ISODate()  生成当前时间
+db.class0.insert({title:'Python精通',date:ISODate()})
+
+方法3： Date()  将生成的当前时间变为字符串
+db.class0.insert({title:'Python疯狂',date:Date()})
+
+ISODate()
+功能：生成mongo时间存储类型
+参数：参数为指定时间
+      “2018-1-1 12:10:34”
+			“20180101 12:10:34”
+			"20181102"
+
+e.g. 
+db.class0.insert({title:'Python崩溃',date:ISODate("2018-11-12 11:23:32")})
+
+时间戳
+
+valueof（） 
+将当前时间生成为时间戳
+
+e.g.  
+db.class0.insert({title:'Python放生',date:ISODate().valueOf()})
+
+
+null
+
+1. 如果某个域存在却没有值可以设置为null
+
+e.g.  
+db.class0.insert({title:'Python 爬虫',price:null})
+
+2. 某个域不存在，可以使用null来匹配
+
+e.g.  当gender域不存在时可以找到这个文档
+db.class1.find({gender:null},{_id:0})
+
+
+Object  内部文档
+
+文档内某个域的值还是一个文档则这个文档为内部文档
+
+* 当需要使用内部文档某个域时，可以使用外部文档 .   引用内部文档的方式。但是注意在使用时需要加引号
+
+e.g. db.class3.find({'book2.title':'Css3'},{_id:0})
+
+e.g.
+db.class3.update({'book3.title':'JavaScript'},{$set:{'book3.price':38.8}})
+
+数组的下标引用
+
+使用数组时，可以使用数组域 . 数组序列下标的方式使用数组中的具体某一个元素
+
+e.g.  修改数组中的第0项
+db.class2.update({name:"小明"},{$set:{'score.0':15}})
+
+e.g. 通过数组中的第0项查找
+db.class2.find({'score.0':15},{_id:0})
+
+
+查找结果的有序性
+
+即可以对find查找结果使用[]引用序列下标的方式获取查找结果的第几项
+
+e.g.   db.class2.find({},{_id:0})[3]
+
+
+练习 ：
+使用之前的grade数据库
+1. 将小红年龄修改为8岁，兴趣爱好变为跳舞 画画
+｛$set:{age:8,hobby:['dance','draw']}｝
+
+2. 追加小明的兴趣 爱好 唱歌
+{$push:{hobby:'sing'}}
+
+3. 小王兴趣爱好多了 吹牛，打篮球
+{$pushAll:{hobby:['吹牛','basketball']}}
+
+4. 小李兴趣多了跑步和唱歌，但是要确保不和之前的兴    趣重复
+｛$addToSet:{hobby:{$each:['running','sing']}}｝
+
+5. 该班所有同学年龄加1
+update({},{$inc:{age:1}},false,ture)
+
+6. 删除小明的sex属性
+{$unset:{sex:0}}
+
+7. 删除小李的兴趣中的第一项
+{$pop:{hobby:-1}}
+
+8. 删除小红兴趣中画画和唱歌
+{$pullAll:{hobby:['draw','sing']}}
+
+
+索引
+
+指建立指定键值及所在文档中存储位置的对照清单。使用索引可以方便我们进行快速查找，减少遍历次数，提高查找效率
+
+mongo如何创建索引
+
+ensureIndex()
+功能： 创建索引
+参数： 索引域，索引类别，索引选项 
+
+e.g.  根据name域创建索引
+db.class1.ensureIndex({'name':1})
+* 1表示正向索引，-1表示逆向索引
+
+查看集合索引
+
+db.class1.getIndexes()
+
+* _id域是由系统自动为集合创建的索引
+
+自定义索引名称
+
+通过第二个参数中name选项
+db.class1.ensureIndex({'age':1},{name:'myIndex'})
+
+删除索引
+
+dropIndex（）
+功能：删除索引
+参数：要删除的索引，可以是索引名称或者索引键值对
+
+e.g.   db.class1.dropIndex({name:1})
+e.g.   db.class1.dropIndex('myIndex')
+
+dropIndexes()
+功能：删除所有索引
+
+e.g.  删除所有索引但是不会删除_id索引
+db.class1.dropIndexes()
+
+索引类型
+
+复合索引
+根据多个域创建一个索引
+
+e.g.   db.class1.ensureIndex({name:1,age:-1})
+
+
+数组和子文档索引
+如果对某个域的值为数组或者子文档的域创建索引，则通过数组或者子文档进行查找时也是索引查找
+
+e.g. 如果对score创建了索引则该查找也为索引查找
+db.class2.find({'score.0':15},{_id:0})
+
+唯一索引 
+
+创建索引时希望集合中创建索引的域的值均不重复
+
+e.g.
+db.class1.ensureIndex({name:1},{unique:true})
+
+* 当对某个域创建了唯一索引则无法插入重复值
+
+稀疏索引
+
+只针对有指定域的文档创建索引表，如果某个文档没有该域则不会在索引表中插入内容
+
+e.g.  对没有gender域的文档不做索引处理
+db.class1.ensureIndex({gender:1},{sparse:true})
+
+索引约束
+1. 当数据发生更新索引表也要随之更新，影响插入，    删除,修改操作效率
+2. 索引表也需要占有一定的磁盘空间
+
+综上：
+1.当对数据库进行大量的查找操作，而不是修改操作
+2.集合中文档的数量较大的时候
+
+比较适合创建索引
+
+作业： 熟练mongo的增删改查操作
+       熟练mongo的索引操作

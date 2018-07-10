@@ -1,0 +1,21 @@
+1.安装Package control
+
+  https://packagecontrol.io/installation
+
+  1.复制相关的版本的代码
+
+  2.打开Sublime Text3控制台 (ctrl+`)
+
+  3.粘贴复制的代码
+
+2.安装插件
+
+  A.ctrl+shift+p,然后输入install
+
+  B.在弹出的对话框中输入相应的插件名称
+
+3.常用的插件
+
+  A.Emmet
+
+  B.AutoFilename 

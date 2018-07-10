@@ -1,0 +1,260 @@
+回顾 ：
+
+计算机的部分概念
+操作系统
+进制转换  十进制  二进制  八进制  十六进制
+           39     100111   47      27
+
+路径表达  绝对路径   相对路径
+~  /home/tarena
+.  当前目录
+..  上一级目录 
+
+
+shell命令
+
+命令  [选项]  [参数]
+
+* 三个部分，每个部分之间一定要有空格
+* 选项和参数可以没有，有时候选项和参数的位置比较灵活
+
+cmd  -r abc   
+cmd  abc  -r
+cmd  -r abc  -f def
+
+选项 ： 辅助命令进行功能的丰富细化
+        选项必须以 - 作为引导   ls -l
+	如果有多个选项可以表示如下
+	ls -l -a 《=====》  ls -la
+
+参数 ： 命令要操作的目标 并不是所有的命令都可以加参数
+*一般参数为一个路径或者精确到一个文件
+
+打开终端
+ctrl + alt + t    打开一个主目录终端
+ctrl + shift + n   打开一个当前目录终端
+ctrl + shift + t   打开一个当前目录终端
+
+ls  查看某个目录下的内容
+   -l 显示详细信息 
+
+d（文件类型）   rwxrwxr-x（文件权限） 20 tarena tarena  4096 7月  17  2017 
+anaconda3
+
+bc   d        -       lsp  ： linux下7种文件类型
+   文件夹  普通文件
+文件权限 ： 读写执行
+
+   -a 显示隐藏文件
+ 
+ linux下以.开头的都是隐藏文件
+
+
+mkdir  创建文件夹
+
+mkdir  文件夹名称
+      -p  可以创建多级的目录
+
+rmdir 删除文件夹
+
+rmdir  要删除的目录名
+* rmdir不能删除非空目录
+
+cd  切换工作目录
+
+cd [路径]
+
+e.g.
+cd ../图片
+cd /home/tarena/音乐
+cd ~/音乐
+
+cd  表示回到主目录
+cd - 回到上一次工作的目录
+
+touch 创建一个空白文件
+
+touch  文件名
+
+rm 删除一个文件
+
+rm [选项] 文件/文件夹
+   -r   删除一个文件夹及文件夹内所有内容
+   -i   删除前提示（y，n）
+   -f   强制删除
+删除非空文件夹： rm  -rf  文件夹
+
+man  提供shell帮助
+
+man  命令
+
+tab自动补全
+如果唯一确定路径会自动补全
+
+clear  
+ctrl + l   清理屏幕
+
+练习 
+
+在主目录下创建如下结构
+
+mymod （文件夹）
+   __init__.py  文件
+   meub.py   文件
+   games      文件夹
+	contra.py 文件
+	logs   文件夹
+   office     文件夹
+	__init__.py 文件
+	tanks.py 文件
+
+cp 复制文件或文件夹到某个位置
+
+cp [选项]  文件/文件夹（可以为多个）   目标位置
+
+cp  re   python
+1. 如果第二个参数是一个存在路径文件夹，则表示将re 拷贝到该位置
+2. 如果第二个参数是一个不存在的路径文件，则表示re
+另存为一个内容
+
+-a  如果要复制的内容是文件夹则使用该选项
+
+mv  移动一个文件或文件夹 
+
+mv  文件/文件夹（可以为多个）   目标位置
+
+参数和cp命令相同，移动文件夹也不需要选项
+
+通配符：
+* 表示任意0个或者多个字符
+？表示任意一个字符
+[abcd] 表示任意一个在中括号中的字符
+
+history 查看命令记录
+
+history  num  表示查看num条记录
+通过↑ ↓ 可以操作历史命令
+
+cat 查看一个文件中的内容
+
+cat   文件
+
+find 根据文件名查找一个文件
+
+find  路径  -name  “文件名”
+* find可以查找某个目录及其子目录中是否有目标
+e.g.
+find . -name re
+
+grep  在文件中查找某个字符串
+
+grep  ‘字符串’   文件
+	-n  查找的同时显示行号
+	-r  可以在一个目录下查找其子目录中是否有该     字符串
+
+grep 'hello world' -nr  PycharmProjects/
+
+临时管理员权限： 在命令前加 sudo
+
+
+chmod 修改文件的权限  读写执行
+
+chmod   权限表述   要修改的文件
+
+用户  用户组  其他用户
+rwx   rwx     r-x
+111   111     101
+7     7       5
+r--   r--     ---
+4     4       0
+
+e.g.
+chmod 744 file
+
+a (all)  +/-  r/w/x
+u (user)
+g (group)
+o (others)
+
+e.g.  chmod g+w file
+
+
+zip 压缩 
+
+zip  压缩包名   要压缩文件列表
+
+e.g.   zip test.zip core re  file
+
+unzip 解压压缩包
+
+unzip  压缩包名
+e.g.  unzip test.zip
+
+
+tar 
+
+bz2  gz 
+bz2 压缩率 高于 gz
+
+压缩
+bz2
+-c 创建归档
+-j 使用bz2格式
+-v 显示压缩过程
+-f 指定压缩文件
+
+e.g.   tar -cjvf  file.tar.bz2 file*
+
+gz
+-z 使用gz格式
+e.g.  tar -czvf  file.tar.gz file*
+
+解压 
+-x  解压
+
+e.g.  tar -xvf file.tar.bz2 
+
+练习 ： 家目录下创建file1  file2 file3 
+        用bz2压缩
+	移动到音乐目录下
+	在该目录下解压
+
+exit  关闭终端
+
+sudo apt-get install  软件名
+
+sudo reboot  重启
+
+程序员文本编辑器
+
+Nodepad
+sublime
+vim
+
+集成开发工具
+vc++
+pycharm
+
+sublime使用
+
+subl 打开编译器
+subl 文件
+subl 文件夹
+
+侧边栏
+view -- side bar  show ....
+ctrl + k   b
+
+打开文件对应位置的终端
+右键---》 open terminal here
+
+字体大小
+ctrl + =  放大
+ctrl + -  缩小
+
+复制  ctrl + c
+粘贴  ctrl  + v
+撤销  ctrl  + z
+保存  ctrl  + s
+
+view -- Layout ---》 选择显示几个窗口

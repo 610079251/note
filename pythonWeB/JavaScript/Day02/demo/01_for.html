@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>for语句</title>
+	<script>
+		//第一步:n=0;
+		//第二步:n<5,结果为true
+		//第三步:在控制台输出n的值(0);
+		//第四步:n++,结果为1
+		//第五步:n<5,结果为true
+		//依此类推
+		//第n步:n在等于5时,n<5,结果为false
+		//跳过循环体,执行后续的代码
+		for(var n=0;n<5;n++){
+			console.log(n);
+		}	
+		//证明:for语句的expression1无条件执行
+		for(var n=100;n<0;n--){
+			console.log('我不可能被执行的');
+		}
+		console.log(n);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

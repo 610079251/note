@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>运算符</title>        
+        <script>       
+           var username = '张三';
+           var age = 26;
+           console.log('姓名:' + username + ',年龄:' + age);
+           console.log('3 + 8 = ' + (3 + 8));
+           console.log('8 % 3 = ' + (8 % 3));
+           console.log(2 == '2');
+           console.log(2 === '2');
+           //前端经典面试题
+           console.log(undefined == null); //true
+           console.log(undefined === null); //false
+
+           //短路求值
+
+           var i = 2;
+           var m = 1;
+
+           console.log(i>=1 || ++m); //因为2>1所以整个表达式的结果为true,所以造成++m的短路
+           console.log(i);  //2
+           console.log(m);  //1 
+           var p = 6;
+           p += 3;  //原型 p = p + 3;
+           console.log(p);
+           p /= 2; //原型 p = p / 2;
+           console.log(p);
+           //对于字符串的连接
+           var str = '中';
+           str += '国';  //原型 str = str + '国';
+           console.log(str);
+           var str = '国';
+           str = '法' + str;
+           console.log(str);
+           //三目运算符
+           
+           var m = 7;
+           if(m>=2){
+             var p = 5;             
+           } else {
+             var p = 3;
+           }
+           
+           //简化成
+           var m = 7;
+           var p = m >= 2 ? 5 : 3;
+           console.log(p);
+
+           var p = !true || 3 + 2 - 5 <= 7
+          console.log(p);           
+        </script>
+    </head>
+    <body>
+    </body>
+</html>
+
+
+

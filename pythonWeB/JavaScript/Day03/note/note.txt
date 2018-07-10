@@ -1,0 +1,244 @@
+一、内置对象
+
+5.Regular Expression对象(正则表达式对象)
+ 
+5.1构建正则表达式对象
+
+  直接量方式
+
+  /正则表达式/修正符
+
+  构造函数方式
+
+  new RegExp('正则表达式','修正符')
+
+5.2正则表达式
+
+5.2.1元字符
+  
+   \d,匹配数字,等价于[0-9]
+
+   \D,匹配非数字,等价于[^0-9]
+
+   \s,匹配任意的空白字符,等价于[\n\r\t\v\f]
+
+   \S,匹配任意的非空白字符,等价于[^\n\r\t\v\f]
+
+   \w,匹配任意的字母、数字及下划线,等价于[0-9a-zA-Z_]
+
+   \W,匹配任意的非字母、数字及下划线,等价于[^0-9a-zA-Z_]
+
+   ., 匹配除换行外的任意字符
+
+5.2.2量词
+
+   ?,出现零次或一次,等价于{0,1}
+
+   *,至少出现零次,等价于{0,}
+
+   +,至少出现一次,等价于{1,}
+
+   {m},出现m次
+
+   {m,},至少出现m次
+
+   {m,n},至少出现m次,至多n次(m<=x<=n)
+
+5.2.3其它
+   
+   |,或者
+
+   ^,以指定字符开头
+    
+   $,以指定字符结尾
+
+   [...],表示在范围之内,如[0-9]
+
+   [^...],表示不在范围之内,如[^3-5]
+
+5.2.4转义符
+  
+   \n,换行
+
+   \r,回车
+
+   \t,水平制表符
+
+   \v,垂直制表符
+
+   \f,换页(走纸)
+
+   \\,反斜线
+
+   \.,点
+
+   \|,竖线
+
+   \*,星号
+
+   \?,问号
+
+5.2.5捕获组与非捕获组
+
+   (...)
+
+   (?:...)
+
+5.2.6修正符
+
+   g(global),全局
+
+   i(ignore),忽略大小写
+
+5.3方法
+
+  test()
+
+  描述:检测字符串是否符合正则表达式规范
+
+  语法:bool object.test(string)
+
+二、DOM编程
+
+1.基础
+
+DOM(Document Object Model),文档对象模型
+
+JavaScript由ECMAScript(简称ES)、DOM和BOM组成;
+
+ECMAScript:关键字、保留关键字、流程语句、数据类型、内置对象;
+
+DOM:提供操作HTML/XML文档相关的API;
+
+DOM由DOM Core、HTML DOM和XML DOM组成;
+
+DOM Core:提供处理HTML和XML文档的API;
+
+HTML DOM:提供处理HTML文档的API;
+
+XML DOM:提供处理XML文档的API;
+
+2.节点(Node)
+
+在DOM树中一切皆节点;
+
+节点的类型:
+
+1,代表元素节点(指HTML标记)
+
+2,代表属性节点(指HTML标记的属性)
+
+3,代表文本节点(指纯文本)
+
+8,代表注释节点(指HTML注释)
+
+9,代表文档节点(指整个HTML文档)
+
+3.节点的关系
+
+子节点:一个节点是另一个节点的直接下一级节点;
+
+如<i><b>...</b></i>
+
+父节点:一个节点是另一个节点的直接上一级节点;
+
+兄弟节点:同一个父节点的所有子节点
+
+4.节点
+
+4.1属性
+
+  nodeName
+
+  描述:获取节点的名称
+
+  语法:string node.nodeName
+
+  nodeValue
+
+  描述:获取节点值
+
+  语法:string node.nodeValue
+
+  nodeType
+
+  描述:获取节点的类型
+
+  语法:int node.nodeType
+
+  childNodes
+
+  描述:返回节点内所有的子节点形成的集合(数组)
+
+  语法:NodeList node.childNodes
+
+4.2方法
+  
+  appendChild()
+
+  描述:追加子节点
+
+  语法:Node node.appendChild(node)                
+ 
+  说明:返回的是新插入的子节点
+
+  removeChild()
+
+  描述:删除子节点
+
+  语法:Node node.removeChild(node)
+   
+
+5.document对象(继承自Node)
+
+5.1 属性
+
+  documentElement
+
+  描述:返回文档的根元素
+
+  语法:Element document.documentElement
+
+5.2 方法
+
+  getElementById()
+
+  描述:根据对象ID来获取元素
+
+  语法:Element document.getElementById(string id)
+
+  createElement()
+
+  描述:创建元素节点
+
+  语法:Element document.createElement(string tagName)
+
+6.Element对象(继承自Node)
+
+6.1方法
+
+  getAttribute()
+
+  描述:获取属性值
+
+  语法:string Element.getAttribute(string name)
+
+  setAttribute()
+
+  描述:设置属性
+
+  语法:void Element.setAttribute(string name,string value)
+
+  removeAttribute()
+
+  描述:删除属性
+
+  语法:void Element.removeAttribute(string name)
+
+  hasAttribute()
+
+  描述:返回是否存在指定属性
+
+  语法:bool Element.hasAttribute(string name)
+
+

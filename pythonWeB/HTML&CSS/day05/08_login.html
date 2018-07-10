@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="uft-8">
+		<title></title>
+		<style>
+			#centent{
+				width:100%;
+				height:560px;
+				background-image:url(images/regist.png);
+				position:relative;
+			}
+			#centent form{
+				width:254px;
+				height:277px;
+				background-color:rgba(0,0,0,0.3);
+				position:absolute;
+				top:131px;
+				left:589px;
+				color:#fff;
+			}
+			#centent form h2{
+				width:238px;
+				height:40px;
+				border-bottom:1px solid #fff;
+				font-size:18px;
+				font-family:"黑体";
+				margin:0px;
+				padding-left:8px;
+				padding-top:18px;
+				margin-left:4px;
+				margin-right:4px;
+				font-weight:normal;
+			}
+			#centent form h2 span{
+				float:right;
+				margin-top:2px;
+			}
+			#centent form h2 span a{
+				color:#fff;
+				font-size:12px;
+				font-family:"黑体";
+				text-decoration:none;
+			}
+			.field{
+				position:relative;
+				margin:5px 0px;
+			}
+			.field input{
+				width:236px;
+				height:24px;
+				margin-top:10px;
+				margin-left:8px;
+			}
+			.field img{
+				position:absolute;
+				top:12px;
+				right:14px;
+			}
+			.field span{
+				font-size:10px;
+				padding-left:8px;
+			}
+			.error{
+				color:#f00;
+			}
+		</style>
+	</head>
+	<body>
+		<header></header>
+		<div id="centent">
+			<form>
+				<h2>
+					登录学子商城
+					<span>
+						 <a href="#">新用户注册</a>
+					</span>
+				</h2>
+				<div class="field">
+					<input type="text" placeholder="请输入用户名">
+					<img src="images/login/yhm.png">
+					<span class="error">用户名不能为空</span>
+				</div>
+				<div class="field">
+					<input type="password" placeholder="请输入密码">
+					<img src="images/login/mm.png">
+					<span class="error">密码不能为空</span>
+				</div>
+			</form>
+		</div>
+		<footer></footer>
+	</body>
+</html>

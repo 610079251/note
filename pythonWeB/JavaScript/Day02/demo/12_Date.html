@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Date</title>
+	<script>
+		//构建Date对象
+		var date = new Date();
+		//获取年份(从1900元到现在经历的年份)
+		var year = date.getYear();
+		console.log(year);
+		//获取年份
+		var fullYear = date.getFullYear();
+		console.log(fullYear);
+		//获取月份(0~11)
+		var month = date.getMonth();
+		console.log(month);
+		//今天是该月的第几天(xx号)
+		var dayOfMonth = date.getDate();
+		console.log(dayOfMonth);
+		//今天是该星期的第几天(0为星期日)
+		var dayOfWeek = date.getDay();
+		console.log(dayOfWeek);
+		//小时
+		var hours = date.getHours();
+		console.log(hours);
+		//分钟
+		var minutes = date.getMinutes();
+		console.log(minutes);
+		//秒
+		var seconds = date.getSeconds();
+		console.log(seconds);
+		//毫秒
+		var milliseconds = date.getMilliseconds();
+		console.log(milliseconds);
+		//时间戳
+		var timestamp = date.getTime();
+		console.log(timestamp);
+		//toGMTString
+		console.log(date.toUTCString());
+		//toUTCString
+		console.log(date.toGMTString());
+		//静态方法
+		console.log(Date.now());
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

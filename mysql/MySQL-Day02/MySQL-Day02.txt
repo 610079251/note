@@ -1,0 +1,422 @@
+MySQL-Day01回顾
+重新加载配置文件：sudo /etc/init.d/mysql force-reload
+1、MySQL的特点
+	1、关系型数据库
+	2、跨平台
+	3、支持多种编程语言
+2、MySQL启动连接
+	1、服务端启动
+		sudo /etc/init.d/mysql start|stop|restart|status|force-reload
+	2、客户端连接
+		mysql -h主机地址 -u用户名 -p密码
+	3、注意
+		1、MySQL中数据是以文件的形式存放在数据库目录/var/lib/mysql下
+		2、关系型数据库的核心内容是 关系 即 二维表
+3、基本SQL命令
+	1、库的管理
+		1、创建库
+			create database 库名 character set utf8;
+		2、查看创建库语句
+			show create database 库名;
+		3、查看当前所在库
+			select database();
+		4、切换库
+			use 库名;
+		5、删除库
+			drop database 库名;
+		6、查看库中已有表
+			show tables;
+	2、表的管理
+		1、创建表
+			create table 表名(....)character set utf8;
+		2、查看存储引擎和字符集
+			show create table 表名;
+		3、查看表结构
+			desc 表名;
+		4、删除表
+			drop table 表名;
+	3、表记录的管理
+		1、插入表记录
+			1、insert into 表名 values(),(),...;
+			2、insert into 表名(..,..,..) values(),(),...;
+		2、查询表记录
+			1、select * from 表名 where 条件;
+			2、select ..,..,.. from 表名 where 条件;
+4、如何更改默认字符集
+	1、步骤
+		1、sudo -i
+		2、cd /etc/mysql/mysql.conf.d
+		3、cp -p mysqld.cnf mysqld.cnf.bak
+		4、vi mysqld.cnd
+			[mysqld]
+			character_set_server = utf8
+		5、/etc/init.d/mysql restart | force-reload
+5、数据类型
+	1、数值类型
+		1、整型
+			1、int(4字节)
+			2、tinyint(1字节)
+				1、signed -127~128
+				2、unsigned 0~255
+		2、浮点型
+			1、float(m,n)  最多7个有效位
+			2、double(m,n)	最多15个有效位
+			3、decimal(m,n)	最多28个有效位
+				decimal(20,2)
+				整数部分：18/9=商2余0  4个字节
+				小数部分：2/9=商0余2	 1个字节
+	2、字符类型
+		1、char(定长,浪费存储空间,性能高)
+		2、varchar(变长,节省存储空间,性能低)
+		3、字符类型宽度和数值类型宽度的区别
+			1、数值宽度：显示宽度,和存储无关,用zerofill查看
+			2、字符类型：和存储有关,超过宽度无法存储
+	3、枚举类型
+		1、enum(最多65535个)
+		2、set(最多64个)  "值1,值2,值3"
+	4、日期时间类型
+		1、year
+		2、date
+		3、time
+		4、datetime  # 插入记录时不给值默认NULL
+		5、timestamp # 默认返回系统当前时间
+MySQL-Day02笔记
+1、日期时间函数
+	1、NOW() 返回服务器当前时间 YYYY-MM-DD HH:MM:SS
+	2、CURDATE() 返回当前日期 YYYY-MM-DD
+	3、CURTIME() 返回当前时间 HH:MM:SS
+
+	4、year(时间) 返回指定时间的年份
+	5、date(时间) 返回指定时间的日期
+	6、time(时间) 返回指定时间的时间
+		insert into t11 values(2,"Tom",year(now()),date(now()),time(now()),now())
+	7、日期时间运算
+		1、语法格式
+			select ... from 表名 where 
+			字段名 运算符 (时间 interval 时间间隔单位);
+			interval ：间隔类型关键字
+			时间间隔单位 ：
+				1 day
+				2 hour | minute | year | month
+		2、示例
+			1、查询1天以内的记录
+				select * from t11 where 
+				meeting > (now() - interval 1 day);
+								现在时间 - 1天时间 = 1天以前的时间点
+				解释：
+        where id > 5 
+							 6 > 5 
+							 3 ...
+				where meeting > 时间点
+						 2018-05-31 00:00:00 > 2018-05-31 08:00:00
+			2、查询1天以前3天以内的记录
+				select * from t11 where 
+				meeting < (now()-interval 1 day) and
+				meeting > (now()-interval 3 day);
+2、表字段的操作
+	1、语法：alter table 表名 执行动作;
+	2、添加字段(add)
+		alter table 表名 add 字段名 数据类型;
+		alter table 表名 add 字段名 数据类型 first;
+		alter table 表名 add 字段名 数据类型 after 字段名;
+	3、删除字段(drop)
+		alter table 表名 drop 字段名;
+	4、修改字段数据类型(modify)
+		alter table 表名 modify 字段名 新数据类型;
+		# 修改数据类型会受到表中原有数据的限制
+3、练习
+	1、创建库 studb2
+	2、在库中创建表 stuinfo,字段如下：
+		姓名、年龄、手机号 char(11)
+	3、查看表结构
+	4、在表中第一列添加一个字段：学号
+		alter table stuinfo add id int first;
+	5、把手机号的数据类型改为 bigint 8个字节
+		alter table stuinfo modify phnumber bigint;
+	6、在表中最后一列添加一个字段：注册时间 register,数据类型为：timestamp
+		alter table stuinfo add register timestamp;
+	7、在表中 学号、姓名、年龄、手机号 四个字段插入2条记录
+		insert into stuinfo(id,name,age,phnumber) values
+		(1,"Tom",20,13838384386),(2,"Jim",25,13999999999);
+	8、查询5分钟内的记录明细
+		select * from stuinfo where
+		register > (now() - interval 5 minute);
+3、表记录的管理(删除、更改)
+	1、删除表记录
+		1、delete from 表名 where 条件;
+		2、注意
+			delete语句后如果不加where条件,会将表中所有记录全部删除
+	2、更改表记录
+		1、update 表名 set 字段1=值1,字段2=值2 where 条件;
+		2、注意
+			update语句后如果不加where条件,会将表中所有记录全部更新
+	3、练习
+		1、查找所有蜀国英雄的记录
+			select * from hero where country="蜀国";
+		2、查找一下女英雄的姓名和性别
+			select name,sex from hero where sex="女";
+		3、把id为2的记录姓名改为 司马懿,性别改为 男,国家改为 魏国
+			update hero set name="司马懿",sex="男",country="魏国" where id=2;
+		4、删除所有的魏国人
+			delete from hero where country="魏国";
+		5、把魏延的编号(id)改为 66
+			select id,name from hero where name="魏延";
+		6、删除hero表中的所有英雄
+			delete from hero;
+4、运算符操作
+	1、数值比较&字符比较
+		1、数值比较运算符：=、!=、>、>=、<、<=
+		2、字符比较运算符：=、!=
+		3、示例
+			1、查找sanguo表中攻击力大于200的英雄的姓名和攻击力
+				select name,gongji from sanguo where gongji>200;
+	2、逻辑比较
+		1、and (两个或多个条件同时满足)
+		2、or (两个或多个条件有一个条件满足就可以)
+		3、示例
+			1、找出攻击值大于200的蜀国英雄的名字和攻击值
+				select name,gongji from sanguo where gongji>200 and country="蜀国";
+			2、将吴国英雄中攻击值为110的英雄的攻击值设置为100,防御值设置为60
+				update sanguo set gongji=100,fangyu=60 where country="吴国" and gongji=110;
+			3、查找蜀国和魏国的英雄
+				select * from sanguo where country="蜀国" or country="魏国";
+	3、范围内比较
+		1、运算符
+			where 字段名 between 值1 and 值2  # 值为数字
+			where 字段名 in(值1,值2,...)
+			where 字段名 not in(值1,值2,...)
+		2、示例
+			1、查找攻击值在100-200之间的蜀国英雄信息
+				select * from sanguo where gongji between 100 and 200 and country="蜀国";
+			2、查找编号为1、3或5的蜀国英雄 和 貂蝉的 编号、姓名和国家
+				select id,name,country from sanguo where id in(1,3,5) and country="蜀国" or name="貂蝉";
+			3、查找蜀国和吴国以外的国家的女英雄信息
+				select * from sanguo where country not in("蜀国","吴国") and sex="女";
+	4、匹配空、非空
+		1、空 ：is null
+		2、非空：is not null
+		3、示例
+			1、查找姓名为NULL的蜀国女英雄信息
+				select * from sanguo  where name is null and country="蜀国" and sex="女";
+			2、查找姓名为""的英雄的 id 姓名 和 国家
+				select id,name,country from sanguo where name="";
+		4、注意
+			1、null ：空值,必须用is 或者 is not 去匹配
+			2、""		：空字符串,只能用 = 或者 != 去匹配
+	5、模糊比较
+		1、语法格式 
+			where 字段名 like 表达式
+		2、表达式
+			1、_ ：匹配单个字符
+			2、% ：匹配0到多个字符
+		3、示例
+			# 匹配名字中至少有2个字符的记录
+			select name from sanguo where name like "_%_";
+			# 匹配所有记录(NULL除外)
+			select name from sanguo where name like "%";
+			# 匹配名字中有三个字符的记录
+			select name from sanguo where name like "___";
+			# 匹配姓 赵 的英雄记录
+			select name from sanguo where name like "赵%";
+5、SQL查询
+	1、总结(执行顺序)
+		3、select ...聚合函数 from 表名
+		1、where ...
+		2、group by ...
+		4、having ...
+		5、order by ...
+		6、limit ...
+	2、order by(给查询结果进行排序)
+		1、order by 字段名 排序方式
+		2、排序方式
+			1、ASC(默认) ：升序
+			2、DESC ：降序
+		3、示例
+			1、将英雄按防御值从低到高排序
+				select * from sanguo order by fangyu ASC;
+			2、将蜀国英雄按攻击值从高到低排序
+				select * from sanguo  where country="蜀国" order by gongji desc;
+			3、将魏蜀两国男英雄中名字为三个字的英雄按防御值升序排列
+				select * from sanguo  where country in("魏国","蜀国") and sex="男" and   name like "___" order by fangyu ASC;
+	3、limit(永远放在SQL语句的最后写)
+		1、作用 ：限制显示查询记录的个数
+		2、用法
+			1、limit n  -->显示 n 条记录
+			2、limit m,n -->从 m+1 条记录开始,显示 n 条记录
+				 limit 2,3 -->显示3、4、5三条记录
+				## m的值是从0开始计数,2则表示第3条记录
+		3、示例
+			1、在蜀国英雄中,查找防御值倒数第二名到倒数第四名的英雄记录
+				select * from sanguo  where country="蜀国"  order by fangyu ASC limit 1,3;
+			2、在蜀国且名字不为空值的英雄中,查找攻击值前三名的英雄的姓名、攻击值和国家
+				select name,gongji,country from sanguo where country="蜀国" and name is not null  order by gongji desc  limit 3;
+	4、聚合函数
+		1、分类
+			1、avg(字段名) : 求该字段的平均值
+			2、sum(字段名)
+			3、max(字段名)
+			4、min(字段名)
+			5、count(字段名) : 统计该字段记录的个数
+		2、示例
+			1、攻击力最强值
+				select max(gongji) from sanguo;
+			2、统计表中 id 和 name 字段分别有多少条记录
+				select count(id),count(name) from sanguo;
+				## 控制NULL不会被统计,空字符串""会被统计
+			3、统计蜀国英雄中攻击值 >200 的英雄个数
+				select count(*) from sanguo where country="蜀国";
+	5、group by(分组)
+		1、作用 ：给查询结果进行分组
+		2、用法 ：group by 字段名
+		3、示例
+			1、计算一下每个国家的平均攻击力
+				select country,avg(gongji) from sanguo
+				group by country;
+				1、分组    2、聚合				3、去重
+					蜀国
+					蜀国      蜀国平均值			 蜀国
+					蜀国
+					魏国      魏国平均值			 魏国
+					魏国
+					吴国			吴国平均值			 吴国
+			2、查找所有国家中 英雄数量最多的前2名国家的 国家名称和英雄数量
+				select country,count(*) as number from sanguo
+				group by country
+				order by number desc
+				limit 2;
+		4、注意
+			1、group by后的字段名必须要为select之后的字段名,如果查询字段和group by之后的字段不一致,则必须要对该字段进行聚合处理(聚合函数)
+	6、having
+		1、作用 ：对查询的结果进行进一步的筛选
+		2、示例
+			1、找出平均攻击力 >105 的国家的前2名,显示国家名和平均攻击力
+				select country,avg(gongji) from sanguo
+				group by country
+				having avg(gongji) > 105
+				order by avg(gongji) desc
+				limit 2;
+		3、注意
+			1、having语句通常与group by语句联合使用,用来过滤由group by语句返回的结果集
+			2、where只能操作表中实际存在的字段(desc 表名;),having操作的是由聚合函数生成的显示列
+	7、distinct(不显示字段的重复值)
+		1、用法
+			select distinct 字段名1,字段名2... from 表名;
+		2、示例
+			1、统计sanguo表中一共有多少个国家
+				select distinct country from sanguo;
+			2、计算蜀国一共有多少个英雄
+				select count(distinct id) as number from sanguo;
+		3、注意
+			1、distinct处理的是distinct 和 from 之间的所有字段,所有字段的值必须全部相同才能去重
+	8、查询表记录时做数学运算	
+		1、运算符
+			+ - * / %
+		2、示例
+			1、查询时显示所有英雄攻击力翻倍
+				select id,name,gongji*2 as new_gj,country from sanguo;
+6、约束
+	1、作用
+		为了限制无效的数据插入到数据表中
+	2、约束分类
+		1、默认约束(default)
+			1、作用 ：插入记录时,不给该字段赋值,使用默认值
+			2、格式 ：字段名 数据类型 default 值
+		2、非空约束(not null)
+			1、作用 ：不允许该字段的值有NULL记录
+			2、格式 ：字段名 数据类型 not null
+
+			##可连用：字段名 数据类型 not null default 值
+
+
+
+
+
+
+
+				
+
+
+
+
+
+
+
+
+
+
+		
+			
+
+
+
+				
+
+
+
+				
+
+
+
+		
+		
+
+
+
+
+
+
+
+		
+
+
+
+
+
+
+
+				
+				
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

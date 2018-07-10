@@ -1,0 +1,16 @@
+
+HTML实体(HTML Entity)
+&gt;    >
+&lt;    <
+&amp;   &
+&#39;   '
+&apos;  "
+&nbsp;  空格 
+https://dev.w3.org/html5/html-author/charref
+
+UUID,通用唯一识别码,其形态为8-4-4-4-12,其作用是为保证文件名称的唯一性.
+
+webp格式是Google推出的一种图像格式,其仅被Google Chrome浏览器支持,其特点是相比jpeg文件来说，字节数更小;
+
+京东(jd.com)的商品展示图片采用动态缩放实现.
+

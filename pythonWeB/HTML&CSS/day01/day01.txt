@@ -1,0 +1,200 @@
+day01
+
+自我介绍--李然
+
+g-liran@tedu.cn
+
+
+1.前端学习体系
+
+	1.HTML-用来勾勒出网页的结构和内容-骨架
+	2.CSS-用来美化网页-皮肤-化妆
+	3.JavaScript-让网页呈现出动态的数据和效果
+	4.jQuery-js框架，提高JavaScript开发效率
+
+2.浏览器介绍
+
+	chrome safari  ---> webkit
+	firefox ---> mozilla
+
+3.HTML
+	html保存在服务器，html运行在浏览器
+	html--超文本标记语言
+	
+4.HTMl 语法 
+	1.标签
+	<标签></标签>
+	ex:<div></div>
+	2.属性
+	<标签 属性1="值1" 属性2="值2" ..></标签>
+	ex:<span id="s1" style=".."></span>
+	3.标签与标签之间的嵌套关系
+	<div>
+		<span id="s1"></span>
+	</div>
+	4.标签的分类
+		1.闭合标签/双标签
+			<body>内容</body>
+		2.非闭合标签/单标签
+			<标签>
+			<标签/>
+			<meta charset="utf-8">
+			单标签没有内容这个概念
+
+	总结：学习html，就是学习固定标签，固定属性
+				以及标签间的嵌套关系
+5.HTML用法
+	HTML  经历了5个版本
+	HTML4 之前版本很宽泛，宽松
+	HTML4 非常严谨
+	HTML5 是最新也是最流行的版本。比HTML4宽泛
+
+	<!doctype html><!--文档定义标签-->
+	<html><!--根元素-->
+		<head>
+			<!--本网页相关信息-->
+		</head>
+		<body>
+			<!--网页的主体，
+			在页面中显示的所有内容
+			都写在body里面-->
+			hello world!My first page!!
+		</body>
+	</html>
+
+	总结：doctype用于约束HTML文档内部的
+	      标签，属性和嵌套关系
+				不写doctype,同一篇代码，会在不同浏览器
+				中，有巨大显示差异。
+
+6.HTML常见标签
+
+	1.文本标签--跟论文格式非常相似
+		
+			标题  <hn></hn>  n=1~6
+			ex:   <h1></h1>
+						...
+						<h6></h6>
+			总结：h1最大，h6最小
+						字体加粗
+						垂直方向，上下都有空间
+
+			段落 paragraph
+				<p></p>
+						垂直方向，上下都有空间
+
+	2.课堂案例：
+		使用hn标签和p标签，写自己的简易的简历
+		属性 align="center" 可以使用在标题标签中
+
+	3.列表标签 显得有条理
+		
+		3.1无序列表	
+			u--unordered
+			l--list
+			i--item
+		<ul>
+			<li></li>
+			<li></li>
+			<li></li>
+			...
+		</ul>
+		3.2有序列表
+		<ol>
+			<li></li>
+			<li></li>
+			...
+		</ol>
+	4.分区
+		<div></div>
+		div看不见，功能是为了逻辑分区
+		<div id="header"></div>
+		<div id="nav"></div>
+		<div id="contents"></div>
+		<div id="footer"></div>
+	
+		H5添加了很多和div一样，
+		但是更容易读容易理解的标签
+		<header></header>
+		<nav></nav>
+		<footer></footer>
+
+		块级分区	div在这个区域独占一行
+
+		行级(行内)分区
+			<span></span>
+			如果只是一行文字内部的区域
+			进行分区设置属性、修改样式
+			这种时候使用行内分区
+
+			行内分区不会换行，会和其他文字混合
+			在同一行上span
+
+
+
+		5.元素(标签)的显示方式
+			
+			
+			1.行级元素(行内)
+				可以和其他行级元素位于同一行显示
+				span
+			2.块级元素
+				自己独占一行
+				hn p div ul li ol
+
+		6.其他的行内元素
+			i/em      斜体
+			b/strong  粗体
+			u         下划线
+			del/s		    删除线
+
+		7.实体引用，实体替换符号
+			行内元素的空格折叠现象
+			写代码的时候，不管连写多少个空格和
+			回车，显示成一个空格
+
+			<br>
+			<br/>回车
+
+			&nbsp; 空格
+			&lt;  <  
+			&gt;  >
+
+复习：
+
+1.网站运行的流程
+	.html存储在服务器，运行在浏览器
+2.h5 html的标准框架
+	<!doctype html>
+	<html>
+		<head>
+			<meta charset="utf-8">
+			<title></title>
+		</head>
+		<body></body>
+	</html>
+3.文本标签
+	hn p ul li ol
+4.分区标签
+	块级分区 div  header footer nav
+	行级分区 span i em s del u strong b
+5.块级元素与行级元素的区别
+	块级元素，自己独占一行
+	行级元素，可以与其他行级元素位于同一行
+6.实体替代符号
+	&nbsp;&lt;&gt;
+
+作业：
+1.网站的运行流程
+2.行级元素与块级元素的区别
+3.今天所有的demo重新敲一遍
+4.详细的完善个人简历要使用div分区
+	建议使用i b u等标签给关键内容修改样式
+
+	
+
+
+
+
+
+

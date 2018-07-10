@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>数组的遍历</title>
+	<script>
+		//1.数组的遍历(for语句,下标规则有序)
+		var arr = ['中国','法国','德国','美国','英国'];
+		for(var n=0;n<arr.length;n++){
+			console.log(arr[n]);
+		}
+		//2.数组的遍历--for...in语句
+		var arr = [];
+		arr[0] = '孙悟空';
+		arr[2] = '猪八戒';
+		arr[3] = '白骨精';
+		arr[9] = '唐僧';
+		for(key in arr){
+			console.log(arr[key]);
+		}
+		//3.数组的遍历 -- forEach语句实现
+		var arr = [];
+		arr[0] = '孙悟空';
+		arr[2] = '猪八戒';
+		arr[3] = '白骨精';
+		arr[9] = '唐僧';
+		arr.forEach(function(val,key){
+			console.log(val + ',' + key);
+		});
+	</script>
+
+</head>
+<body>
+	
+</body>
+</html>

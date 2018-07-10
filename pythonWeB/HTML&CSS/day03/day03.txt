@@ -1,0 +1,289 @@
+day03
+
+1.复习
+	1.img 相对路径 绝对路径
+	2. a  href target 锚点的用法
+	3.table tr td colspan rowspan
+	4.表单 form 
+		表单标签 
+		<input type="" name="" value="">
+			text
+			password
+			radio
+			checkbox
+			hidden
+			file
+			submit
+			reset
+			button
+
+----------------------------------
+1.表单标签
+	input标签 9个
+	非input标签 2个
+		1.文本域
+			<textarea>大量的文本</textarea>
+			rows cols描述的是文本区域内
+			可见的宽度和高度
+			原本的意思，每一行显示多少个字符，
+			显示多少行字符。
+			但是由于系统编码不同，浏览器解析不同
+			导致显示字符数差异很大。
+		2.下拉列表(下拉选)
+			<select>
+				<option></option>
+				...
+				<option></option>
+			</select>
+
+			总结：
+			1.当option没有value属性
+				select标签的value值是
+				选中的那个option标签的内容
+			2.当option有value属性
+				select标签的value值是
+				选中的那个option标签的value值
+
+
+	表单标签总结:
+
+		1.只有含有name属性的表单标签才可以提交数据
+		2.radio和checkbox必须
+		  设置value属性才可以提交数据
+		3.text的value是直接设置值
+			placeholder是设置提示
+		4.radio和checkbox默认选中checked
+		5.select默认选中是selected
+
+2.CSS层叠样式表
+
+	1.内联样式
+	<span style="color:#f00;font-size:30px">内联样式的使用</span>
+		在标签的style属性中写样式
+		特点
+		内联样式使用不多
+			1.不能重用
+			2.内联样式优先级最高
+			项目代码完全不使用内联
+			只有在学习和调试过程中
+	2.内部样式
+		在head标签中，写style标签
+		在style标签内部写样式
+		选择器{
+			属性：值;
+		}
+		样式代码可以重用,但只能在本html中重用
+		在项目使用不多
+
+	3.外部样式
+		创建一个.css文件
+		在html文件中，head标签中引用这个css文件
+		<link href="03.css" rel="stylesheet">
+
+3.层叠样式表的规则特性
+
+		1.层叠效果
+			多个样式作用在同一个标签上
+			如果样式属性不重复
+			那么这些样式都会产生效果
+		2.继承
+			父级元素的样式会继承给子元素
+			子元素可以重新写样式，
+			不使用父级元素的样式
+		3.优先级
+			优先级最低的 浏览器默认样式
+			优先级最高的 内联样式
+
+			内部样式和外部样式--就近优先
+			以被影响标签为基准，哪个样式离这个标签近
+			就使用哪个样式的效果
+
+4.选择器
+	选择器的作用，为了选出当前页面中
+	符合要求的一个或者多个标签
+
+	样式属性的作用，给选出来的标签设置样式
+
+	选择器{样式属性:值;}
+
+	1.通用选择器
+		*{color:#f00;}
+		少用，写通用样式的时候使用
+
+
+	2.标签选择器
+		选出当前页面中，标签名称符合要求的标签
+		ex:div{} span{} p{} body{}
+		使用范围：设置某个标签的通用样式
+
+		body{
+			maring:0px;
+			padding:0px;
+		}
+
+	3.id选择器
+		唯一不重复
+		<p id="p1">id选择器1</p>
+		#p1{
+			color:#f00;
+			font-size:25px;
+			width:150px;		
+		}
+
+		id选择器 #id值
+		注意，同一个html中，ID值是唯一不可重复
+		在同一个html，使用id选择器，
+		只能找到一个标签
+
+	4.类选择器 class选择器
+		如果编写html标签时，需要让某些标签
+		应用一类样式，就使用类选择器
+		标签的属性class为类名
+
+		<div class="d1"></div>
+		.d1{
+				width:200px;
+				height:100px;
+				background-color:#006699;
+				border:1px solid #f00;
+		}
+
+		多类选择器
+
+			.w200{
+				width:200px;
+			}
+			.h50{
+				height:50px;
+			}
+			.bgc_red{
+				background-color:#f00;
+			}		
+			<div class="w200 h50 bgc_red"></div>
+
+			当一个标签，想匹配多个样式的时候，
+			使用多类选择器
+
+
+	5.分组选择器
+		把一系列选择器当成一组，设置共有样式。
+		#p1,.d1,h1,ul,li{
+				border:2px solid #000;
+		}
+		逗号分隔，可以使用标签选择器，
+		id选择器，class选择器，混合编写
+		一般用于设置公共样式
+		一般项目中分组选择器，写在最开始的部分
+
+	6.后代选择器(派生)
+		div h1{
+				color:#f00;
+		}
+
+		div内部只要存在h1，就可以定位h1
+
+	7.子代选择器
+			div>h1{
+				background-color:pink;
+			}
+			h1必须是div的儿子才可以被匹配
+
+5.css常用样式属性
+	1.布局 相关属性
+			width: 宽
+			height:高
+			单位：px cm 100%
+
+		1.外边距
+			margin:设置外边距
+			margin:10px;   同时设置4个方向的外边距
+			margin:10px 20px; 上下为10 左右为20
+			margin:0px auto;  块级元素水平居中
+			margin:10px 20px 30px 40px;
+							上   右   下   左
+			margin-top:10px;  上边距
+			margin-right:
+			margin-bottom:
+			margin-left:
+
+			设置外边距，视觉效果，块级元素在位移
+
+		2.内边距padding
+			padding:10px;    设置4个方向的内边距
+			padding:10px 20px; 上下10px  左右20px
+			padding:10px 20px 30px 40px
+							上    右   下   左
+			padding-top
+			padding-right
+			padding-bottom
+			padding-left
+
+			改变内边距，视觉效果，元素大小改变
+		
+		3.盒子模型(框结构)
+			css渲染页面时，使用盒子模型
+			元素之间的留白，元素背景填充范围，
+			元素大小。对这些属性的控制规则，
+			就是盒子模型
+
+			我们写的元素，
+			在浏览器中占据的空间是多少(宽度)
+
+			左外边距+左边框+左内边距
+			+内容区域(我们设置的宽高)
+			+右内边距+右边框+右外边距
+
+			总结：
+			div默认占据宽度，
+			是父容器的内容区域宽度的100%
+			div默认的高，是内部内容的高
+			如果内部没有内容或者没有高
+			高度为0
+	
+	2.背景属性background
+		1.背景颜色
+			background-color:合法的颜色值
+			background:合法的颜色值
+
+			合法的颜色值：
+			1.颜色的单词 red pink
+			2.#ffffff 6位16进制字符串
+			3.#aabbcc ---> #abc  #f00 #ff0000
+			4.rgb(255,255,255);
+			5.rgba(255,255,255,0~1)
+
+		2.背景图片 
+			background-image:url("图片路径")
+			background-repeat:no-repeat;平铺方式		
+												repeat
+												repeat-x;
+												repeat-y;
+			background-position:center center;背景图片定位
+								center top bottom left right
+								可以直接写数值100px 200px
+			background-size:500px 500px;设置背景图片的大小
+
+作业：
+1.所有demo敲熟
+2.盒子模型
+
+
+
+	3.文字属性
+	4.文本属性
+	5.边框属性
+	6.常见复杂属性
+
+
+
+
+
+
+
+
+			
+
+
+
+
+

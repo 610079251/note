@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>刷新验证码</title>
+	<style>
+		body,p,div,h1,h2,h3,h4,h5,h6,ul,ol,li,dl,dd,form,input,select,table,tr,td,th,tbody,thead,tfoot{
+			margin: 0;
+			padding: 0;
+		}
+		ul,ol{
+			list-style: none;
+		}
+		a{
+			color: #000;
+			text-decoration: none;
+		}
+		img{
+			border: 0;
+		}
+		table{
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+		#container{
+			width:800px;
+			margin: 0 auto;
+		}
+		#container table{
+			width: 100%;
+		}
+		#container td{
+			padding: 10px;
+			border:1px solid #ccc;
+		}
+	</style>
+	<script>
+		function refreshCaptcha(){
+			//1.获取对象
+			var captchaEle = document.getElementById('captcha');
+			//2.设置属性
+			captchaEle.setAttribute('src','captcha.php?rnd=' + Date.now());
+		}
+	</script>
+</head>
+<body>
+	<div id="container">
+	<form action="" method="post">
+		<table>
+			<tr>
+				<td>用户名</td>
+				<td><input type="text" name="username" id="username"></td>
+			</tr>
+			<tr>
+				<td>密码</td>
+				<td><input type="password" name="password" id="password"></td>
+			</tr>
+			<tr>
+				<td>确认密码</td>
+				<td><input type="password" name="password2" id="password2"></td>
+			</tr>
+			<tr>
+				<td>验证码</td>
+				<td><input type="text" name="captcha"><img src="captcha.php" alt="" id="captcha"><a href="#" onclick="refreshCaptcha()">看不清,换一张</a></td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td><input type="submit" value="免费注册"></td>
+			</tr>
+		</table>
+	</form>
+	</div>
+
+</body>
+</html>

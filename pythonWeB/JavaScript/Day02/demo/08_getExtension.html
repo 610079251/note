@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>字符串</title>
+	<script>
+		//获取文件的扩展名
+		var filename = '35565.gif.jpeg.CsS';
+		//获取"点"最后一次出现的位置
+		var dotPos = filename.lastIndexOf('.') + 1;
+		//截取"字符串"
+		var extension = filename.substr(dotPos);
+		//将"字符串"转换为小写字母
+		extension = extension.toLowerCase();
+		console.log(extension);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
