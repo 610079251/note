@@ -1,0 +1,25 @@
+1.jQuery使用sizzlejs的选择器引擎
+
+http://sizzlejs.com
+
+2.回收站的实现--只需要在数据表添加一个字段来标识记录的状态即可.
+
+  放入回收站
+
+  UPDATE news SET isDeleted = 1 WHERE id = 80;
+
+  恢复
+
+  UPDATE news SET isDeleted = 0 WHERE id = 80;
+
+  彻底删除
+
+  DELETE FROM news WHERE id = 80;
+
+  关于表单
+
+  <form action="接收表单提交数据的页面的URL址" method="表单的提交方式(post|get)">
+
+  get:所有的搜索引擎都是以GET方式提交;
+
+  

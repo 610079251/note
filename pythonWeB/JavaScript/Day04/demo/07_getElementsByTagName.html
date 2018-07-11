@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>DOM编程</title>
+	<script>
+		function getParagraphNum(){
+			//获取DIV对象
+			var divEle = document.getElementById('div');
+			//2.获取DIV对象内所有的段落形成的集合
+			var pEles = divEle.getElementsByTagName('p');
+			console.log(pEles.length);
+		}
+	</script>
+</head>
+<body>
+	<h1>我是BODY内的H1</h1>
+	<p>段落1</p>
+	<p>段落2</p>
+	<div id="div" style="border:2px solid #f00;">
+		<h1>我是DIV内的标题1</h1>
+		<p>段落1</p>
+		<ul>
+			<li>
+				<p>中华人民共和国</p>
+			</li>
+			<li>
+				<p>中华人民共和国</p>
+			</li>
+			<li>
+				<p>中华人民共和国</p>
+			</li>
+		</ul>
+		<h2>我是DIV内的标题2</h2>
+	</div>
+	<input type="button" value="单击我,可以获取DIV内的段落数量" onclick="getParagraphNum()">
+</body>
+</html>

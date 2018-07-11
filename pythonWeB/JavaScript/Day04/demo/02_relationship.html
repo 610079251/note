@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>DOM编程</title>
+	<script>
+		function changeAttr(){
+			//获取段落对象
+			var pEle = document.getElementById('p');
+			//以段落对象为基准，获取div对象
+			var divEle = pEle.parentNode;
+			//获取div对象的"弟弟"节点--ul
+			var ulEle = divEle.nextSibling.nextSibling;
+			//获取ul对象的第一个li节点
+			var liEle = ulEle.firstChild.nextSibling;
+			//控制li节点的属性
+			liEle.setAttribute('type','circle');
+		}
+	</script>
+</head>
+<body>
+	<div>
+		<p id="p">我是段落1</p>
+		<p>我是段落2</p>
+	</div>
+	<ul>		
+		<li>我是li1</li>
+		<li>我是li2</li>
+	</ul>
+	<input type="button" value="单击我,控制第一个li的类型" onclick="changeAttr()">
+</body>
+</html>

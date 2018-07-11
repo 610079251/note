@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>DOM编程</title>
+	<script>
+		function changeAttr(){
+			//获取对象
+			var pEle1 = document.getElementById('p');
+			//以当前对象为基准,查找"弟弟"节点
+			var pEle2 = pEle1.nextSibling.nextSibling;
+			//设置属性
+			pEle2.setAttribute('align','center');
+		}
+	</script>
+</head>
+<body>
+	<p id="p">段落1</p>	
+	<p>段落2</p>
+	<input type="button" value="单击我,让第二个段落居中" onclick="changeAttr()">
+</body>
+</html>

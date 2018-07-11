@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>DOM编程</title>
+	<script>
+		function removeAllParagraph(){
+			//获取文档中由p标记形成的集合(数组)
+			var pEles = document.getElementsByTagName('p');
+			for(var n=0;n<pEles.length;n++){
+				pEles[n].parentNode.removeChild(pEles[n]);
+				n--;
+			}
+		}
+	</script>
+</head>
+<body>
+	<h1>我是BODY内的H1</h1>
+	<p>段落1</p>
+	<p>段落2</p>
+	<div style="border:2px solid #f00;">
+		<h1>我是DIV内的标题1</h1>
+		<p>段落1</p>
+		<h2>我是DIV内的标题2</h2>
+	</div>
+	<input type="button" value="单击我,可以删除页面内的所有段落" onclick="removeAllParagraph()">
+</body>
+</html>

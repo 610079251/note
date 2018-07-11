@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>QQ邮箱</title>
+	<script>
+		//单击"控制复选框"时调用;
+		function controlCkboxClick(){
+			//1.获取"控制复选框"对象
+			var controlCkboxEle = document.getElementById('controlCkbox');
+			//2.获取name为mailCkbox的复选框组成的集合(数组)
+			var mailCkboxEles = document.getElementsByName('mailCkbox');
+			//3.遍历mailCkbox的复选框集合,依次让每个成员的状态与控制复选框相同
+			for(var n=0;n<mailCkboxEles.length;n++){
+				mailCkboxEles[n].checked = controlCkboxEle.checked;
+			}
+			//调用控制按锯的自定义函数
+			controlBtnStatus();
+		}
+
+		//获取被选定的"邮件复选框"的数量
+
+		function getCheckedNum(){
+			//计数器
+			var count = 0;
+			//邮件复选框集合
+			var mailCkboxEles = document.getElementsByName('mailCkbox');
+			for(var n=0;n<mailCkboxEles.length;n++){
+				//只有当前邮件复选框被选定,计数器才加1
+				if(mailCkboxEles[n].checked){
+					count++;
+				}
+			}
+			return count;
+		}
+
+		//在单击每一个"邮件复选框"时调用
+
+		function mailCkboxClick(){
+			//获取"控制复选框"对象
+			var controlCkboxEle = document.getElementById('controlCkbox');
+			//获取name为mailCkbox的复选框组成的集合(数组)
+			var mailCkboxEles = document.getElementsByName('mailCkbox');
+			//原始方法
+			/*
+			if(mailCkboxEles.length==getCheckedNum()){
+				controlCkboxEle.checked = true;
+			} else {				
+				controlCkboxEle.checked = false;
+			}
+			*/
+			//简捷方法
+			controlCkboxEle.checked = mailCkboxEles.length==getCheckedNum();
+			//调用控制按锯的自定义函数
+			controlBtnStatus();
+		}
+		//控制按钮的状态
+		function controlBtnStatus(){
+			var recycleBtnEle = document.getElementById('recycleBtn');
+			var deleteBtnEle = document.getElementById('deleteBtn');
+			//原始方式
+			/*
+			if(getCheckedNum()>=1){
+				recycleBtnEle.disabled = false; 
+				deleteBtnEle.disabled =  false;
+			} else {
+				recycleBtnEle.disabled = true;
+				deleteBtnEle.disabled = true;
+			}
+			*/
+			//简捷方法
+			recycleBtnEle.disabled = deleteBtnEle.disabled = !getCheckedNum()>=1; 
+			 
+		}
+	</script>
+</head>
+<body>
+	<div id="container">
+		<table width="100%" cellpadding="10" cellspacing="0" border="1">
+			<tr>
+				<td colspan="3">
+					<input type="button" value="放入回收站" disabled id="recycleBtn">
+					<input type="button" value="彻底删除" disabled id="deleteBtn">
+				</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="controlCkbox" id="controlCkbox" onclick="controlCkboxClick()"></td>
+				<td>主题</td>
+				<td>发信人</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="mailCkbox" onclick="mailCkboxClick()"></td>
+				<td>关于HTML的问题</td>
+				<td>张三@sina.com.cn</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="mailCkbox" onclick="mailCkboxClick()"></td>
+				<td>老师,救命呀</td>
+				<td>李四@sohu.com</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="mailCkbox" onclick="mailCkboxClick()"></td>
+				<td>老师,JavaScript怎么这么难呀</td>
+				<td>wuhua@tedu.cn</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="mailCkbox" onclick="mailCkboxClick()"></td>				
+				<td>拼多,拼多多</td>
+				<td>ali@ali.com</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="mailCkbox" onclick="mailCkboxClick()"></td>
+				
+				<td>奔跑步,小兔子</td>
+				<td>ad@yahoo.com</td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>

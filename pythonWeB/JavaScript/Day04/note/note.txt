@@ -1,0 +1,116 @@
+一、DOM编程
+
+1.Node对象
+
+1.1属性
+
+  firstChild
+
+  描述:返回指定节点的第一个子节点
+
+  语法:node node.firstChild
+
+  lastChild
+
+  描述:返回指定节点的最后一个子节点
+
+  语法:node node.lastChild
+
+  parentNode
+
+  描述:返回当前节点的父节点
+
+  语法:node node.parentNode
+
+  nextSibling
+
+  描述:返回当前节点的下一个兄弟节点(弟弟)
+
+  语法:node node.nextSibling
+
+  previousSibling
+
+  描述:返回当前节点的上一个兄弟节点(哥哥)
+
+  语法:node node.previousSibling
+
+1.2方法
+
+  replaceChild
+
+  描述:节点替换
+
+  语法:node node.replaceChild(newChild,oldChild)
+
+2.Document对象
+ 
+2.1方法
+ 
+  getElementsByTagName()
+
+  描述:获取文档中指定标记名称所形成的集合(数组)
+
+  语法:NodeList document.getElementsByTagName(tagName)
+
+  createTextNode()
+
+  描述:创建文本节点
+
+  语法:TextNode document.createTextNode(string)
+
+3.Element对象
+
+3.1方法
+  
+  getElementsByTagName()
+
+  描述:获取指定元素中包含指定标记名称所形成的集合(数组)
+
+  语法:NodeList Element.getElementsByTagName(tagName)
+
+
+ 二、HTML DOM
+
+ HTML DOM提供针对处理HTML文档的API.
+
+ 1.选取对象
+
+ Element document.getElementById(string id)
+
+ NodeList document.getElementsByTagName(string tagName)
+
+ NodeList Element.getElementsByTagName(string tagName)
+
+2.属性控制
+
+A.对于单个单词的HTML标记属性即HTML DOM对象属性;
+
+B.对于合成词的HTML标记属性(如table标记的cellpading、cellspacing属性)在HTML DOM编程时,采用"驼峰标记法"命名(如cellPadding、cellSpacing)
+
+C.对于HTML标记的class属性,在HTML DOM编程时使用className取代;
+  (因为class是ECMAScript中的关键字)
+
+D.对于HTML标记的布尔属性(如单/复选框的checked、列表项的selected属性)在HTML DOM编程时采用boolean类型表示;
+
+E.在HTML DOM编程时,某些HTMLDOM对象有自己特有的属性/方法;
+
+
+
+3.HTMLDocument对象
+  
+  getElementsByName()方法
+
+  描述:获取文档中name属性相同的对象的组成的集合(数组)
+
+  语法:NodeList document.getElementsByName(string name)
+
+
+
+
+
+
+
+
+
+
+

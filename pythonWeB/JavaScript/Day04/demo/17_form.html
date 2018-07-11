@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>HTML DOM</title>
+	<style>
+		.button{
+			display: inline-block;
+			cursor: pointer;
+			width: 120px;
+			height: 30px;
+			text-align: center;
+			line-height: 30px;
+			border:1px solid #333;
+		}
+	</style>
+	<script>
+		function submitForm(){
+			//获取对象
+			var formEle = document.getElementById('form');
+			//调用表单对象的submit()方法以提交表单
+			formEle.submit();
+		}
+	</script>
+</head>
+<body>
+	<form id="form" action="1.php" method="post">
+		<table width="100%" cellpadding="10" cellspacing="0" border="1">
+			<tr>
+				<td>用户名</td>
+				<td><input type="text" name="username" id="username"></td>
+			</tr>
+			<tr>
+				<td>邮箱</td>
+				<td><input type="text" name="email" id="email"></td>
+			</tr> 
+			<tr>
+				<td>&nbsp;</td>
+				<td><b onclick="submitForm()" class="button">免费注册</b></td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

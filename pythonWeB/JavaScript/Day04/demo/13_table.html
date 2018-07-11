@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>HTML DOM</title>
+	<script>
+		function changeAttr(){
+			//1.获取对象
+			var tableEle = document.getElementById('table');
+			//2.设置属性
+			tableEle.width = '500';
+			tableEle.border = '3';
+			//注意:cellPadding和cellSpacing的写法
+			tableEle.cellSpacing = '0';
+			tableEle.cellPadding = '20';
+		}
+	</script>
+</head>
+<body>
+	<table id="table">
+		<tr>
+			<td>中国</td>
+			<td>中国</td>
+		</tr>
+		<tr>
+			<td>中国</td>
+			<td>中国</td>
+		</tr>
+		<tr>
+			<td>中国</td>
+			<td>中国</td>
+		</tr>
+	</table>
+	<input type="button" value="单击我,控制表格的属性" onclick="changeAttr()">
+</body>
+</html>

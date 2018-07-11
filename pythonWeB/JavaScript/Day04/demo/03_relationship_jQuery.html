@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>DOM编程</title>
+	<script src="scripts/jquery-2.0.2.min.js"></script>
+	<script>
+		function changeAttr(){
+			$('#p').parent().next().children().eq(0).attr('type','circle');
+		}
+	</script>
+</head>
+<body>
+	<div>
+		<p id="p">我是段落1</p>
+		<p>我是段落2</p>
+	</div>
+	<ul>		
+		<li>我是li1</li>
+		<li>我是li2</li>
+	</ul>
+	<input type="button" value="单击我,控制第一个li的类型" onclick="changeAttr()">
+</body>
+</html>

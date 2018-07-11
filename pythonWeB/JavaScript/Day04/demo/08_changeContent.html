@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>DOM编程</title>
+	<script>
+		function changeContent(){
+			//1.获取对象
+			var pEle = document.getElementById('p');
+			//2.设置内容(注意:文本存储在文本节点内)
+			pEle.firstChild.nodeValue = '哈哈哈,你的睡姿态好销魂';
+		}
+	</script>
+</head>
+<body>
+	<p id="p">我是段落</p>
+	<input type="button" value="单击我,改变段落的内容" onclick="changeContent()">
+</body>
+</html>

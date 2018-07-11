@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>HTML DOM</title>
+	<script>
+		function changeAttr(){
+			//1.获取对象
+			var pEle = document.getElementById('p');
+			//2.设置属性			
+			pEle.align = 'center';
+		}
+	</script>
+</head>
+<body>
+	<p id="p">我是段落</p>
+	<input type="button" value="单击我，让段落居中" onclick="changeAttr()">
+</body>
+</html>

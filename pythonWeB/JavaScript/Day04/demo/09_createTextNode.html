@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>DOM编程</title>
+	<script>
+		function createParagraph(){
+			//1.创建段落节点
+			var pEle = document.createElement('p');
+			//2.创建文本节点
+			var txtNode = document.createTextNode('下雨了');
+			//3.将文本节点追加到段落节点内
+			pEle.appendChild(txtNode);
+			//4.将段落节点追加到body对象
+			document.body.appendChild(pEle);
+		}
+	</script>
+</head>
+<body>
+	<input type="button" value="创建段落,内容自定" onclick="createParagraph()">
+</body>
+</html>

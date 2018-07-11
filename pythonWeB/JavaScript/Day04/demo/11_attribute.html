@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>HTML DOM</title>
+	<script>
+		function changeImage(){
+			//获取对象
+			var imageEle = document.getElementById('image');
+			//设置属性
+			imageEle.src = 'images/5b3df123N15e0ae37.jpg';
+
+		}
+		function changeLink(){
+			//获取对象
+			var linkEle = document.getElementById('link');
+			//设置属性
+			linkEle.href = 'http://www.baidu.com';
+			linkEle.target = '_blank';
+		}
+	</script>
+</head>
+<body>
+	<p><a href="#" id="link">百度</a></p>
+	<input type="button" value="单击我,让链接生效" onclick="changeLink()">
+	<p><img src="images/5b3c6885Na37cc2e5.jpg" alt="" id="image"></p>
+	<input type="button" value="单击我,换图片" onclick="changeImage()">
+	
+</body>
+</html>
