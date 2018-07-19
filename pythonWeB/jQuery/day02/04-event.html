@@ -1,0 +1,31 @@
+<!doctype html>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#container{
+			width:400px;
+			height:400px;
+			border:2px solid #000;
+		}
+	</style>
+</head>
+<body>
+	<div id="container"></div>
+	<script>
+		function divClick(event){
+			//console.log(event);
+			//alert(event.offsetX+":"+event.offsetY);
+			//获取事件源
+			console.log(event.target.parentNode);
+		}
+
+		var div = document.getElementById("container");
+		div.onclick = function(event){
+			//console.log(event);
+			console.log(event.target);
+		}
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>querySelectorAll()方法</title>
+	<script>
+		function getObjectNum(){
+			//返回文档中所有使用t1 CSS类的对象所形成的数组
+			var eles = document.querySelectorAll('.t1');
+			window.alert(eles.length);
+		}
+	</script>
+</head>
+<body>
+	<p class="t1">段落</p>
+	<div class="t1">DIV</div>
+	<h2 class="t1">标题</h2>
+	<h3 class="t1">标题</h3>
+	<div class="t1">DIV</div>
+	<input type="button" value="获取使用.t1类的对象的数量" onclick="getObjectNum()">
+</body>
+</html>

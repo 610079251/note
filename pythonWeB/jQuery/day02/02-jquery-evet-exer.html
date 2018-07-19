@@ -1,0 +1,50 @@
+<!doctype html>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#container{
+			/*相对定位：为了配合#img2做绝对定位*/
+			position:relative;
+		}
+		#img1,#img2{
+			width:400px;
+			height:400px;
+			border:2px solid #000;
+		}
+		#img2{
+			position:absolute;
+			top:0px;
+			left:424px;
+			display:none;
+			text-align:center;
+			line-height:400px;
+			font-weight:bold;
+			font-size:24px;
+		}
+	</style>
+	<script src="jquery-1.11.3.js"></script>
+	<script>
+		$(function(){
+			/*1、为 #img1 绑定鼠标移入事件:mouseover*/
+			$("#img1").mouseover(function(){
+				$("#img2").css("display","block");
+			});
+			/*2、为 #img1 绑定鼠标移出事件:mouseout*/
+			$("#img1").mouseout(function(){
+				$("#img2").css("display","none");
+			});
+			/*3、为 #img1 绑定鼠标移动事件:mousemove*/
+			$("#img1").mousemove(function(event){
+				$("#img2").html(event.offsetX+":"+event.offsetY);
+			});
+		});
+	</script>
+</head>
+<body>
+	<div id="container">
+		<div id="img1"></div>
+		<div id="img2"></div>
+	</div>
+</body>
+</html>

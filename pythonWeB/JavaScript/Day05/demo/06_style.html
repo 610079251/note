@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>HTML DOM</title>
+	<script>
+		function getStyle(){
+			var pEle = document.getElementById('p');
+			window.alert(pEle.style);
+		}
+	</script>
+</head>
+<body>
+	<p style="color:red" id="p">中国</p>
+	<input type="button" value="单击我,获取段落对象的style属性" onclick="getStyle()">
+</body>
+</html>

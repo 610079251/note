@@ -1,0 +1,34 @@
+<!doctype html>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="container">
+		<p id="title">悯农</p>
+		<p>锄禾日当午</p>
+		<p>汗滴禾下土</p>
+		<p>谁知盘中餐</p>
+		<p>粒粒皆辛苦</p>
+	</div>
+	<button onclick="btnTest()">测试</button>
+	<script>
+		function btnTest(){
+			var container = document.getElementById("container");
+
+			var title = document.getElementById("title");
+			
+			//获取 container中所有的子元素(包含文本节点)
+			//console.log(container.childNodes);
+
+			//获取 container中所有的子元素(不包含文本节点)
+			//console.log(container.children);
+
+			//获取 title的下一个兄弟节点,得到的有可能是文本节点
+			//console.log(title.nextSibling);
+			//获取 title的下一个兄弟节点,得到的永远都是元素节点
+			console.log(title.nextElementSibling);
+		}
+	</script>
+</body>
+</html>

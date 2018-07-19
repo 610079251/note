@@ -1,0 +1,66 @@
+<!doctype html>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="container">
+		<p class="title">静夜思</p>
+		<p>床前明月光</p>
+		<p>疑是地上霜</p>
+		<p>举头望明月</p>
+		<p>低头思故乡</p>
+	</div>
+	<div id="content">
+		<p class="title">春晓</p>
+		<p>春眠不觉晓</p>
+		<p>处处闻啼鸟</p>
+		<p>夜来风雨声</p>
+		<p>花落知多少</p>
+	</div>
+	<button onclick="s1Click()">基本选择器</button>
+	<button onclick="s2Click()">兄弟选择器</button>
+	<script src="jquery-1.11.3.js"></script>
+	<script>
+		function s2Click(){
+			//相邻兄弟:获取所有class为title的相邻兄弟p元素
+			$(".title+p").css("color","red");
+			//通用兄弟:获取所有class为title的通用兄弟p元素
+			$(".title~p").css("font-weight","bold");
+		}
+		
+		function s1Click(){
+			//1、获取 id 为 container 的元素
+			var $container = $("#container");
+			//console.log($container);
+			/*$container.css("font-size","24px");
+			$container.css("color","red");*/
+
+			//使用JSON设置CSS属性值
+			$container.css({
+				'font-size':'24px',
+				'color':'red'
+			});
+
+			//2、获取 class 为 title 的元素
+			var $title = $(".title");
+			console.log($title);
+			//2.1 设置为字体加粗显示
+			//2.2 设置文字大小为 24px
+			//2.3 设置下外边距为 36px
+			$title.css({
+				'font-weight':'bold',
+				'font-size':'24px',
+				'margin-bottom':'36px'
+			});
+			//3、获取 页面中所有的 p 元素
+			//3.1 设置下外边距为 15px
+			//3.2 设置背景颜色为 黄色(yellow)
+			$("p").css({
+				'margin-bottom':'15px',
+				'background-color':'yellow'
+			});
+		}
+	</script>
+</body>
+</html>

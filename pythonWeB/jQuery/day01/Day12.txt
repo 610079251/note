@@ -1,0 +1,216 @@
+赵旭
+zhaoxu@tedu.cn
+
+
+
+
+jQuery
+javascript query
+1、jQuery的介绍
+	jQuery是一个轻量级的JS库 - 是一个被封装好的JS文件，提供了更为简便的元素操作方式
+	核心理念：Write Less Do More
+
+	jQuery版本：
+		jQuery 2.x  不再兼容IE6.7.8
+		jQuery 1.x  jQuery 1.11.x
+2、使用jQuery
+	1、引入jQuery文件
+		<script src="jquery-1.11.3.js"></script>
+		注意：引入文件的操作必须要放在其他的jquery操作之前
+	2、使用jQuery
+		... ...
+3、jQuery对象(重点)
+	1、什么是jQuery对象
+		jQuery对象是由jQuery对页面元素封装后的一种体现
+		jQuery中所提供的所有操作只针对jQuery对象，其他对象(DOM)不能使用
+	2、工厂函数 - $()
+		作用：
+			1、能够将页面元素加工成jQuery对象
+			2、能够将DOM对象转换成jQuery对象
+	3、DOM对象和jQuery对象之间的转换
+		DOM对象：不能用jQuery提供的操作
+		jQuery对象：不能使用DOM提供的操作
+		1、将DOM对象转换为jQuery对象
+			语法：
+				var 变量 = $(DOM对象);
+				注意：所有的jQuery对象在起名的时候，最好在变量名称前 + $，用于和DOM对象做区分
+			
+				var d1 = document.getElementById("d1");
+				var $d1 = $(d1);
+
+				d1:是DOM对象
+				$d1:是jQuery对象
+		2、将jQuery对象转换为DOM对象
+			1、var dom对象 = jQuery对象[下标];
+			2、var dom对象 = jQuery对象.get(下标);
+4、jQuery选择器
+	1、作用
+		获取页面上的元素们，返回值都是由jQuery对象组成的数组
+		语法：$("选择器");
+	2、选择器详解
+		1、基本选择器
+			1、ID选择器
+				语法：$("#id")
+				返回：封装了包含指定id值的jquery数组
+			2、类选择器
+				语法：$(".className")
+				返回：页面中指定className的所有元素
+			3、元素选择器
+				语法：$("element")
+				返回：返回页面中指定标记的所有元素
+			4、群组选择器 / 复合选择器
+				语法：$("select1,selector2,...")
+				返回：满足函数内所有选择器的元素们
+			5、通用选择器
+				语法：$("*")
+				返回：返回页面中所有的元素
+		2、层级选择器
+			1、后代选择器
+				语法：$("selector1 selector2")
+			2、子代选择器
+				语法：$("selector1>selector2")
+			3、相邻兄弟选择器
+				语法：$("selector1+selector2")
+				作用：匹配紧紧跟在selector1后面且满足selector2选择器的元素
+			4、通用兄弟选择器
+				语法：$("selector1~selector2")
+				作用：匹配selector1后面所有满足selector2选择器的元素们
+		3、过滤选择器
+			1、基本过滤选择器
+				1、:first
+					只能匹配到第一个元素
+					ex:
+						$("p:first");
+				2、:last
+					只能匹配到最后一个元素
+				3、:not(selector)
+					将满足selector选择器的元素排除在外
+					ex:
+						$("p:not(:first)");
+				4、:odd
+					匹配 第偶数个 元素(奇数下标)
+				5、:even
+					匹配 第奇数个 元素(偶数下标)
+				6、:eq(index)
+					匹配下标等于 index 的元素
+				7、:gt(index)
+					匹配下标大于 index 的元素
+				8、:lt(index)
+					匹配下标小于 index 的元素
+			2、属性过滤选择器
+				通过元素的属性及其值来匹配页面的元素
+				1、[attribute]
+					作用：匹配包含指定属性的元素
+					ex:
+						1、div[id]
+				2、[attribute=value]
+					作用：匹配attribute属性值为value的元素
+					ex:
+						1、input[type=text]
+						2、input[type="text"]
+						3、input[type='text']
+				3、[attribute != value]
+					作用：匹配 attribute属性值不是 value 的元素
+				4、[attribute ^= value]
+					作用：匹配 attribute属性值是以value开头的元素
+					ex:
+						div[class^=col]
+				5、[attribute $= value]
+					作用：匹配 attribute属性值是以value结尾的元素
+				6、[attribute *= value]
+					作用：匹配 attribute属性值中包含value字符的元素
+			3、子元素过滤选择器
+				1、:first-child
+					作用：匹配属于其父元素中的首个子元素(可能会匹配出来多个)
+
+					$("li:first-child");
+					$("li:first");
+				2、:last-child
+					作用：匹配属于其父元素中的最后一个子元素
+				3、:nth-child(n)
+					作用：匹配属于其父元素中的第n个子元素
+5、jQuery操作DOM
+	1、基本操作
+		1、html()
+			作用：获取 或 设置jQuery对象中的HTML内容
+			等同于：DOM中的innerHTML属性
+		2、text()
+			作用：获取 或 设置jQuery对象中的文本内容
+			等同于：DOM中的innerText属性
+		3、val()
+			作用：获取 或 设置jQuery对象的value属性值(针对表单控件)
+			等同于：DOM中的value属性
+			ex:
+				<input type="text" id="uname">
+				console.logo($("#uname").val());//获取uname的值并打印
+				$("#uname").val("Mary");//设置uname的值为Mary
+
+			练习：
+				1、创建一个文本框并定义id
+				2、创建一个按钮，显示文字为 "显示"
+				3、创建一个div并定义id
+				4、点击按钮时，将文本框中的内容获取出来构建成一级标题的样式显示在div中
+	2、属性操作
+		1、attr()
+			作用：读取或设置jQuery对象的属性值
+			ex:
+				1、$obj.attr("id")
+					读取 $obj 对象的 id 属性值
+				2、$obj.attr("id","container")
+					设置 $obj 对象的 id属性值为 container
+		2、removeAttr("attrName")
+			作用：删除jQuery对象的attrName属性
+			ex:
+				$obj.removeAttr("class");
+				从 $obj 对象中将 class 属性移除出去
+	3、样式操作
+		1、attr("class","className")
+			使用 attr() 动态绑定 class属性值
+			ex:
+				$obj.attr("class","container");
+		2、addClass("className")
+			作用：将className类选择器追缴到 jquery 对象class值之后
+			返回值：返回当前的jQuery对象
+			ex:
+				$obj = $obj.addClass("bigFont");
+				$obj = $obj.addClass("red");
+			连缀调用：
+				$obj.addClass("bigFont").addClass("red");
+		3、removeClass("className")
+			作用：删除指定的类选择器
+		4、removeClass()
+			作用：删除所有的类选择器
+		5、toggleClass("className")
+			切换样式：
+				元素如果具备className类选择器，则删除
+				元素如果没有className类选择器，则添加
+		6、css("属性","值")
+			为元素设置某css属性及其值
+			ex:
+				$obj.css("background-color","red");
+		7、css(JSON对象)
+			为元素设置一组css属性及其值
+
+
+
+
+
+var $d1 = $("#d1");
+var d1 = $d1[0]
+
+var $redColor = $(".redColor");
+VAR r1 = $redColor[1];
+
+
+<div id="d1"></div>
+var div = $("d1")
+
+function $(id){
+	return document.getElementById(id);
+}
+
+<div class="col-md-5"></div>
+<div class="col-lg-8"></div>
+
+
+

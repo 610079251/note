@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>HTML DOM</title>
+	<script>
+		function changeCity(){
+			//1.获取省份列表框对象
+			var proEle = document.getElementById('provinces');
+			//2.获取被选定的省份的值
+			var proVal =proEle.value;	
+			//3.获取城市列表框对象
+			var cityEle = document.getElementById('cities');
+			//4.在每次添加option对象前,"清空"以前的option列表
+			cityEle.length = 1;
+			//5.根据省份的值，然后动态的在城市列表框中添加选项(option)
+			if(proVal == 0){ //北京
+				var optEle = new Option('东城区',1);
+				cityEle.add(optEle);
+				var optEle = new Option('西城区',2);
+				cityEle.add(optEle);
+				var optEle = new Option('海淀区',3);
+				cityEle.add(optEle);
+				var optEle = new Option('朝阳区',4);
+				cityEle.add(optEle);
+			} else if(proVal == 1){ //上海
+				var optEle = new Option('黄浦区',1);
+				cityEle.add(optEle);
+				var optEle = new Option('徐汇区',2);
+				cityEle.add(optEle);
+				var optEle = new Option('静安区',3);
+				cityEle.add(optEle);
+				var optEle = new Option('长宁区',4);
+				cityEle.add(optEle);
+
+			} else if(proVal == 2) { //天津
+				var optEle = new Option('和平区',1);
+				cityEle.add(optEle);
+				var optEle = new Option('河东区',2);
+				cityEle.add(optEle);
+				var optEle = new Option('河西区',3);
+				cityEle.add(optEle);
+				var optEle = new Option('南开区',4);
+				cityEle.add(optEle);
+
+			} else if(proVal == 3){ //河北
+				var optEle = new Option('石家庄市',1);
+				cityEle.add(optEle);
+				var optEle = new Option('唐山市',2);
+				cityEle.add(optEle);
+				var optEle = new Option('秦皇岛市',3);
+				cityEle.add(optEle);
+				var optEle = new Option('邯郸市',4);
+				cityEle.add(optEle);
+			}
+		
+		}		
+	</script>
+</head>
+<body onload="changeCity()">
+	<form action="" method="post">
+		<table width="600" border="1" cellpadding="10" cellspacing="0">
+			<tr>
+				<td width="120">省份</td>
+				<td>
+				<select name="provinces" id="provinces" onchange="changeCity()">
+					<option value="0">北京市</option>
+					<option value="1">上海市</option>
+					<option value="2">天津市</option>
+					<option value="3">河北省</option>
+				</select>
+				</td>
+			</tr>
+			<tr>
+				<td>城市</td>
+				<td>
+				<select name="cities" id="cities">
+					<option value="0">请选择...</option>	
+				</select>
+				</td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td><input type="submit" value="确认"></td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

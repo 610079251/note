@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Location</title>
+	<script>
+		function changeUrl(){
+			//名称=值&名称=值
+			location.href = '09_search.html?id=1&action=remove';
+		}
+		function getParameter(){
+			var str = location.search;
+			window.alert(str);
+		}
+	</script>
+</head>
+<body>
+	<p><input type="button" value="(1).单击我,改变地址栏的表现" onclick="changeUrl()"></p>
+
+	<p><input type="button" value="(2).获取地址栏的参数" onclick="getParameter()"></p>
+
+</body>
+</html>

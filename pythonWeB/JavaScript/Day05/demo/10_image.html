@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>HTML DOM</title>
+	<script>
+		function createImage(){
+			//创建图像对象
+			var imageEle = new Image(); //相当于<img>
+			//设置属性
+			imageEle.src = 'images/5b442479N60616c73.jpg';
+			//将新创建的图像添加到文档
+			document.body.appendChild(imageEle);
+		}
+	</script>
+</head>
+<body>
+	<input type="button" value="单击我,创建图像" onclick="createImage()">
+</body>
+</html>

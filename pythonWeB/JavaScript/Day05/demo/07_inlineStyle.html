@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>HTML DOM</title>
+	<script>
+		function setInlineStyle(){
+			//获取DIV对象
+			var divEle = document.getElementById('wrapper');
+			//设置DIV对象的行内样式(单个单词)
+			divEle.style.width = '300px';
+			divEle.style.height = '200px';
+			divEle.style.margin = '0 auto';
+			divEle.style.border  ='1px solid #000';
+			//设置DIV对象的行内样式		
+			divEle.style.fontSize = '24px';
+			divEle.style.textAlign = 'center';
+			divEle.style.fontFamily = 'Microsoft Yahei';
+		}
+	</script>
+</head>
+<body>
+	<div id="wrapper">中国</div>
+	<input type="button" value="单击我,控制DIV的行内样式" onclick="setInlineStyle()">
+</body>
+</html>

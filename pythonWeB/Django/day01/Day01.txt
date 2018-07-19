@@ -1,0 +1,184 @@
+1、jQuery-事件
+	1、事件对象 - event
+		在绑定事件的时候，允许传递 event 参数来表示事件对象
+
+		1、
+			$obj.bind("click",function(event){
+				//event 表示的就是事件对象
+			});
+		2、
+			$obj.click(function(event){
+				//event 表示的就是事件对象
+			});
+	2、事件冒泡
+		1、什么是事件冒泡
+			在执行子元素的事件时，同时把父元素/祖先元素的对应的事件也给执行了
+		2、阻止事件冒泡
+			event.stopPropagation()
+2、jQuery-动画
+	1、基本显示 / 隐藏
+		语法：
+			$obj.show() / $obj.show(执行时间)
+			$obj.hide() / $obj.hide(执行时间)
+	2、滑动式显示 / 隐藏
+		语法：
+			显示:$obj.slideDown() / $obj.slideDown(执行时间)
+			隐藏:$obj.slideUp() / $obj.slideUp(执行时间)
+	3、淡入淡出式显示 / 隐藏
+		语法：
+			显示:$obj.fadeIn() / $obj.fadeIn(执行时间)
+			隐藏:$obj.fadeOut() / $obj.fadeOut(执行时间)
+3、jQuery-插件
+====================================================
+静态网站：无法与服务器进行交互
+动态网站：允许与服务器进行交互
+
+Django框架
+
+1、WEB 与 服务器
+	1、WEB ：表示用户可以浏览的网页(HTML,CSS,JS)
+	2、服务器
+		能够给用户提供服务的机器
+		1、硬件 与 软件
+			硬件范畴：一台计算机
+			软件范畴：一个能够接收用户请求并给出响应的程序
+				1、APACHE
+				2、TOMCAT
+				3、IIS(Internet Information Service)
+				4、Nginx
+		2、作用
+			1、存储WEB所需要的信息(HTML，图片，音频)
+			2、能够处理用户的请求(request)并给出响应(response)
+			3、执行服务器端的程序
+		3、WEB 与 服务器之间的关系
+2、框架
+	1、什么是框架
+		框架是一个为了解决开放性问题而存在的一种结构。框架本身提供了一些最基本的功能。我们需要在基本的功能基础上开发属于自己的操作即可。
+	2、Python中的框架(WEB)
+		1、Django ：重量级的WEB框架
+		2、Tornado ：异步框架
+		3、Flask ：轻量级框架
+		... ...
+3、Django 框架
+	1、什么是Django
+		是一个开源框架，2005年发布，采用Python语言开发。早期是做新闻以及内容管理的网站。提供了强大的后台管理系统。
+	2、Django的框架模式 - MTV
+		M ：Models 层
+			模型层，负责数据库的建模以及CRUD的操作
+		T ：Templates 层
+			模板层，用于处理用户显示的内容的。如：html
+		V ：Views 层
+			视图层，处理与用户交互的部分内容，从模型中获取数据再将数据发送给模板，最终再将模板显示给用户
+
+		自行了解：MVC
+			M ：Models 模型层
+				负责数据库的建模以及CRUD的操作
+			V ：Views 视图层
+				处理用户显示的内容 。如：html
+			C ：Controller 控制器
+				处理与用户交互的部分内容。接收请求，处理请求并响应结果给客户端
+
+		
+		MTV       MVC
+		M  -----  M
+		T  -----  V
+		V  -----  C
+4、Django 框架的使用
+	1、Django的安装
+		1、查看已安装的Django版本
+			1、进入到终端以及python的交互模式
+				python3 / ipython3
+			2、在交互模式中 输入 import django
+				如果未报错：说明已经安装了Django
+				如果报错：说明未安装Django
+			3、查看已安装的版本
+				交互模式中：django.VERSION
+		2、安装
+			1、在线安装 - 使用 pip / pip3
+				pip : 安装到python2.7下
+				pip3 : 安装到python3.5下
+
+				1、sudo pip3 install django
+					(默认安装Django的最高版本)
+				2、sudo pip3 install django==1.11.8
+					(指定安装1.11.8版本)
+			2、离线安装
+				1、下载所需的Django包
+					Django官网
+					http://www.djangoproject.com
+				2、在环境中解压Django包
+					tar -xvf Django-1.11.8.tar.gz
+				3、进入到目录中
+					cd Django-1.11.8
+				4、安装
+					sudo python3 setup.py install
+	2、Django文档
+		1、Django官网
+			http://www.djangoproject.com
+		2、DjangoBook
+			http://djangobook.py3k.cn/2.0/
+		3、离线文档
+	3、使用Django
+		1、创建目录 ：用于保存Django项目
+			mkdir Django
+			(准备工作)
+		2、创建Django项目
+			使用 django-admin 指令 创建Django项目
+
+			django-admin startproject 项目名
+
+		3、启动服务，访问网站
+			在创建好的项目中，找到 manage.py 文件
+			通过 manage.py启动服务
+
+			python3 manage.py runserver
+
+			访问地址：
+				http://127.0.0.1:8000/
+				http://localhost:8000/
+			4、Django的项目结构介绍
+				1、manage.py
+					负责执行django中的各项操作的文件
+					如：
+						启动服务
+						创建应用
+						数据库的同步操作
+						创建后台超级管理员
+					使用方式：
+						1、python3 manage.py 子命令
+						2、./manage.py 子命令
+				2、主文件夹(名称与项目名称相同)
+					1、__init__.py
+						项目初始化文件，每当服务器启动的时候，自动执行
+					2、urls.py
+						项目的基础路由配置文件/主路由配置文件
+						将请求地址映射到对应的视图上
+					3、wsgi.py
+						应用服务器的配置文件，暂时不用
+					4、settings.py
+						项目的主设置文件：模板，数据库，应用，...
+						1、BASE_DIR:当前项目所在的绝对路径
+							/home/tarena/Django/netease
+						2、DEBUG:调试模式
+							开发过程：推荐使用True
+							上线运行：必须改为False
+						3、ALLOWED_HOSTS
+							设置允许访问本项目的地址列表
+							如果不设置的话，只有本机(127.0.0.1/localhost)能够访问
+
+							推荐写'*',任何表示该机器的地址都可以访问当前项目
+
+							注意：如果允许被外部机器访问的话，则：
+								./manage.py runserver 0.0.0.0:8000
+						4、INSTALLED_APPS
+							指定已安装的应用，如果有自定义应用的话，需要在此注册
+						5、ROOT_URLCONF
+						6、TEMPLATES:指定模板的信息
+						7、DATABASES:指定数据库的信息
+						8、LANGUAGE_CODE:指定项目语言，允许修改为zh-Hans (简体中文)
+						9、TIME_ZONE:指定时区，建议修改为 Asia/Shanghai
+					
+
+
+
+

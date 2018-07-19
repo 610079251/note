@@ -1,0 +1,18 @@
+<!doctype html>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="text" id="uname">
+	<button onclick="btnShow()">显示</button>
+	<div id="uname-show"></div>
+
+	<script src="jquery-1.11.3.js"></script>
+	<script>
+		function btnShow(){
+			$("#uname-show").html("<h1>"+$("#uname").val()+"</h1>");
+		}
+	</script>
+</body>
+</html>

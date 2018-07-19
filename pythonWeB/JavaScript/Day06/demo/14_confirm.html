@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		function removeItem(){
+			if(window.confirm('确认要删除吗?\n删除后将无法恢复'))	{
+				window.alert('新闻删除成功');
+			}
+		}
+	</script>
+</head>
+<body>
+	<table width="100%" cellpadding="10" cellspacing="0" border="1">
+		<tr>
+			<td>关于HTML的问题</td>
+			<td>张三</td>
+			<td><a href="#" onclick="removeItem()">删除</a></td>
+		</tr>
+		<tr>
+			<td>关于CSS的问题</td>
+			<td>李四</td>
+			<td>删除</td>
+		</tr>
+		<tr>
+			<td>关于JavaScript的问题</td>
+			<td>王五</td>
+			<td>删除</td>
+		</tr>
+	</table>
+</body>
+</html>

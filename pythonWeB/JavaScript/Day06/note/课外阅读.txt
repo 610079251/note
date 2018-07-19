@@ -1,0 +1,26 @@
+1.iframe标记
+
+<iframe src="网页的URL地址" width="宽度" height="高度" frameborder="是否存在边框线(0/1)" scrolling="滚动条的显示方式(yes/no/auto)"></iframe>
+
+2.分页的原理
+
+只是每一页显示部分的结果
+
+MySQL数据库的实现就是利用SELECT语句的LIMIT子句实现
+
+SELECT ..... LIMIT [offset,]pagesize
+
+offset指从第几条记录开始返回(编号从0开始);offset的计算公式:
+ 
+(当前页码 - 1) * 每页显示的记录数
+
+pagesize指返回多少条记录;
+
+
+
+
+
+
+
+
+

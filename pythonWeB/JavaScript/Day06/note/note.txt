@@ -1,0 +1,271 @@
+一、HTML DOM
+
+1.Document对象
+
+1.1属性
+
+title
+
+描述:获取/设置标题栏信息
+
+语法: document.title = value 或 var 变量名称 = document.title
+
+head
+
+描述:获取文档的head对象
+
+语法:Element document.head
+
+body
+
+描述:获取文档的body对象
+
+语法:Element document.body
+
+images
+
+描述:返回文档中所有的图像组成的集合(数组)
+
+语法:NodeList document.images
+
+forms
+
+描述:返回文档中所有的表单组成的集合(数组)
+
+语法:NodeList document.forms
+
+links
+
+描述:返回文档中所有的<link>标记组成的集合(数组)
+
+语法:NodeList document.links
+
+anchors
+
+描述:返回文档中所有的<a>标记组成的集合(数组)
+
+语法:NodeList document.anchors
+
+1.2方法
+
+querySelectorAll()
+
+描述:返回由使用指定的CSS选择器的对象组成的集合(数组)
+
+语法:NodeList document.querySelectorAll(selector)
+
+说明:该方法支持所有CSS3选择器
+
+querySelector()
+
+描述:返回由使用指定的CSS选择器的对象的第一个元素
+
+语法:Element document.querySelector(selector)
+
+2.Element对象
+
+2.1属性
+
+tagName
+
+描述:获取元素的标记名称
+
+语法:string Element.tagName
+
+2.2方法
+
+querySelector()
+
+描述:返回由使用指定的CSS选择器的对象的第一个元素
+
+语法:Element  Element.querySelector(selector)
+
+querySelectorAll()
+
+描述:返回由使用指定的CSS选择器的对象组成的集合(数组)
+
+语法:NodeList Element.querySelectorAll(selector)
+
+
+二、BOM
+
+1.BOM(Browser Object Model),浏览器对象模型,提供与浏览器相关的API.
+
+  window对象是BOM的顶级对象,代表浏览器窗口或iframe或frame.
+
+2.属性
+
+  document
+
+  描述:返回HTMLDocument对象
+
+  history
+
+  描述:返回History对象
+
+  screen
+
+  描述:返回Screen对象
+
+  navigator
+
+  描述:返回Navigator对象
+
+  location
+
+  描述:返回Location对象
+
+  Math
+  描述:返回Math对象
+
+3.方法
+
+  alert()方法
+
+  描述:弹出警示对话框(只有一个确定按钮)
+
+  语法:window.alert(string)
+
+  confirm()方法
+
+  描述:弹出询问对话框(有确定和取消两个按钮)
+
+  语法:bool window.confirm(string)
+
+  setInterval()
+
+  描述:每间隔指定的时间执行相关的代码(重复执行)
+
+  语法:int window.setInterval(function,milliseconds)
+
+  clearInterval()
+
+  描述:清除由setInterval()设置的timeId
+
+  语法:window.clearInterval(int timeId)
+
+  setTimeout()  
+
+  描述:间隔指定的时间后执行相关的代码(执行一次)
+
+  语法:int window.setTimeout(function,milliseconds)
+
+  clearTimeout()
+
+  描述:清除由setTimeout()设置的timeId
+
+  语法:window.clearTimeout(int timeId)
+
+  parseInt()
+
+  描述:转换成整数
+
+  语法:int parseInt(value)
+
+  parseFloat()
+
+  描述:转换成浮点数
+
+  语法:int parseFloat(value)
+
+  isNaN
+
+  描述:检测值是否为NaN(Not a Number)
+
+  语法:bool isNaN(value)
+
+4.Location对象
+
+  href属性
+
+  描述:获取/设置地址栏中的地址信息
+
+  语法:
+
+  location.href = string
+
+  var 变量名称 = location.href
+
+  search属性
+
+  描述:获取地址栏"?"以后所有的参数
+
+  语法:string location.search
+
+  reload()
+
+  描述:重新加载文档
+
+  语法:location.reload(void)
+
+5.Screen对象
+
+  width属性
+
+  描述:获取显示分辨率宽度
+
+  语法:number screen.width
+
+  height
+
+  描述:获取显示分辨率高度
+
+  语法:number screen.height
+
+6.History对象
+
+  back()
+
+  描述:后退一步
+
+  语法:history.back(void)
+
+  forward()
+
+  描述:前进一步
+
+  语法:history.forward(void)
+
+  go()
+
+  描述:前进/后退
+
+  语法:history.go(number)
+
+  说明:如果为负数,则后退;否则前进;
+
+  history.back() 等价于 history.go(-1)
+
+  history.forward() 等价于 history.go(1)  
+
+7.Navigator对象
+
+  userAgent属性(简称UA)
+
+  描述:返回代理器信息
+
+  语法:string navigator.userAgent
+
+
+三、JSON
+
+1.JSON基础
+
+  JSON(JavaScript Object Notation),是一种轻量级的数据交换格式;
+
+  JSON的官网  http://www.json.org
+
+2.JSON支持的数据格式
+
+  数组:[value,....]
+
+  对象:{property:value,....}
+
+
+
+
+
+
+
+
+

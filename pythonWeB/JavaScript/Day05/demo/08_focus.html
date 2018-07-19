@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>HTML DOM</title>
+	<style>
+		body,p,div,h1,h2,h3,h4,h5,h6,ul,ol,li{
+			margin:0;
+			padding: 0;
+		}
+		ul,ol{
+			list-style: none;
+		}
+		img{
+			border:0;
+		}
+		body{
+			font:12px/1.5em 'Microsoft yahei';
+		}
+		#focus-wrapper{
+			position: relative;
+			margin:0 auto;
+			width: 590px;
+			height: 470px;
+			overflow: hidden;
+		}
+		#focus-text{
+			position: absolute;
+			right: 20px;
+			bottom: 20px;			
+		}		
+		#focus-text li{
+			float:left;
+			display: inline-block;
+			padding:3px 5px;
+			background:#fff;
+			margin-right:5px;
+			color:#900;
+			border-radius: 2px;
+			cursor: pointer;
+		}
+		#focus-text li.active{
+			background:#900;
+			color: #fff;
+		}
+	</style>
+	<script>
+		function focusImage(current){
+			//获取focus-image ul对象
+			var focusImageEle = document.getElementById('focus-image');
+
+			//获取focus-image对象中包含的li形成的集合(数组)
+			var focusImageListEles = focusImageEle.getElementsByTagName('li');
+
+			//获取focus-text对象中包含的li形成的集合(数组)
+			var focusTextListEles = document.getElementById('focus-text').getElementsByTagName('li');
+
+			//遍历li形成的集合,让每一个li对象都隐藏
+			for(var n=0;n<focusImageListEles.length;n++){
+				if(n == current){ 
+					//当前显示
+					focusImageListEles[n].style.display = 'block';
+					focusTextListEles[n].className= 'active';
+				} else  { 
+					//其他隐藏
+					focusImageListEles[n].style.display = 'none';
+					focusTextListEles[n].removeAttribute('class');
+				}
+			}
+			//...
+		}
+	</script>
+</head>
+<body>
+	<div id="focus-wrapper">
+		<ul id="focus-image">
+			<li><img src="images/5b3d89e8N70ca3569.jpg" alt=""></li>
+			<li><img src="images/5b3deb7aNb9feb6e5.jpg" alt=""></li>
+			<li><img src="images/5b430c34Ndafbf0c2.jpg" alt=""></li>
+			<li><img src="images/5b430f6fNca5bb965.jpg" alt=""></li>
+			<li><img src="images/5b462457N3831b8d7.jpg" alt=""></li>
+		</ul>
+		<ul id="focus-text">
+			<li class="active" onmouseover="focusImage(0)">1</li>
+			<li onmouseover="focusImage(1)">2</li>
+			<li onmouseover="focusImage(2)">3</li>
+			<li onmouseover="focusImage(3)">4</li>
+			<li onmouseover="focusImage(4)">5</li>
+		</ul>
+	</div>
+</body>
+</html>

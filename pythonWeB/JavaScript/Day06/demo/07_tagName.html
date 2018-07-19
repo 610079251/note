@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		function getTagName(){
+			var ele = document.getElementById('p');
+			window.alert(ele.tagName);
+		}
+	</script>
+</head>
+<body>
+	<div id="p">中华人民共和国</div>
+	<input type="button" value="单击我,获取id为p的元素的名称" onclick="getTagName()">
+</body>
+</html>

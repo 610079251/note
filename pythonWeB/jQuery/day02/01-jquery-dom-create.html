@@ -1,0 +1,24 @@
+<!doctype html>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<button onclick="btnCreate()">创建</button>
+	<div id="container">这是测试的container元素</div>
+	<script src="jquery-1.11.3.js"></script>
+	<script>
+		function btnCreate(){
+			//1、创建一个图像标记
+			var $img = $("<img>");
+			//2、指定src属性
+			$img.attr("src","images/jquery.jpg");
+			//3、将创建好的图像追加到container的内部
+			//$("#container").append($img);
+			//4、将创建好的图像插入到container之前
+			$("#container").before($img);
+
+		}
+	</script>	
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>异步加载JS文档</title>	
+	<script>
+		function loadJS(){
+			var scriptEle = document.createElement('script');
+			scriptEle.src = 'scripts/common.js';
+			document.head.appendChild(scriptEle);
+		}
+	</script>
+</head>
+<body>
+	<input type="button" value="单击我,加载common.js文件" onclick="loadJS()">
+</body>
+</html>

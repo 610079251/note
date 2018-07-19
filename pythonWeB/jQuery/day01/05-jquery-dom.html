@@ -1,0 +1,20 @@
+<!doctype html>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="container">这是测试的div</div>
+	<button onclick="testHtml()">测试</button>
+	<script src="jquery-1.11.3.js"></script>
+	<script>
+		function testHtml(){
+			//获取 container 中的内容
+			var html = $("#container").html();
+			console.log(html);
+			//设置 container 中的内容
+			$("#container").html("<h1>这是动态设置的值!</h1>");
+		}
+	</script>
+</body>
+</html>

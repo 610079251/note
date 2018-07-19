@@ -1,0 +1,118 @@
+<!doctype html>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<p>
+		<input type="text" id="gname" placeholder="商品名称">
+		<input type="text" id="gprice" placeholder="商品价格">
+		<input type="text" id="gcount" placeholder="购买数量">
+		<button onclick="btnBuy()">购买</button>
+	</p>
+	<table border="1" width="600">
+		<thead>
+			<tr>
+				<th>商品名称</th>	
+				<th>商品价格</th>	
+				<th>购买数量</th>
+				<th>操作</th>
+			</tr>
+		</thead>
+		<tbody id="body"></tbody>
+	</table>
+	<script src="jquery-1.11.3.js"></script>
+	<script>
+		function btnBuy(){
+			//1、获取三个文本框的值
+			var gname = $("#gname").val();
+			var gprice = $("#gprice").val();
+			var gcount = $("#gcount").val();
+			//2、创建四个td，分别将文本框的值赋进去（创建俩按钮，放到第四个td中）
+			var $tdName = $("<td>"+gname+"</td>");
+			var $tdPrice = $("<td>"+gprice+"</td>");
+			var $tdCount = $("<td>"+gcount+"</td>");
+
+			var $btnUpdate = $("<button>修改</button>");
+
+			
+			//为 $btnUpdate 绑定 click 事件
+			$btnUpdate.click(function(){
+				//this 表示的是触发当前事件的DOM对象
+				//判断是修改按钮 还是 确定按钮
+				if(this.innerHTML == "修改"){
+					//执行修改操作
+					$(this).html("确定");
+					//通过 修改 按钮获取 购买数量的 td
+					var $tdCount=$(this).parent().prev();
+					//获取 购买数量的数值
+					var count = $tdCount.html();
+
+					//创建 - 按钮 ， 文本框 ， + 按钮
+					var $btnSub = $("<button>-</button>");
+					var $txtCount = $("<input type='text'>");
+					$txtCount.val(count);
+					var $btnAdd = $("<button>+</button>");
+					//将创建好的文本框和按钮添加到$tdCount中
+					$tdCount.empty();
+					$tdCount.append($btnSub);
+					$tdCount.append($txtCount);
+					$tdCount.append($btnAdd);
+					//为 $btnSub 和 $btnAdd 绑定事件
+					$btnSub.click(function(){
+						//方式1：通过层级关系遍历找到购买数量文本框
+						//$count = $(this).next();
+						//方式2：直接使用 上方声明好的 $txtCount
+						var count = $txtCount.val();
+						$txtCount.val(--count);
+					});
+
+					$btnAdd.click(function(){
+						var count = $txtCount.val();
+						$txtCount.val(++count);
+					});
+				}else{
+					//执行确定操作
+					$(this).html("修改");
+					//通过确定按钮 找td
+					var $td = $(this).parent().prev();
+					//通过确定按钮 找文本框的值
+					// children() / children("selector")
+					var count = $td.children("input").val();
+					//将文本框的值赋值给td
+					$td.html(count);
+				}
+			});
+
+
+
+			var $btnDelete = $("<button>删除</button>");
+			$btnDelete[0].onclick = function(event){
+				//删除当前行
+				if(confirm('确认删除吗?')){
+					//方式1
+					//$tr.remove();
+
+					//方式2:通过事件源找到tr，再转换为jQuery对象再删除
+					//$(event.target.parentNode.parentNode).remove();
+					//方式3:使用 this,this在此处表示的是当前点击的按钮，是一个DOM对象
+					$(this.parentNode.parentNode).remove();
+					
+				}
+			}
+
+			var $tdOper = $("<td></td>");
+			$tdOper.append($btnUpdate);
+			$tdOper.append($btnDelete);
+			//3、创建一个tr，将上面创建好的四个td追加到tr中
+			var $tr = $("<tr></tr>");
+			$tr.append($tdName);
+			$tr.append($tdPrice);
+			$tr.append($tdCount);
+			$tr.append($tdOper);
+			//4、将创建好的tr追加到tbody中
+			$("#body").append($tr);
+		}
+	</script>
+</body>
+</html>

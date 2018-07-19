@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<h1 align="center">用户注册许可协议</h1>
+	<p align="center">...</p>
+	<p align="center">...</p>
+	<p align="center">...</p>	
+	<p align="center">
+		<input type="button" value="我同意(5)" disabled id="agree" onclick="nextStep()">
+	</p>
+</body>
+	<script>
+		function nextStep(){
+			location.href = 'http://www.baidu.com';
+		}
+		var i = 4;
+		var timeId = window.setInterval(function(){
+			document.getElementById('agree').value = '我同意(' + i + ')';			
+			if(i==0){
+				window.clearInterval(timeId);
+				document.getElementById('agree').value = '我同意';
+				document.getElementById('agree').disabled = false;
+			}
+			i--;
+		},1000);
+	</script>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="button" value="我的事件是动态来添加的" id="button">
+	<script>
+		var btnEle = document.getElementById('button');
+		//事件属性
+		btnEle.onclick = function(){
+			window.alert('中国');
+		}
+	</script>
+</body>
+</html>

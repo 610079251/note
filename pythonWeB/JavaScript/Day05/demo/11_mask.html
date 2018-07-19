@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>HTML DOM编程</title>
+	<style>
+		.mask{
+			position: absolute;
+			left: 0;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			z-index: 998;
+			background-color: #000;
+			opacity: .3;
+		}
+		#dialog{
+			position: absolute;
+			z-index:999;
+			top: 100px;
+			left: 260px;
+			width:500px;
+			height: 200px;
+			background: #fff;
+		}
+		#dialog .title{
+			padding:10px;
+			background-color:#900;
+			color:#fff; 
+			font:12px/1.5em 'Microsoft Yahei';
+		}
+		#dialog .closeBtn{
+			position: absolute;
+			right: 10px;
+			top: 10px;
+			cursor: pointer;
+		}
+	</style>
+	<script>
+		function showMask(){
+			//创建div对象
+			var divEle = document.createElement('div');
+			//为DIV起id
+			divEle.id = 'mask';
+			//设置div对象的CSS类
+			divEle.className = 'mask';
+			//将div对象追加到body对象内
+			document.body.appendChild(divEle);
+			//显示登录对话框
+			document.getElementById('dialog').style.display= 'block';
+		}
+		//关闭对话框
+		function closeDialog(){
+			//隐藏登录对话框DIV
+			document.getElementById('dialog').style.display= 'none';
+			//删除遮罩层对象
+			document.body.removeChild(document.getElementById('mask'));
+
+		}
+	</script>
+</head>
+<body>
+	<div id="dialog" style="display: none;">
+		<div class="title">您尚未登录<span class="closeBtn" onclick="closeDialog()">X</span></div>
+	</div>
+	<p>....</p>
+	<p>....</p>
+	<p>....</p>
+	<p>....</p>
+	<p>....</p>
+	<p><a href="#" onclick="showMask()">去结算</a></p>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!doctype html>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<table border="1px">
+		<thead>
+			<tr>
+				<td>姓名</td>
+				<td>性别</td>
+				<td>年龄</td>
+				<td>密码</td>
+				<td>邮箱</td>
+			</tr>
+		</thead>
+		<tbody id="body">
+			<tr>
+				<td>张三丰</td>
+				<td>男</td>
+				<td>25</td>
+				<td>zhaomin</td>
+				<td>sanfeng.zhang@163.com</td>
+			</tr>
+			<tr>
+				<td>张三丰</td>
+				<td>男</td>
+				<td>25</td>
+				<td>zhaomin</td>
+				<td>sanfeng.zhang@163.com</td>
+			</tr>
+			<tr>
+				<td>张三丰</td>
+				<td>男</td>
+				<td>25</td>
+				<td>zhaomin</td>
+				<td>sanfeng.zhang@163.com</td>
+			</tr>
+			<tr>
+				<td>张三丰</td>
+				<td>男</td>
+				<td>25</td>
+				<td>zhaomin</td>
+				<td>sanfeng.zhang@163.com</td>
+			</tr>
+			<tr>
+				<td>张三丰</td>
+				<td>男</td>
+				<td>25</td>
+				<td>zhaomin</td>
+				<td>sanfeng.zhang@163.com</td>
+			</tr>
+			<tr>
+				<td>张三丰</td>
+				<td>男</td>
+				<td>25</td>
+				<td>zhaomin</td>
+				<td>sanfeng.zhang@163.com</td>
+			</tr>
+			<tr>
+				<td>张三丰</td>
+				<td>男</td>
+				<td>25</td>
+				<td>zhaomin</td>
+				<td>sanfeng.zhang@163.com</td>
+			</tr>
+			<tr>
+				<td>张三丰</td>
+				<td>男</td>
+				<td>25</td>
+				<td>zhaomin</td>
+				<td>sanfeng.zhang@163.com</td>
+			</tr>
+			<tr>
+				<td>张三丰</td>
+				<td>男</td>
+				<td>25</td>
+				<td>zhaomin</td>
+				<td>sanfeng.zhang@163.com</td>
+			</tr>
+			<tr>
+				<td>张三丰</td>
+				<td>男</td>
+				<td>25</td>
+				<td>zhaomin</td>
+				<td>sanfeng.zhang@163.com</td>
+			</tr>
+		</tbody>
+	</table>
+	<button id="btnChange">变</button>
+	<button id="btnShow">显示</button>	
+	<button id="btnHide">隐藏</button>
+
+	<script src="jquery-1.11.3.js"></script>
+	<script>
+		window.onload = function(){
+			//为 btnChange 按钮 绑定onclick 事件
+			$("#btnChange")[0].onclick = function(){
+				$("#body>tr:odd").css("background-color","red");
+				$("#body>tr:even").css("background-color","yellow");
+			}
+			//为 btnHide 按钮 绑定onclick 事件
+			$("#btnHide")[0].onclick = function(){
+				$("#body>tr:gt(1)").css("display","none");
+			}
+			//为 btnShow 按钮 绑定onclick 事件
+			$("#btnShow")[0].onclick = function(){
+				$("#body>tr").css("display","table-row");
+			}
+		}
+	</script>
+</body>
+</html>

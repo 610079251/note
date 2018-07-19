@@ -1,0 +1,178 @@
+1、jQuery操作DOM
+	1、创建对象
+		语法：$("创建的完整标记");
+		ex:
+			1、创建一对div元素
+				var $div = $("<div></div>");
+				$div.html("<h1>...</h1>");
+				$div.attr("id","container");
+			2、创建一个图像标记
+				var $img = $("<img>");
+				$img.attr("src","img/a.jpg");
+	2、插入元素
+		1、内部插入
+			作为子元素插入到网页中
+			1、$obj.append($new);
+				将$new元素追加到$obj元素的尾部(最后一个子元素)
+			2、$obj.prepend($new);
+				将$new元素添加到$obj元素的头部(第一个子元素)
+		2、外部插入
+			作为兄弟元素插入到网页中
+			1、$obj.before($new)
+				将$new作为$obj的上一个兄弟元素插入进来
+			2、$obj.after($new)
+				将$new作为$obj的下一个兄弟元素插入进来
+	3、删除节点
+		1、remove()
+			语法：$obj.remove();
+			作用：删除 $obj 元素
+		2、remove("selector")
+			语法：$obj.remove("selector");
+			作用：将满足 selector 选择器的元素删除出去
+		3、empty()
+			语法：$obj.empty()
+			作用：清空$obj内的内容
+	4、遍历节点
+		1、children() / children(selector)
+			作用：获取某对象中的子元素(只考虑元素节点)或满足selector选择器的子元素(只考虑元素节点)。
+			注意：只能获取子元素，不能获取后代元素
+		2、next() / next(selector)
+			作用：获取某对象的下一个兄弟元素 / 满足selector的下一个兄弟元素
+		3、prev() / prev(selector)
+			作用：获取某对象的上一个兄弟元素 / 满足selector的上一个兄弟元素
+		4、siblings() / siblings(selector)
+			作用：获取某对象的所有兄弟元素 / 满足selector的兄弟元素
+		5、find(selector)
+			查找满足selector选择器的所有后代元素
+		6、parent()
+			作用：获取某对象的父元素
+2、jQuery事件处理
+	1、页面加载后的执行
+		在DOM树加载完成后就要执行的操作
+		1、
+			$(document).ready( function(){
+				//页面的初始化操作
+				//DOM树加载完毕后就开始运行
+			} );
+
+		2、
+			$().ready( function(){
+				
+			} );
+		3、
+			$( function(){
+				
+			});
+	2、jQuery的事件绑定
+		1、方式1
+			$obj.bind("事件名称",事件处理函数);
+
+			ex:
+				$obj.bind("click",function(){
+					alert("单击事件");
+				});
+
+		2、方式2
+			$obj.事件名称(事件处理函数);
+
+			ex:
+				$obj.click(function(){
+					
+				});
+		
+		注意：
+			在事件处理函数中，允许使用 this 来表示触发当前事件的DOM对象
+
+
+
+
+
+
+
+
+
+事件参数对象(事件对象):
+	1、获取事件对象
+		1、
+			<button onclick="btnClick(event)"></button>
+
+			function btnClick(event){
+				
+			}
+		2、
+			<button id="btnTest"></button>
+
+			var btn = document.getElementById("btnTest");
+			btn.onclick = function(event){
+				event : 表示当前事件的事件对象
+			}
+
+
+	2、事件对象的属性
+		1、offsetX
+			获取鼠标所操作的点的 横坐标值
+		2、offsetY
+			获取鼠标所操作的点的 纵坐标值
+		3、target
+			获取事件源(事件所在的元素)
+this:
+	1、this 在全局函数中，永远都表示的是 window 对象
+	2、this 在局部函数中，表示都是函数的所有者
+		btn.onclick = function(){
+			this:表示的就是函数的所有者 -> btn 
+		}
+	
+
+
+
+node.childNodes
+node.children
+node.nextSibling
+node.previousSibling
+node.parentNode
+
+
+================================================================
+1、jQuery-事件
+	1、事件对象 - event
+		在绑定事件的时候，允许传递 event 参数来表示事件对象
+
+		1、
+			$obj.bind("click",function(event){
+				//event 表示的就是事件对象
+			});
+		2、
+			$obj.click(function(event){
+				//event 表示的就是事件对象
+			});
+	2、事件冒泡
+		1、什么是事件冒泡
+			在执行子元素的事件时，同时把父元素/祖先元素的对应的事件也给执行了
+		2、阻止事件冒泡
+			event.stopPropagation()
+2、jQuery-动画
+	1、基本显示 / 隐藏
+		语法：
+			$obj.show() / $obj.show(执行时间)
+			$obj.hide() / $obj.hide(执行时间)
+	2、滑动式显示 / 隐藏
+		语法：
+			显示:$obj.slideDown() / $obj.slideDown(执行时间)
+			隐藏:$obj.slideUp() / $obj.slideUp(执行时间)
+	3、淡入淡出式显示 / 隐藏
+		语法：
+			显示:$obj.fadeIn() / $obj.fadeIn(执行时间)
+			隐藏:$obj.fadeOut() / $obj.fadeOut(执行时间)
+3、jQuery-插件
+====================================================
+
+
+
+
+
+
+
+
+
+
+

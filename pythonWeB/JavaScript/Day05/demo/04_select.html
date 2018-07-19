@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>HTML DOM</title>
+	<script>
+		//全国的省份形成的数组
+		var proArr = [];
+		//北京的区/市形成的数组
+		proArr[0] = ['东城区','西城区','朝阳区','丰台区','石景山区','海淀区','门头沟区','房山区','通州区','顺义区','昌平区','大兴区'];
+		//上海的区/市形成的数组		
+		proArr[1] = ['虹口区','普陀区','静安区','长宁区','徐汇区','黄浦区','金山区','浦东新区','嘉定区','宝山区','闵行区','杨浦区'];
+		//天津的区/市形成的数组
+		proArr[2] = ['宝坻区','武清区','北辰区','津南区','西青区','东丽区','红桥区','河北区','南开区','河西区','河东区','和平区'];
+		//河北的区/市形成的数组
+		proArr[3] = ['廊坊市','沧州市','承德市','张家口市','保定市','邢台市','邯郸市','秦皇岛市','唐山市','石家庄市'];
+		//河南的区/市形成的数组
+		proArr[4] = ['郑州市	','开封市','洛阳市','平顶山市'];
+		function changeCity(){
+			//1.获取省份列表框对象
+			var proEle = document.getElementById('provinces');
+			//2.获取被选定的省份的值
+			var proVal =proEle.value;	
+			//3.获取城市列表框对象
+			var cityEle = document.getElementById('cities');
+			//4.在每次添加option对象前,"清空"以前的option列表
+			cityEle.length = 1;
+			//5.根据省份的值，然后动态的在城市列表框中添加选项(option)
+			proArr[proVal].forEach(function(value,index){
+				//创建option对象
+				var optEle = new Option(value,index);
+				//将option对象添加到城市列表框对象内
+				cityEle.add(optEle);
+			});		
+		}		
+	</script>
+</head>
+<body onload="changeCity()">
+	<form action="" method="post">
+		<table width="600" border="1" cellpadding="10" cellspacing="0">
+			<tr>
+				<td width="120">省份</td>
+				<td>
+				<select name="provinces" id="provinces" onchange="changeCity()">
+					<option value="0">北京市</option>
+					<option value="1">上海市</option>
+					<option value="2">天津市</option>
+					<option value="3">河北省</option>
+					<option value="4">河南省</option>
+				</select>
+				</td>
+			</tr>
+			<tr>
+				<td>城市</td>
+				<td>
+				<select name="cities" id="cities">
+					<option value="0">请选择...</option>	
+				</select>
+				</td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td><input type="submit" value="确认"></td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

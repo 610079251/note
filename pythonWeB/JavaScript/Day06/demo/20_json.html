@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		//###想像成是服务器返回给客户端字符串
+		//符合JSON数组格式的字符串
+		var str = '["Tom","Rose","Frank"]';
+		//变成真正的JS数组
+		var arr = JSON.parse(str);
+		arr.forEach(function(val){
+			console.log(val);
+		});
+		//符合JSON对象格式的字符串
+		var str = '{"id":1,"username":"Tom"}';
+		var obj = JSON.parse(str);
+		console.log(obj.id);
+		console.log(obj.username);
+		///////////////////////////////////////
+
+		
+		//#####将JS的数组变成字符串然后提交服务器
+		//JSON格式的数组
+
+		var arr = [1,true,'Tom'];
+
+		var str = JSON.stringify(arr);
+
+		console.log(str);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

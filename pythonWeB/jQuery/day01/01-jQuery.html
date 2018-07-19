@@ -1,0 +1,40 @@
+<!doctype html>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="container">
+		这是一个id为container的元素
+	</div>
+	<button onclick="btn1Click()">dom</button>
+	<button onclick="btn2Click()">jquery</button>
+	<script src="jquery-1.11.3.js"></script>
+	<script>
+		function btn1Click(){
+			var con = document.getElementById("container");
+			console.log(con);
+			//con.innerHTML = "这是动态修改的文字!";
+			//尝试使用jQuery的方法修改元素的内容
+			//con.html("这是动态修改的文字!");
+			//将con转换为jQuery对象
+			var $con = $(con);
+			$con.html("这是动态修改的文字!");
+		}
+
+		function btn2Click(){
+			//1、通过jquery的方式获取id为container的元素
+			var $con = $("#container");
+			//2、打印元素
+			console.log($con);
+			//3、使用DOM的方式修改元素的内容
+			//$con.innerHTML = "这是动态修改的文字";
+			//4、使用jQuery的方式修改元素的内内容
+			//$con.html("这是动态修改的文字!");
+			//5、将$con转换为DOM对象，再修改其内容
+			var con = $con[0];
+			con.innerHTML = "这是动态修改的文字!";
+		}
+	</script>
+</body>
+</html>

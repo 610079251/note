@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>HTML DOM</title>
+	<script>
+		function changeContentByInnerText(){
+			var pEle = document.getElementById('p');
+			pEle.innerText = '<b>你们</b>';
+		}
+		function changeContentByInnerHTML(){
+			var pEle = document.getElementById('p');
+			pEle.innerHTML =  '<b><i>我们</i></b>';
+		}
+	</script>
+</head>
+<body>
+	<p id="p">我是段落</p>
+	<input type="button" value="单击我,控制段落的内容(innerText)" onclick="changeContentByInnerText()">
+	<input type="button" value="单击我,控制段落的内容(innerHTML)" onclick="changeContentByInnerHTML()">
+</body>
+</html>

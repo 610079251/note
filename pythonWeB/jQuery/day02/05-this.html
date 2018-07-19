@@ -1,0 +1,26 @@
+<!doctype html>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<button id="btn" onclick="btnClick()">测试的按钮</button>
+	<script>
+		var btn = document.getElementById("btn");
+		btn.onclick = function(){
+			//this 表示的是 btn DOM对象
+			console.log(this);
+		}
+
+		/*function btnClick(){
+			// this 表示 的是 window 对象
+			this.alert("测试的弹框");
+		}
+
+		function showInfo(){
+			//this表示的是 window 对象
+			console.log(this);
+		}*/
+	</script>
+</body>
+</html>

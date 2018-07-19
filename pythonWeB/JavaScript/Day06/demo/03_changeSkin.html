@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>异步加载CSS文档</title>	
+	<script>
+		function changeSkin(skin){
+			var linkEle = document.createElement('link');
+			linkEle.rel = 'stylesheet';
+			linkEle.href = 'styles/' + skin + '.css';
+			document.head.appendChild(linkEle);
+		} 
+	</script>	
+</head>
+<body>
+	<p>
+	<a href="#" onclick="changeSkin('spring')">温暖如春</a>
+	<a href="#" onclick="changeSkin('summer')">炎炎夏日</a>
+	</p>
+	<p>This function has no return value.</p>
+	<p>close()</p>
+	<p>This function has no return value.</p>
+</body>
+</html>

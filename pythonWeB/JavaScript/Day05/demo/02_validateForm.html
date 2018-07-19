@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>HTML DOM</title>
+	<script>
+		function validateForm(){
+			//1.用户名为必填项
+			//1.1获取"用户名文本框"对象
+			var usernameEle = document.getElementById('username');
+			//1.2获取"用户名文本框"对象的值
+			var usernameEleVal = entities(usernameEle.value);			
+			//1.3根据"用户名文本框"对象的值的长度来判断是否已进行填写
+			if(usernameEleVal.length == 0){
+				window.alert('用户名为必填项');
+				//让"用户名文本框"对象获取焦点
+				usernameEle.focus();
+				return false;
+			}			
+			//2.密码为必填项
+			var passwordEle = document.getElementById('password');
+			var passwordEleVal = entities(passwordEle.value);
+			if(passwordEleVal.length == 0){
+				window.alert('密码为必填项');
+				passwordEle.focus();
+				return false;
+			}
+			//3.两次密码必须一致	
+			//3.1获取"确认密码"对象
+			var passwordEle2 = document.getElementById('password2')	;
+			//"确认密码"的值
+			var passwordEleVal2 = entities(passwordEle2.value);
+			//如果两次密码不一致
+			if(passwordEleVal != passwordEleVal2){
+				window.alert('两次密码不一致');
+				passwordEle2.focus();
+				return false;
+			}
+		}
+		//将用户名/密码/确认密码中的特殊符号替换为对应的HTML实体
+		//以防止SQL注入的产生
+		function entities(str){
+			str = str.replace(/&/g,'&amp;');
+			str = str.replace(/'/g,'&#39;');
+			str = str.replace(/"/g,'&quot;');
+			str = str.replace(/>/g,'&gt;');
+			str = str.replace(/</g,'&lt;');
+			str = str.replace(/ /g,'&nbsp;');
+			return str;
+		}
+
+	</script>
+</head>
+<body>
+	<form action="11.php" method="post" onsubmit="return validateForm()">
+		<table width="600" border="1" cellpadding="10" cellspacing="0">
+			<tr>
+				<td>用户名</td>
+				<td><input type="text" name="username" id="username"></td>
+			</tr>
+			<tr>
+				<td>密码</td>
+				<td><input type="password" name="password" id="password"></td>
+			</tr>
+			<tr>
+				<td>确认密码</td>
+				<td><input type="password" name="password2" id="password2"></td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td><input type="submit" value="免费注册"></td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>
