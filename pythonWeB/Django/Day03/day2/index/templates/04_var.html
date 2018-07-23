@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 标签:for -->
+    {% for name in list %}
+        {% comment %}
+        <h3 
+            {% if forloop.first %}
+                style="color:red;"
+            {% endif %}
+            {% if forloop.last %}
+                style="color:blue;"
+            {% endif %}
+         >
+            {{forloop.counter}}.{{name}}
+        </h3>
+        {% endcomment %}
+
+        
+        <h3
+            {% comment %}
+                {% if forloop.first%}
+                    style='color:red;'
+                {% else %}
+                    style='color:blue;'
+                {% endif %}
+            {% endcomment %}
+
+            {% comment %}
+            style='color:
+                {% if forloop.first%}
+                    red
+                {% else %}
+                    blue
+                {% endif %}
+            ;'
+            {% endcomment %}
+
+            {% if forloop.first %}
+                style='color:red;'
+            {% elif forloop.last %}
+                style='color:blue;'
+            {% else %}
+                style='color:pink;'
+            {% endif %}
+        >
+            {{forloop.counter}}.{{name}}
+        </h3>
+
+
+        <p>当前元素下标:{{forloop.counter0}}</p>
+        <p>是第一次循环吗?{{forloop.first}}</p>
+        <p>是最后一次循环吗?{{forloop.last}}</p>
+    {% endfor %}
+    <!-- 显示变量的值 -->
+    <h3>num:{{num}}</h3>
+    <h3>str:{{str}}</h3>
+    <h3>list:{{list}}</h3>
+    <h3>list[0]:{{list.0}}</h3>
+    <h3>tup:{{tup}}</h3>
+    <h3>tup[1]:{{tup.1}}</h3>
+    <h3>dic:{{dic}}</h3>
+    <h3>dic['C']:{{dic.C}}</h3>
+    <h3>fun:{{fun}}</h3>
+    <h3>A.a:{{A.a}}</h3>
+    <h3>A.f:{{A.f}}</h3>
+    <!-- 
+        这是客户端注释
+        <h3>A.f:{{A.f}}</h3>
+     -->
+     {% comment %}
+        这是服务器端注释
+        <h3>A.f:{{A.f}}</h3>
+     {% endcomment %}
+</body>
+</html>
