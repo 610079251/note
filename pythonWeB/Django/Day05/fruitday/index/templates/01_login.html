@@ -1,0 +1,14 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 直接访问 -->
+    <img src="/static/images/huiyuan.jpg">
+    <!-- 动态访问 -->
+    <img src="{% static 'images/huiyuan.jpg'%} ">
+</body>
+</html>

@@ -1,0 +1,160 @@
+1、模板
+	1、变量
+	2、标签
+	3、过滤器
+	4、静态文件
+	5、模板的继承
+		1、什么是模板的继承
+			当多个模板(网页)具备大部分相同的内容时，就可以使用继承的方式,将相同的内容继承过来，再增加/修改属于自己的内容即可。
+		2、模板的继承的语法
+			1、在父模板中
+				必须要标识出来哪些内容在字模板中是允许被修改的
+				标签：
+					{% block 名称 %}
+						父模板中要显示的内容
+					{% endblock %}
+
+					block作用：
+						1、在父模板中，正常显示
+						2、在子模板中，如果不修改block中的内容的话则会按照父模板中的内容进行显示
+			2、在子模板中
+				1、在最顶层增加一个标签，来表示继承关系
+					{% extends '父模板的名称' %}
+				2、增加 block 标签，改写属于自己的内容
+					{% block 名称 %}
+						子模板中的内容
+					{% endblock %}
+					在子模板中的block会覆盖父模板中的同名的block的内容
+2、模型 - Models
+	1、什么是模型
+		模型，是根据数据库中表的结构来创建出来的class。
+		每一张表映射到编程语言中就是一个class，表中的每一个列，到编程语言中就是class中的一个属性。在模型中还能完成对数据的CRUD操作
+	2、创建 和 使用模型 - ORM
+		1、什么是ORM
+			ORM：Object Relational Mapping
+			简称：ORM,O/RM,O/R Mapping
+			中文：对象关系映射
+
+			ORM 的三大特征：
+				1、数据表(table) 到 类(class) 的映射
+					将数据表 自动 生成一个class类
+					将class类 自动 生成一张表
+				2、数据类型的映射
+					允许将表中字段的数据类型 自动 映射成编程语言中的对应的数据类型
+					允许将编程语言中的数据类型 自动 英社称表中字段的数据类型
+				3、关系映射
+					数据库中表的关联关系：
+					一对一，一对多，多对多
+					将表与表之间的关系也映射到编程语言中，通过创建类与类(对象与对象)之间的关系来完成
+		2、ORM的优点
+			1、提高了开发效率，能够自动完成表到对象的映射
+			2、不用SQL编码，也能够完成对数据的CRUD操作，可以省略庞大的数据访问层
+			
+	3、创建和配置数据库
+		1、创建一个数据库(支持中文)
+			create database 数据库名 default charset utf8 collate utf8_general_ci;
+
+			mysql 可视化开发工具 - Navicat
+
+			创建一个数据库 - webdb
+
+		2、Django中的数据库配置
+			在 settings.py 中配置数据库的信息
+			DATATBASES = {
+				'default':{
+					'ENGINE':'...',
+					'NAME':'...'
+				}
+			}
+
+			连接MySQL的配置：
+				1、ENGINE:引擎
+					django.db.backends.mysql
+				2、NAME:指定要连接到的数据库的名称
+				3、USER:指定用户名称 ，通常为 root
+				4、PASSWORD:指定密码，通常为 123456
+				5、HOST:要连接的主机地址
+					本机：localhost 或 127.0.0.1
+				6、PORT:指定端口号，通常为 3306
+ 
+				注意：
+					在Django中连接MySQL的话依赖于 MySQLdb
+
+					解决方案：
+						在 主目录中的 __init__.py 中
+						import pymysql
+						pymysql.install_as_MySQLdb()
+	
+	4、数据库的同步操作	
+		1、./manage.py makemigrations
+			作用：将每个应用下的 models.py 文件生成一个数据库的中间文件，并保存在migrations文件夹中
+		2、./manage.py migrate
+			作用：将每个应用下的 migratioins 文件中的中间文件同步到数据库中
+	5、编写 Models(重点)
+		1、注意
+			1、Models中的每个class都称为 模型类(Models类) 或 实体类(Entry)
+				实体：就是数据表中的一条记录
+				实体完整性：约束表中的记录不重复
+			2、Models中的每个实体类，必须要继承自 models.Model
+		2、举个例子
+			在 models.py 中 
+			from django.db import models
+			# 创建 Publisher 模型类
+			# 表示 出版社的信息 ，并包含以下属性
+			# 1. name ：表示出版社名称
+			# 2. address ：表示出版社的地址
+			# 3. city ：出版社所在城市名称
+			# 4. country ：出版社所在国家名称
+			# 5. website ：表示出版社的网址
+
+			class Publisher(models.Model):
+				name=models.CharField(max_length=30)
+				address=models.CharField(max_length=50)
+				city=models.CharField(max_length=20)
+				country=models.CharField(max_length=20)
+				website=models.URLField()
+		3、Django中的字段类型 和 字段类型
+			语法：
+				属性 = models.字段类型(字段选项1,字段选项2,...)
+			1、字段类型(Field Type)
+				1、BooleanField()
+				2、CharField()
+				3、DateField()
+				4、DateTimeField()
+				5、DecimalField()
+				6、EmailField()
+				7、FloatField()
+				8、ImageField() #存图片的路径 - varchar
+				9、IntegerField() 
+				10、URLField() #存网址 - varchar
+				11、TextField() # 存大量数据 - text
+			2、字段选项(Field Options)
+				1、max_length
+					在 models.CharField() 中是必选项
+					设置最大长度
+				2、default
+					为当前的属性指定默认值
+				3、null
+					指定当前的属性是否允许为空，默认为 False
+				4、unique
+					指定当前属性的值是否为唯一，默认为 False
+				5、blank
+					指定当前属性的值是否允许为空字符串，默认为 False
+
+
+			作业：
+				1、在 day4 项目中 的models.py 中 追加两个class，并同步到数据库中
+					1、Author - 作者
+						1、name - 姓名
+						2、age - 年龄
+						3、email - 邮箱(允许为空)
+					2、Book - 图书
+						1、title - 书名
+						2、publicate_date - 出版时间
+				2、在 fruitday 项目中，根据注册页面创建models并同步到数据库中 (数据库名:fruitday)
+
+
+
+
+
+

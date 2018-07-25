@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}
+            父模板
+        {% endblock %}
+    </title>
+    {% block style %}
+        <style>
+            h3{
+                color:red;
+            }
+        </style>
+    {% endblock %}
+</head>
+<body>
+    <h3>这是父模板中的头部内容</h3>
+    {% block content %}
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt maiores eligendi id optio nemo, eum, quos quam. Consequuntur dicta, aperiam minima odio hic, cupiditate itaque magnam minus cum, vitae inventore.</p>
+    {% endblock %}
+    <h3>这是父模板中的底部内容</h3>
+</body>
+</html>
