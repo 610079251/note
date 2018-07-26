@@ -1,0 +1,158 @@
+1、关系映射
+	1、一对一映射
+		1、什么是一对一
+			A表中的一条记录只能与B表中的一条记录相关联
+			典型代表：一夫一妻制
+			数据库中实现：
+				A表：设置 主键
+				B表：增加一列，并引用自A表的主键，再增加一个唯一约束
+		2、语法
+			在关联的两个类的任何一个类中实现下列操作：
+			属性=models.OneToOneField(Entry)
+		3、查询
+			class Wife(models.Model):
+				... ...
+				author = models.OneToOneField(Author)
+
+			正向查询:通过 wife 找 author
+				# 获取 id为1 的 wife 的信息
+				wife = Wife.objects.get(id=1)
+				# 再通过 wife 找到对应的 author
+				author = wife.author
+			
+			反向查询:通过 author 找 wife
+				# 获取 id为3 的 author 的信息
+				author = Author.objects.get(id=3)
+				# 再通过 author 找到对应的 wife
+				wife = author.wife
+
+				wife 是由Django通过OneToOneField在Author中默认增加的一个隐式属性
+
+
+	2、一对多映射(1:M)
+		1、什么是一对多
+			A表中的一条数据可以与B表中的任意多条数据关联
+			B表中的一条数据只能与A表中的一条数据关联
+		2、在数据库中的实现
+			通过 外键(Foreign Key) 来实现一对多
+			在 "多" 表中增加外键(Foreign Key)对"一"表的主键进行引用
+		3、语法
+			使用 外键(Foreign Key)
+			在 "多" 的实体中增加：
+			属性 = models.ForeignKey(Entry)
+
+			ex:
+				Book(多) 和 Publisher(一)
+				class Book(models.Model):
+					... ...
+					... ...
+					publisher = models.ForeignKey(Publisher)
+		4、查询
+			Book(多) 和 Publisher(一)
+			在多的实体中对一的实体进行引用
+			class Book(models.Model):
+				... ...
+				... ...
+				publisher = models.ForeignKey(Publisher)
+			
+			1、正向查询 - 通过Book查询Publisher
+				book=Book.objects.get(id=1)
+				publisher = book.publisher
+			2、反向查询 - 通过Publisher查询Book
+				Django默认会在Publisher中增加一个隐式属性 - book_set (多表类名全小写_set)
+
+				# 查询id为1的出版社的信息
+				pub = Publisher.objects.get(id=1)
+				# 查询出版社所关联的所有书籍
+				bookList = pub.book_set.all()
+	3、多对多映射(M:N)
+		1、什么是多对多
+			A表中的一条记录可以与B表中的任意多条记录匹配
+			B表中的一条记录可以与A表中的任意多条记录匹配
+
+		2、在数据库中体现
+			必须创建第三张表，关联 涉及到的两张数据表
+
+		3、语法
+			在任何一个实体类中，增加：
+				entry = models.ManyToManyField(Entry)
+
+			ex:
+				class Author(models.Model):
+					... ...
+					book = models.ManyToManyField(Book)
+		4、查询
+			class Author(models.Model):
+				... ...
+				book = models.ManyToManyField(Book)
+
+			1、正向查询 - 通过 author 查询所有的 book
+				# 先获取 author 
+				author = Author.objects.get(id=1)
+				# 再获取 对应的所有的 book
+				bookList = author.book.all()
+
+				通过 关联属性.查询方法() 查询关联数据
+			
+			2、反向查询 - 通过 book 查询所有的 author
+				# Django 会在 Book 实体类中增加一个隐式属性 author_set (对应实体全小写_set)
+
+				book = Book.objects.get(id=1)
+				auList = book.author_set.all()
+			
+			练习：
+				创建 Author 与 Publisher 之间的关系
+				1、查询 韩寒 所签约的所有出版社
+				2、查询 北京大学出版社 下的所有签约作者
+2、自定义查询对象 - objects
+	1、声明类 EntryManager,继承自 models.Manager
+		允许在 EntryManager 中添加自定义函数
+
+		class EntryManager(models.Manager):
+			def 函数名(self,自定义参数列表)：
+				... ...
+				return ... ...
+	2、使用 EntryManager 覆盖 Models类中的 objects
+		class Entry(models.Model):
+			objects = EntryManager()
+
+	练习：
+		1、扩展 Author 的 objects
+			1、查询年纪小于指定年纪的所有作者的信息
+		2、扩展 Book 的 objects
+			1、查询书名中包含指定关键字的书籍的数量
+3、请求对象 - HttpResquest
+	1、HTTP协议
+		1、请求
+		2、响应
+	2、HttpRequest介绍
+		1、什么是HttpRequest
+			HttpRequest，在Django中就是请求对象的封装体现。封装了请求过程中的所有信息。在Django中，HttpRequest被化身成了 request 封装到了视图处理函数中作为参数，在调用视图时自动传入
+		2、HttpRequest中的主要内容
+			1、request.scheme : 请求协议
+			2、request.body : 请求主体
+			3、request.path : 请求路径
+			4、request.get_host() : 请求的主机地址/域名
+			5、request.method : 请求方法
+			6、request.GET : get请求方法所提交的数据
+			7、request.POST : post请求方法所提交的数据
+			8、request.COOKIES : cookies中的数据
+
+
+
+['COOKIES', 'FILES', 'GET', 'META', 'POST', '__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__gt__', '__hash__', '__init__', '__iter__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_encoding', '_get_post', '_get_raw_host', '_get_scheme', '_initialize_handlers', '_load_post_and_files', '_mark_post_parse_error', '_messages', '_post_parse_error', '_read_started', '_set_post', '_stream', '_upload_handlers', 'body', 'build_absolute_uri', 'close', 'content_params', 'content_type', 'csrf_processing_done', 'encoding', 'environ', 'get_full_path', 'get_host', 'get_port', 'get_raw_uri', 'get_signed_cookie', 'is_ajax', 'is_secure', 'method', 'parse_file_upload', 'path', 'path_info', 'read', 'readline', 'readlines', 'resolver_match', 'scheme', 'session', 'upload_handlers', 'user', 'xreadlines']
+
+
+{
+	'csrftoken': 'HerljviuMbvDXdSOOEZ1WeRBINzGZDAknf0lcbr13NZVLam7vZxuH8Y52GaLcUd4', 
+	'sessionid': 's91nrkyob58w85t7eks3ypabezaxdm3w'}
+
+
+
+
+
+
+
+
+
+
