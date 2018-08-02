@@ -1,0 +1,127 @@
+1、AJAX
+	1、允许异步的向服务器发送请求
+	2、局部更新
+2、异步对象 - XMLHttpRequest
+	1、创建异步对象
+		function getXhr(){
+			if(window.XMLHttpRequest){
+				return new XMLHttpRequest();
+			}else{
+				return new ActiveXObject("Microsoft.XMLHTTP");
+			}
+		}
+	2、XMLHttpRequest 的成员
+		1、方法 - open()
+			作用：创建请求
+			语法：open(method,url,asyn)
+				asyn:是否采用异步的方式提交
+					true:异步
+					false:同步
+		2、属性 - readyState
+			作用：表示 xhr 的请求状态
+			取值：0-4 共5个值
+				其中 4 表示接收响应完成
+		3、属性 - status
+			作用：服务器端的响应状态
+				200 ：表示服务器正常响应
+		4、属性 - responseText
+		5、事件 - onreadystatechange
+			回调函数 ：每当readyState状态值发生改变的时候都要回来调用对应的处理函数
+				xhr.onreadystatechange=function(){
+					if(xhr.readyState==4&&xhr.status==200){
+						xhr.responseText;
+					}
+				}
+		6、方法 - send()
+			作用：发送请求
+			语法：send(body)
+				get：此处为 null
+				post：此处为 提交的数据(string)
+================================================
+1、AJAX
+	1、发送get请求
+		1、发送异步请求的步骤
+			1、创建xhr对象
+			2、创建请求 - open()
+			3、设置回调函数 - onreadystatechange
+			4、发送请求 - send()
+		2、请求参数
+			推荐：地址栏传参
+				http://localhost:8000/test/?name=value&name=value
+	2、发送post请求
+		1、提交的参数要在send()中编写
+			var xhr = getXhr();
+			... ...
+			... ...
+			xhr.send("name1=value1&name2=value2");
+		2、csrf 验证
+			必须手动提交 csrfmiddlewaretoken 的值到服务器
+			否则无法通过 csrf 验证，服务器直接返回 403
+			解决方案：
+				解决方案1：
+					1、在 服务器端 从 COOKIES 中获取 csrftoken 的值并发送到 模板中
+					2、在模板中获取csrftoken的值，拼成提交参数再发送给服务器端	
+
+					弊端：由于先走服务器，有可能在客户端中并没有 csrftoken cookie，所以有可能报错
+				解决方案2：
+					1、在 模板(前端页面) 中，通过JS获取cookies中 csrftoken的值
+					2、将获取出来的值拼成参数再发送给服务器
+
+					弊端：
+						要求客户端cookies中必须包含 csrftoken ，否则获取不到对应的值就无法提交给服务器，结果依然是 403。可以在网页中 任意位置处添加一个form，并且在form 中只增加一个 {% csrftoken %}
+				解决方案3：
+					1、在 模板(前段页面) 中，通过JS获取<input type="hidden" name="csrfmiddlewaretoken">的值
+					2、将取出来的值拼成参数发送给服务器
+
+						弊端：要求在网页中必须存在 <input type="hidden" name="csrfmiddlewaretoken"> 标记。可以在网页中 任意位置处添加一个form，并且在form 中只增加一个 {% csrftoken %}
+				
+		3、必须设置一个请求消息头 - Content-Type
+			AJAX 默认将此消息头设置为 text/plain ,导致服务器无法正常接收请求数据。
+			所以 必须要将此消息头更新回原来的默认值
+			语法：
+				xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+
+				注意：该操作，要在 xhr.send() 之前执行
+2、JSON
+	1、JSON介绍
+		JSON:JavaScript Object Notation
+				JS 对象的表现形式
+	2、JSON表现
+		1、JSON表示单个对象
+			1、使用 {} 表示单个对象
+			2、在 {} 中使用 key:value 的形式来表示属性(数据)
+			3、key必须要用 "" 括起来
+			4、value如果是字符串的话，也必须使用 "" 括起来
+
+			var obj = {
+				"name":"范冰冰",
+				"age":26,
+				"gender":"女"
+			};
+		2、JSON表示数组
+			1、使用 [] 表示一个数组
+			2、数组中 允许包含若干JSON单个对象 或 字符串
+				ex:
+					1、使用JSON来表示多个人的姓名
+						var arr = ["范冰冰","李晨","洪金宝"];
+					2、使用JSON来表示多个人的信息(name,age,gender)
+						var arr = [
+							{
+								"name":"范冰冰",
+								"age":26,
+								"gender":"女"
+							},
+							{
+								"name":"李晨",
+								"age":43,
+								"gender":"男"
+							}
+						];
+
+						Users.object.all()
+
+
+
+$("[name='csrfmiddlewaretoken']").val();
+
+1zhangwuji123456zhangwuji@163.com2yinsusu123456susu.in@163.com

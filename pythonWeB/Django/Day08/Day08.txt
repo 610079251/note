@@ -1,0 +1,85 @@
+1、HttpRequest 详解
+	1、获取 get 请求提交的数据
+		1、form 表单提交
+			<form action="{% url 'xxx' %}" method="get">
+				<p>
+					姓名:<input type="text" name="uname">
+				</p>
+				<p>
+					<input type="submit">
+				</p>
+			</form>
+
+			服务器端：request.GET['uname']
+		2、通过地址发送请求
+			在地址栏上拼 查询字符串(Query String)
+			http://请求地址/?参数名=值&参数名=值
+			http://localhost:8000/get/?name=a&pwd=b&email=c
+				参数1： name ，值：a
+				参数2： pwd  ，值：b
+				参数3： email，值：c
+	2、获取 post 请求提交的数据
+		1、发送post的方式
+			只有在表单的 method 指定为 post 的时候，才能发送post请求
+		2、获取 post 请求提交的数据
+			value = request.POST['key']
+		3、403 - Forbidden - csrf
+			1、csrf
+				Cross-Site Request Forgery
+				理解为：跨站点攻击
+			2、csrf 解决方案
+				1、settings.py
+					删除 CsrfViewMiddleWare 中间件
+				2、在处理视图上增加 @csrf_protect 装饰器
+				3、在 模板中 的 <form> 下的第一句话增加
+					{% csrf_token %}
+2、使用 forms 处理表单
+	1、forms 模块的作用
+		通过 forms 模块，允许将表单控件与 py 文件相结合，可以在网页中自动生成表单控件
+	2、使用 forms 模块
+		1、在应用中创建 forms.py 文件
+		2、导入 forms
+			from django import forms
+		3、创建class，一个class对应到页面上的一个表单
+			该类必须继承自 forms.Form
+		4、在class中创建属性
+			一个属性对应着一个表单控件
+				(参考文档)
+	3、在模板中，解析 forms 对象
+		注意：
+			1、需要自定义<form>
+			2、需要自定义 提交按钮
+		1、手动解析
+			在 视图中，创建 forms.Form 对象，并发送到模板中
+			ex:
+				form = RemarkForm()
+				return render(request,'xx.html',locals())
+			手动解析：
+				模板中：
+					{% for field in form %}
+						{{field.label}}:表示的是 label属性值
+						{{field}} : 表示控件
+					{% endfor %}
+		2、自动解析
+			1、{{form.as_p}}
+				将form中每个属性都解析成一个p标记，在p标记中再显示控件以及标签
+			2、{{form.as_ul}}
+				将form中每个属性解析成一个li标记，再显示控件以及标签
+				注意：需要自定义 ul 或 ol 标记的
+			3、{{as_table}}
+				将form中每个属性解析成一个tr以及td，再显示控件以及标签
+				注意：需要自定义 table 标记
+
+
+
+
+
+<QueryDict: 
+	{'uname': ['sanfeng.zhang'], 'upwd': ['123456']}
+>
+
+http://localhost:8000/03_getDo/?uname=zhangwuji&upwd=123456
+
+http://localhost:8000/03_getDo/?uname=abc&upwd=efg&uemail=abc@163.com
+
+url(r'01_xxx/(\d{1,})')
