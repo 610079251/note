@@ -1,0 +1,71 @@
+Selenium+浏览器的Demo：
+	见：百度指数,新浪微博的案例；
+
+面试题：
+输入：N=4
+输出：N*N 矩阵
+		1   2  3 4
+    12 13 14 5    L[1][1]=7
+		11 16 15 6
+		10	9	 8 7
+
+list:
+L = [[1,2,3,4],[5,6,7,8]]
+	1, 2, 3, 4
+	5, 6, 7, 8  L[1][2]
+
+import numpy
+myArray = numpy.zeros((4,4),
+dtype=numpy.int16)
+myArray
+Out[13]: 
+array([[0, 0, 0, 0],
+       [0, 0, 0, 0],
+       [0, 0, 0, 0],
+       [0, 0, 0, 0]], dtype=int16)
+myArray[0][1]=2
+myArray
+Out[15]: 
+array([[0, 2, 0, 0],
+       [0, 0, 0, 0],
+       [0, 0, 0, 0],
+       [0, 0, 0, 0]], dtype=int16)
+
+
+		1   2  3 4
+    12 13 14 5    L[1][1]=7
+		11 16 15 6
+		10	9	 8 7
+Num=1
+while Num <= N*N:
+		while :# 右
+		while :# 下
+		while :# 左
+		while :# 上
+		Num += 1
+
+RSA算法-》SSL
+怎么知道这个正在和浏览器，客户端通信的
+网站就是那个你想交流信息的网站？
+		权威机构认证，CA认证：
+可以在Python程序中，设置一个
+不需要认证的context，从而避免
+在访问HTTPS等一些需要证书网站的授权；
+例子见：12306Test.py
+
+cookie,session:
+		cookie记录在客户端的浏览器中；
+		session记录在服务端；
+手动管理cookie太困难了，
+我们可以使用cookiejar来管理cookie；
+
+首先安装：tesseract-ocr-setup-4.00.00dev.exe
+C:\Program Files (x86)\Tesseract-OCR
+tesseract test.png output_1 –l eng
+训练可以参考：
+		http://www.cnblogs.com/cnlian/p/5765871.html
+安装python的使用库：
+(base) C:\Users\Administrator>pip install pytesseract
+
+https://blog.csdn.net/wang_hugh/article/details/80760940
+
