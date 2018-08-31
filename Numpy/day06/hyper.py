@@ -1,0 +1,50 @@
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
+import numpy as np
+import matplotlib.pyplot as mp
+outcomes = np.random.hypergeometric(25, 1, 3, 100)
+scores = [0]
+for outcome in outcomes:
+    if outcome == 3:
+        scores.append(scores[-1] + 1)
+    else:
+        scores.append(scores[-1] - 6)
+scores = np.array(scores)
+mp.figure('Hypergeometric Distribution',
+          facecolor='lightgray')
+mp.title('Hypergeometric Distribution', fontsize=20)
+mp.xlabel('Round', fontsize=14)
+mp.ylabel('Score', fontsize=14)
+mp.tick_params(labelsize=10)
+mp.grid(linestyle=':')
+o, h, l, c = 0, scores.argmax(), scores.argmin(), \
+    scores.size - 1
+if scores[o] < scores[c]:
+    color = 'orangered'
+elif scores[c] < scores[o]:
+    color = 'limegreen'
+else:
+    color = 'dodgerblue'
+mp.plot(scores, c=color, label='Score')
+mp.axhline(y=scores[o], linestyle='--',
+           color='deepskyblue', linewidth=1)
+mp.axhline(y=scores[h], linestyle='--',
+           color='crimson', linewidth=1)
+mp.axhline(y=scores[l], linestyle='--',
+           color='seagreen', linewidth=1)
+mp.axhline(y=scores[c], linestyle='--',
+           color='orange', linewidth=1)
+mp.scatter(o, scores[o], edgecolor='deepskyblue',
+           facecolor='none', s=60,
+           label='Opening: %d' % scores[o], zorder=3)
+mp.scatter(h, scores[h], edgecolor='crimson',
+           facecolor='none', s=60,
+           label='Highest: %d' % scores[h], zorder=3)
+mp.scatter(l, scores[l], edgecolor='seagreen',
+           facecolor='none', s=60,
+           label='Lowest: %d' % scores[l], zorder=3)
+mp.scatter(c, scores[c], edgecolor='orange',
+           facecolor='none', s=60,
+           label='Closing: %d' % scores[c], zorder=3)
+mp.legend()
+mp.show()

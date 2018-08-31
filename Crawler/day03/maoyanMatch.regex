@@ -1,0 +1,498 @@
+<?xml version="1.0"?>
+<ProjectOptions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <RegexName>maoyanMatch</RegexName>
+  <RegexDescription />
+  <RegexText>&lt;p class="name"&gt;[\s\S]*?title="([\s\S]*?)"[\s\S]*?&lt;p class="star"&gt;([\s\S]*?)&lt;/p&gt;[\s\S]*?&lt;p class="releasetime"&gt;([\s\S]*?)&lt;/p&gt;</RegexText>
+  <ReplaceText />
+  <SourceText>
+&lt;!DOCTYPE html&gt;
+
+&lt;!--[if IE 8]&gt;&lt;html class="ie8"&gt;&lt;![endif]--&gt;
+&lt;!--[if IE 9]&gt;&lt;html class="ie9"&gt;&lt;![endif]--&gt;
+&lt;!--[if gt IE 9]&gt;&lt;!--&gt;&lt;html&gt;&lt;!--&lt;![endif]--&gt;
+&lt;head&gt;
+  &lt;title&gt;TOP100榜 - 猫眼电影 - 一网打尽好电影&lt;/title&gt;
+  
+  &lt;link rel="dns-prefetch" href="//p0.meituan.net"  /&gt;
+  &lt;link rel="dns-prefetch" href="//p1.meituan.net"  /&gt;
+  &lt;link rel="dns-prefetch" href="//ms0.meituan.net" /&gt;
+  &lt;link rel="dns-prefetch" href="//ms1.meituan.net" /&gt;
+  &lt;link rel="dns-prefetch" href="//analytics.meituan.com" /&gt;
+  &lt;link rel="dns-prefetch" href="//report.meituan.com" /&gt;
+  &lt;link rel="dns-prefetch" href="//frep.meituan.com" /&gt;
+
+  
+  &lt;meta charset="utf-8"&gt;
+  &lt;meta name="keywords" content="猫眼电影,电影排行榜,热映口碑榜,最受期待榜,国内票房榜,北美票房榜,猫眼TOP100"&gt;
+  &lt;meta name="description" content="猫眼电影热门榜单,包括热映口碑榜,最受期待榜,国内票房榜,北美票房榜,猫眼TOP100,多维度为用户进行选片决策"&gt;
+  &lt;meta http-equiv="cleartype" content="yes" /&gt;
+  &lt;meta http-equiv="X-UA-Compatible" content="IE=edge" /&gt;
+  &lt;meta name="renderer" content="webkit" /&gt;
+
+  &lt;meta name="HandheldFriendly" content="true" /&gt;
+  &lt;meta name="format-detection" content="email=no" /&gt;
+  &lt;meta name="format-detection" content="telephone=no" /&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+
+  
+  &lt;script&gt;
+  cid = "c_wx6zb55";
+  ci = 1;
+val = {"subnavId":4};    window.system = {};
+
+  window.openPlatform = '';
+  window.openPlatformSub = '';
+
+  &lt;/script&gt;
+  &lt;link rel="stylesheet" href="//ms0.meituan.net/mywww/common.4b838ec3.css"/&gt;
+&lt;link rel="stylesheet" href="//ms0.meituan.net/mywww/board-index.92a06072.css"/&gt;
+  &lt;script src="//ms0.meituan.net/mywww/stat.74891044.js"&gt;&lt;/script&gt;
+  &lt;script&gt;if(window.devicePixelRatio &gt;= 2) { document.write('&lt;link rel="stylesheet" href="//ms0.meituan.net/mywww/image-2x.8ba7074d.css"/&gt;') }&lt;/script&gt;
+  &lt;style&gt;
+    @font-face {
+      font-family: stonefont;
+      src: url('//vfile.meituan.net/colorstone/e82745ccde6211f9fd62906981e6423a3168.eot');
+      src: url('//vfile.meituan.net/colorstone/e82745ccde6211f9fd62906981e6423a3168.eot?#iefix') format('embedded-opentype'),
+           url('//vfile.meituan.net/colorstone/fdb00e2d1f3c1d2b8aa1570588b480b22084.woff') format('woff');
+    }
+
+    .stonefont {
+      font-family: stonefont;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+
+&lt;div class="header"&gt;
+  &lt;div class="header-inner"&gt;
+        &lt;a href="/" class="logo" data-act="icon-click"&gt;&lt;/a&gt;
+        &lt;div class="city-container" data-val="{currentcityid:1 }"&gt;
+            &lt;div class="city-selected"&gt;
+                &lt;div class="city-name"&gt;
+                  北京
+                  &lt;span class="caret"&gt;&lt;/span&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="city-list" data-val="{ localcityid: 1 }"&gt;
+                &lt;div class="city-list-header"&gt;定位城市：&lt;a class="js-geo-city"&gt;北京&lt;/a&gt;&lt;/div&gt;
+                
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+
+        &lt;div class="nav"&gt;
+            &lt;ul class="navbar"&gt;
+                &lt;li&gt;&lt;a href="/" data-act="home-click"  &gt;首页&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="/films" data-act="movies-click" &gt;电影&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="/cinemas" data-act="cinemas-click" &gt;影院&lt;/a&gt;&lt;/li&gt; 
+                
+                &lt;li&gt;&lt;a href="/board" data-act="board-click"  class="active" &gt;榜单&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="/news" data-act="hotNews-click" &gt;热点&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+
+        &lt;div class="user-info"&gt;
+            &lt;div class="user-avatar J-login"&gt;
+              &lt;img src="http://p0.meituan.net/movie/7dd82a16316ab32c8359debdb04396ef2897.png"&gt;
+              &lt;span class="caret"&gt;&lt;/span&gt;
+              &lt;ul class="user-menu"&gt;
+                &lt;li&gt;&lt;a href="javascript:void 0"&gt;登录&lt;/a&gt;&lt;/li&gt;
+              &lt;/ul&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;form action="/query" target="_blank" class="search-form" data-actform="search-click"&gt;
+            &lt;input name="kw" class="search" type="search" maxlength="32" placeholder="找影视剧、影人、影院" autocomplete="off"&gt;
+            &lt;input class="submit" type="submit" value=""&gt;
+        &lt;/form&gt;
+
+        &lt;div class="app-download"&gt;
+          &lt;a href="/app" target="_blank"&gt;
+            &lt;span class="iphone-icon"&gt;&lt;/span&gt;
+            &lt;span class="apptext"&gt;APP下载&lt;/span&gt;
+            &lt;span class="caret"&gt;&lt;/span&gt;
+            &lt;div class="download-icon"&gt;
+                &lt;p class="down-title"&gt;扫码下载APP&lt;/p&gt;
+                &lt;p class='down-content'&gt;选座更优惠&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/a&gt;
+        &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="header-placeholder"&gt;&lt;/div&gt;
+
+&lt;div class="subnav"&gt;
+  &lt;ul class="navbar"&gt;
+    &lt;li&gt;
+      &lt;a data-act="subnav-click" data-val="{subnavClick:7}"
+          href="/board/7"
+      &gt;热映口碑榜&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+      &lt;a data-act="subnav-click" data-val="{subnavClick:6}"
+          href="/board/6"
+      &gt;最受期待榜&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+      &lt;a data-act="subnav-click" data-val="{subnavClick:1}"
+          href="/board/1"
+      &gt;国内票房榜&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+      &lt;a data-act="subnav-click" data-val="{subnavClick:2}"
+          href="/board/2"
+      &gt;北美票房榜&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+      &lt;a data-act="subnav-click" data-val="{subnavClick:4}"
+          data-state-val="{subnavId:4}"
+          class="active" href="javascript:void(0);"
+      &gt;TOP100榜&lt;/a&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;
+
+
+    &lt;div class="container" id="app" class="page-board/index" &gt;
+
+&lt;div class="content"&gt;
+    &lt;div class="wrapper"&gt;
+        &lt;div class="main"&gt;
+            &lt;p class="update-time"&gt;2018-08-09&lt;span class="has-fresh-text"&gt;已更新&lt;/span&gt;&lt;/p&gt;
+            &lt;p class="board-content"&gt;榜单规则：将猫眼电影库中的经典影片，按照评分和评分人数从高到低综合排序取前100名，每天上午10点更新。相关数据来源于“猫眼电影库”。&lt;/p&gt;
+            &lt;dl class="board-wrapper"&gt;
+                &lt;dd&gt;
+                        &lt;i class="board-index board-index-1"&gt;1&lt;/i&gt;
+    &lt;a href="/films/1203" title="霸王别姬" class="image-link" data-act="boarditem-click" data-val="{movieId:1203}"&gt;
+      &lt;img src="//ms0.meituan.net/mywww/image/loading_2.e3d934bf.png" alt="" class="poster-default" /&gt;
+      &lt;img data-src="http://p1.meituan.net/movie/20803f59291c47e1e116c11963ce019e68711.jpg@160w_220h_1e_1c" alt="霸王别姬" class="board-img" /&gt;
+    &lt;/a&gt;
+    &lt;div class="board-item-main"&gt;
+      &lt;div class="board-item-content"&gt;
+              &lt;div class="movie-item-info"&gt;
+        &lt;p class="name"&gt;&lt;a href="/films/1203" title="霸王别姬" data-act="boarditem-click" data-val="{movieId:1203}"&gt;霸王别姬&lt;/a&gt;&lt;/p&gt;
+        &lt;p class="star"&gt;
+                主演：张国荣,张丰毅,巩俐
+        &lt;/p&gt;
+&lt;p class="releasetime"&gt;上映时间：1993-01-01(中国香港)&lt;/p&gt;    &lt;/div&gt;
+    &lt;div class="movie-item-number score-num"&gt;
+&lt;p class="score"&gt;&lt;i class="integer"&gt;9.&lt;/i&gt;&lt;i class="fraction"&gt;6&lt;/i&gt;&lt;/p&gt;        
+    &lt;/div&gt;
+
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+                &lt;/dd&gt;
+                &lt;dd&gt;
+                        &lt;i class="board-index board-index-2"&gt;2&lt;/i&gt;
+    &lt;a href="/films/1297" title="肖申克的救赎" class="image-link" data-act="boarditem-click" data-val="{movieId:1297}"&gt;
+      &lt;img src="//ms0.meituan.net/mywww/image/loading_2.e3d934bf.png" alt="" class="poster-default" /&gt;
+      &lt;img data-src="http://p0.meituan.net/movie/283292171619cdfd5b240c8fd093f1eb255670.jpg@160w_220h_1e_1c" alt="肖申克的救赎" class="board-img" /&gt;
+    &lt;/a&gt;
+    &lt;div class="board-item-main"&gt;
+      &lt;div class="board-item-content"&gt;
+              &lt;div class="movie-item-info"&gt;
+        &lt;p class="name"&gt;&lt;a href="/films/1297" title="肖申克的救赎" data-act="boarditem-click" data-val="{movieId:1297}"&gt;肖申克的救赎&lt;/a&gt;&lt;/p&gt;
+        &lt;p class="star"&gt;
+                主演：蒂姆·罗宾斯,摩根·弗里曼,鲍勃·冈顿
+        &lt;/p&gt;
+&lt;p class="releasetime"&gt;上映时间：1994-10-14(美国)&lt;/p&gt;    &lt;/div&gt;
+    &lt;div class="movie-item-number score-num"&gt;
+&lt;p class="score"&gt;&lt;i class="integer"&gt;9.&lt;/i&gt;&lt;i class="fraction"&gt;5&lt;/i&gt;&lt;/p&gt;        
+    &lt;/div&gt;
+
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+                &lt;/dd&gt;
+                &lt;dd&gt;
+                        &lt;i class="board-index board-index-3"&gt;3&lt;/i&gt;
+    &lt;a href="/films/2641" title="罗马假日" class="image-link" data-act="boarditem-click" data-val="{movieId:2641}"&gt;
+      &lt;img src="//ms0.meituan.net/mywww/image/loading_2.e3d934bf.png" alt="" class="poster-default" /&gt;
+      &lt;img data-src="http://p0.meituan.net/movie/54617769d96807e4d81804284ffe2a27239007.jpg@160w_220h_1e_1c" alt="罗马假日" class="board-img" /&gt;
+    &lt;/a&gt;
+    &lt;div class="board-item-main"&gt;
+      &lt;div class="board-item-content"&gt;
+              &lt;div class="movie-item-info"&gt;
+        &lt;p class="name"&gt;&lt;a href="/films/2641" title="罗马假日" data-act="boarditem-click" data-val="{movieId:2641}"&gt;罗马假日&lt;/a&gt;&lt;/p&gt;
+        &lt;p class="star"&gt;
+                主演：格利高里·派克,奥黛丽·赫本,埃迪·艾伯特
+        &lt;/p&gt;
+&lt;p class="releasetime"&gt;上映时间：1953-09-02(美国)&lt;/p&gt;    &lt;/div&gt;
+    &lt;div class="movie-item-number score-num"&gt;
+&lt;p class="score"&gt;&lt;i class="integer"&gt;9.&lt;/i&gt;&lt;i class="fraction"&gt;1&lt;/i&gt;&lt;/p&gt;        
+    &lt;/div&gt;
+
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+                &lt;/dd&gt;
+                &lt;dd&gt;
+                        &lt;i class="board-index board-index-4"&gt;4&lt;/i&gt;
+    &lt;a href="/films/4055" title="这个杀手不太冷" class="image-link" data-act="boarditem-click" data-val="{movieId:4055}"&gt;
+      &lt;img src="//ms0.meituan.net/mywww/image/loading_2.e3d934bf.png" alt="" class="poster-default" /&gt;
+      &lt;img data-src="http://p0.meituan.net/movie/e55ec5d18ccc83ba7db68caae54f165f95924.jpg@160w_220h_1e_1c" alt="这个杀手不太冷" class="board-img" /&gt;
+    &lt;/a&gt;
+    &lt;div class="board-item-main"&gt;
+      &lt;div class="board-item-content"&gt;
+              &lt;div class="movie-item-info"&gt;
+        &lt;p class="name"&gt;&lt;a href="/films/4055" title="这个杀手不太冷" data-act="boarditem-click" data-val="{movieId:4055}"&gt;这个杀手不太冷&lt;/a&gt;&lt;/p&gt;
+        &lt;p class="star"&gt;
+                主演：让·雷诺,加里·奥德曼,娜塔莉·波特曼
+        &lt;/p&gt;
+&lt;p class="releasetime"&gt;上映时间：1994-09-14(法国)&lt;/p&gt;    &lt;/div&gt;
+    &lt;div class="movie-item-number score-num"&gt;
+&lt;p class="score"&gt;&lt;i class="integer"&gt;9.&lt;/i&gt;&lt;i class="fraction"&gt;5&lt;/i&gt;&lt;/p&gt;        
+    &lt;/div&gt;
+
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+                &lt;/dd&gt;
+                &lt;dd&gt;
+                        &lt;i class="board-index board-index-5"&gt;5&lt;/i&gt;
+    &lt;a href="/films/1247" title="教父" class="image-link" data-act="boarditem-click" data-val="{movieId:1247}"&gt;
+      &lt;img src="//ms0.meituan.net/mywww/image/loading_2.e3d934bf.png" alt="" class="poster-default" /&gt;
+      &lt;img data-src="http://p1.meituan.net/movie/f5a924f362f050881f2b8f82e852747c118515.jpg@160w_220h_1e_1c" alt="教父" class="board-img" /&gt;
+    &lt;/a&gt;
+    &lt;div class="board-item-main"&gt;
+      &lt;div class="board-item-content"&gt;
+              &lt;div class="movie-item-info"&gt;
+        &lt;p class="name"&gt;&lt;a href="/films/1247" title="教父" data-act="boarditem-click" data-val="{movieId:1247}"&gt;教父&lt;/a&gt;&lt;/p&gt;
+        &lt;p class="star"&gt;
+                主演：马龙·白兰度,阿尔·帕西诺,詹姆斯·肯恩
+        &lt;/p&gt;
+&lt;p class="releasetime"&gt;上映时间：1972-03-24(美国)&lt;/p&gt;    &lt;/div&gt;
+    &lt;div class="movie-item-number score-num"&gt;
+&lt;p class="score"&gt;&lt;i class="integer"&gt;9.&lt;/i&gt;&lt;i class="fraction"&gt;3&lt;/i&gt;&lt;/p&gt;        
+    &lt;/div&gt;
+
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+                &lt;/dd&gt;
+                &lt;dd&gt;
+                        &lt;i class="board-index board-index-6"&gt;6&lt;/i&gt;
+    &lt;a href="/films/267" title="泰坦尼克号" class="image-link" data-act="boarditem-click" data-val="{movieId:267}"&gt;
+      &lt;img src="//ms0.meituan.net/mywww/image/loading_2.e3d934bf.png" alt="" class="poster-default" /&gt;
+      &lt;img data-src="http://p1.meituan.net/movie/0699ac97c82cf01638aa5023562d6134351277.jpg@160w_220h_1e_1c" alt="泰坦尼克号" class="board-img" /&gt;
+    &lt;/a&gt;
+    &lt;div class="board-item-main"&gt;
+      &lt;div class="board-item-content"&gt;
+              &lt;div class="movie-item-info"&gt;
+        &lt;p class="name"&gt;&lt;a href="/films/267" title="泰坦尼克号" data-act="boarditem-click" data-val="{movieId:267}"&gt;泰坦尼克号&lt;/a&gt;&lt;/p&gt;
+        &lt;p class="star"&gt;
+                主演：莱昂纳多·迪卡普里奥,凯特·温丝莱特,比利·赞恩
+        &lt;/p&gt;
+&lt;p class="releasetime"&gt;上映时间：1998-04-03&lt;/p&gt;    &lt;/div&gt;
+    &lt;div class="movie-item-number score-num"&gt;
+&lt;p class="score"&gt;&lt;i class="integer"&gt;9.&lt;/i&gt;&lt;i class="fraction"&gt;5&lt;/i&gt;&lt;/p&gt;        
+    &lt;/div&gt;
+
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+                &lt;/dd&gt;
+                &lt;dd&gt;
+                        &lt;i class="board-index board-index-7"&gt;7&lt;/i&gt;
+    &lt;a href="/films/123" title="龙猫" class="image-link" data-act="boarditem-click" data-val="{movieId:123}"&gt;
+      &lt;img src="//ms0.meituan.net/mywww/image/loading_2.e3d934bf.png" alt="" class="poster-default" /&gt;
+      &lt;img data-src="http://p0.meituan.net/movie/b03e9c52c585635d2cb6a3f7c08a8a50112441.jpg@160w_220h_1e_1c" alt="龙猫" class="board-img" /&gt;
+    &lt;/a&gt;
+    &lt;div class="board-item-main"&gt;
+      &lt;div class="board-item-content"&gt;
+              &lt;div class="movie-item-info"&gt;
+        &lt;p class="name"&gt;&lt;a href="/films/123" title="龙猫" data-act="boarditem-click" data-val="{movieId:123}"&gt;龙猫&lt;/a&gt;&lt;/p&gt;
+        &lt;p class="star"&gt;
+                主演：日高法子,坂本千夏,糸井重里
+        &lt;/p&gt;
+&lt;p class="releasetime"&gt;上映时间：1988-04-16(日本)&lt;/p&gt;    &lt;/div&gt;
+    &lt;div class="movie-item-number score-num"&gt;
+&lt;p class="score"&gt;&lt;i class="integer"&gt;9.&lt;/i&gt;&lt;i class="fraction"&gt;2&lt;/i&gt;&lt;/p&gt;        
+    &lt;/div&gt;
+
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+                &lt;/dd&gt;
+                &lt;dd&gt;
+                        &lt;i class="board-index board-index-8"&gt;8&lt;/i&gt;
+    &lt;a href="/films/837" title="唐伯虎点秋香" class="image-link" data-act="boarditem-click" data-val="{movieId:837}"&gt;
+      &lt;img src="//ms0.meituan.net/mywww/image/loading_2.e3d934bf.png" alt="" class="poster-default" /&gt;
+      &lt;img data-src="http://p0.meituan.net/movie/da64660f82b98cdc1b8a3804e69609e041108.jpg@160w_220h_1e_1c" alt="唐伯虎点秋香" class="board-img" /&gt;
+    &lt;/a&gt;
+    &lt;div class="board-item-main"&gt;
+      &lt;div class="board-item-content"&gt;
+              &lt;div class="movie-item-info"&gt;
+        &lt;p class="name"&gt;&lt;a href="/films/837" title="唐伯虎点秋香" data-act="boarditem-click" data-val="{movieId:837}"&gt;唐伯虎点秋香&lt;/a&gt;&lt;/p&gt;
+        &lt;p class="star"&gt;
+                主演：周星驰,巩俐,郑佩佩
+        &lt;/p&gt;
+&lt;p class="releasetime"&gt;上映时间：1993-07-01(中国香港)&lt;/p&gt;    &lt;/div&gt;
+    &lt;div class="movie-item-number score-num"&gt;
+&lt;p class="score"&gt;&lt;i class="integer"&gt;9.&lt;/i&gt;&lt;i class="fraction"&gt;2&lt;/i&gt;&lt;/p&gt;        
+    &lt;/div&gt;
+
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+                &lt;/dd&gt;
+                &lt;dd&gt;
+                        &lt;i class="board-index board-index-9"&gt;9&lt;/i&gt;
+    &lt;a href="/films/1212" title="千与千寻" class="image-link" data-act="boarditem-click" data-val="{movieId:1212}"&gt;
+      &lt;img src="//ms0.meituan.net/mywww/image/loading_2.e3d934bf.png" alt="" class="poster-default" /&gt;
+      &lt;img data-src="http://p0.meituan.net/movie/b076ce63e9860ecf1ee9839badee5228329384.jpg@160w_220h_1e_1c" alt="千与千寻" class="board-img" /&gt;
+    &lt;/a&gt;
+    &lt;div class="board-item-main"&gt;
+      &lt;div class="board-item-content"&gt;
+              &lt;div class="movie-item-info"&gt;
+        &lt;p class="name"&gt;&lt;a href="/films/1212" title="千与千寻" data-act="boarditem-click" data-val="{movieId:1212}"&gt;千与千寻&lt;/a&gt;&lt;/p&gt;
+        &lt;p class="star"&gt;
+                主演：柊瑠美,入野自由,夏木真理
+        &lt;/p&gt;
+&lt;p class="releasetime"&gt;上映时间：2001-07-20(日本)&lt;/p&gt;    &lt;/div&gt;
+    &lt;div class="movie-item-number score-num"&gt;
+&lt;p class="score"&gt;&lt;i class="integer"&gt;9.&lt;/i&gt;&lt;i class="fraction"&gt;3&lt;/i&gt;&lt;/p&gt;        
+    &lt;/div&gt;
+
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+                &lt;/dd&gt;
+                &lt;dd&gt;
+                        &lt;i class="board-index board-index-10"&gt;10&lt;/i&gt;
+    &lt;a href="/films/2760" title="魂断蓝桥" class="image-link" data-act="boarditem-click" data-val="{movieId:2760}"&gt;
+      &lt;img src="//ms0.meituan.net/mywww/image/loading_2.e3d934bf.png" alt="" class="poster-default" /&gt;
+      &lt;img data-src="http://p0.meituan.net/movie/46c29a8b8d8424bdda7715e6fd779c66235684.jpg@160w_220h_1e_1c" alt="魂断蓝桥" class="board-img" /&gt;
+    &lt;/a&gt;
+    &lt;div class="board-item-main"&gt;
+      &lt;div class="board-item-content"&gt;
+              &lt;div class="movie-item-info"&gt;
+        &lt;p class="name"&gt;&lt;a href="/films/2760" title="魂断蓝桥" data-act="boarditem-click" data-val="{movieId:2760}"&gt;魂断蓝桥&lt;/a&gt;&lt;/p&gt;
+        &lt;p class="star"&gt;
+                主演：费雯·丽,罗伯特·泰勒,露塞尔·沃特森
+        &lt;/p&gt;
+&lt;p class="releasetime"&gt;上映时间：1940-05-17(美国)&lt;/p&gt;    &lt;/div&gt;
+    &lt;div class="movie-item-number score-num"&gt;
+&lt;p class="score"&gt;&lt;i class="integer"&gt;9.&lt;/i&gt;&lt;i class="fraction"&gt;2&lt;/i&gt;&lt;/p&gt;        
+    &lt;/div&gt;
+
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+                &lt;/dd&gt;
+            &lt;/dl&gt;
+
+        &lt;/div&gt;
+            &lt;div class="pager-main"&gt;
+                
+  
+  &lt;ul class="list-pager"&gt;
+
+
+
+  
+      &lt;li class="active"&gt;
+    &lt;a class="page_1"
+      href="javascript:void(0);" style="cursor: default"
+  &gt;1&lt;/a&gt;
+
+&lt;/li&gt;
+  &lt;li &gt;
+    &lt;a class="page_2"
+      href="?offset=10"
+  &gt;2&lt;/a&gt;
+
+&lt;/li&gt;
+  &lt;li &gt;
+    &lt;a class="page_3"
+      href="?offset=20"
+  &gt;3&lt;/a&gt;
+
+&lt;/li&gt;
+  &lt;li &gt;
+    &lt;a class="page_4"
+      href="?offset=30"
+  &gt;4&lt;/a&gt;
+
+&lt;/li&gt;
+  &lt;li &gt;
+    &lt;a class="page_5"
+      href="?offset=40"
+  &gt;5&lt;/a&gt;
+
+&lt;/li&gt;
+
+    &lt;li class="sep"&gt;...&lt;/li&gt;
+      &lt;li &gt;
+    &lt;a class="page_10"
+      href="?offset=90"
+  &gt;10&lt;/a&gt;
+
+&lt;/li&gt;
+
+  
+
+&lt;li&gt;  &lt;a class="page_2"
+      href="?offset=10"
+  &gt;下一页&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+
+
+            &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+    &lt;/div&gt;
+
+&lt;div class="footer"&gt;
+    &lt;p class="friendly-links"&gt;
+      商务合作邮箱：v@maoyan.com
+      客服电话：10105335
+      违法和不良信息举报电话：4006018900
+      &lt;br/&gt;
+      投诉举报邮箱：tousujubao@meituan.com
+      舞弊线索举报邮箱：wubijubao@maoyan.com
+    &lt;/p&gt;
+    &lt;p class="friendly-links"&gt;
+        友情链接 :
+        &lt;a href="http://www.meituan.com" data-query="utm_source=wwwmaoyan" target="_blank"&gt;美团网&lt;/a&gt;
+        &lt;span&gt;&lt;/span&gt;
+        &lt;a href="http://i.meituan.com/client" data-query="utm_source=wwwmaoyan" target="_blank"&gt;美团下载&lt;/a&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+        &amp;copy;2016
+        猫眼电影 maoyan.com
+        &lt;a href="https://tsm.miit.gov.cn/pages/EnterpriseSearchList_Portal.aspx?type=0&amp;keyword=京ICP证160733号&amp;pageNo=1" target="_blank"&gt;京ICP证160733号&lt;/a&gt;
+        &lt;a href="http://www.miibeian.gov.cn" target="_blank"&gt;京ICP备16022489号-1&lt;/a&gt;
+        &lt;a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010102003232" target="_blank"&gt;京公网安备 11010102003232号&lt;/a&gt;
+        &lt;a href="/about/licence" target="_blank"&gt;网络文化经营许可证&lt;/a&gt;
+        &lt;a href="http://www.meituan.com/about/rules" target="_blank"&gt;电子公告服务规则&lt;/a&gt;
+    &lt;/p&gt;
+    &lt;p&gt;北京猫眼文化传媒有限公司&lt;/p&gt;
+&lt;/div&gt;
+
+    &lt;!--[if IE 8]&gt;&lt;script src="//ms0.meituan.net/mywww/es5-shim.bbad933f.js"&gt;&lt;/script&gt;&lt;![endif]--&gt;
+    &lt;!--[if IE 8]&gt;&lt;script src="//ms0.meituan.net/mywww/es5-sham.d6ea26f4.js"&gt;&lt;/script&gt;&lt;![endif]--&gt;
+    &lt;script src="//ms0.meituan.net/mywww/common.dc33ab40.js"&gt;&lt;/script&gt;
+&lt;script src="//ms0.meituan.net/mywww/board-index.4aa00764.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</SourceText>
+  <Command>Find</Command>
+  <RegexOptions>None</RegexOptions>
+  <Detail>Groups</Detail>
+  <MaxMatches>1000</MaxMatches>
+  <Sort>Position</Sort>
+  <WordWrap>true</WordWrap>
+  <Format>Auto</Format>
+  <IncludeEmptyGroups>true</IncludeEmptyGroups>
+  <Language>VisualBasic</Language>
+  <VerbatimStrings>false</VerbatimStrings>
+  <InstanceMethods>true</InstanceMethods>
+  <AssumeImports>true</AssumeImports>
+  <GenerateLoop>true</GenerateLoop>
+  <IncludeComment>true</IncludeComment>
+  <CopyCodeOnExit>true</CopyCodeOnExit>
+</ProjectOptions>

@@ -1,0 +1,37 @@
+使用dir, help, __doc__查询模块的方法及详细信息；
+使用type查看对象的类型；
+getattr,callable;
+lambda表达式；
+and or;
+字符串中join,split,ljust;
+
+
+递归的方法：
+	1)基准点；比如面试题中的list只有1个或2个元素的情况；
+	2)找到一个递推公式或者分解这个问题的方法，让原来问题
+的规模变小，变简单；比如面试题中把list中的元素
+分解成两部分：左半部分和右半部分；
+leftPart:   max1,min1
+rightPart:  max2,min2
+最终结果;maxV = max(max1,max2)
+         minV = min(min1,min2)
+
+作业：
+1) 在一个list中，有一堆数，请用
+递归方法求出这堆数的最大最小值；
+[1,3,7,5,4,2,6,10,0.2,-10]
+2) 理解infoHelp.py的使用；
+
+sitemap:
+SEO(搜索引擎搜索的优化)
+
+查询爬虫所使用的技术：
+	pip install bulitwith
+import builtwith
+builtwith.parse("http://www.sina.com.cn")
+
+	pip install python-whois
+import whois
+whois.whois("http://www.sina.com.cn") 
+
+

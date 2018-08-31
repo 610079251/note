@@ -1,0 +1,4 @@
+2018-08-14 14:04:02,275 CRITICAL test critical in log
+2018-08-14 14:04:02,275 ERROR test error in log
+2018-08-14 14:04:11,423 CRITICAL test critical in log
+2018-08-14 14:04:11,423 ERROR test error in log

@@ -1,0 +1,175 @@
+1、JSON
+	1、表现形式
+		1、表示单个对象
+			1、{}表示一个对象
+			2、{}中采用 key:value 保存数据
+			3、key必须使用 "" 引起来
+			4、value如果是字符串的话也必须使用 ""
+			5、多个 key:value 之间使用 , 隔开
+		2、表示数组
+			1、使用 [] 表示一个数字
+			2、数组中允许包含 若干单个对象 或 字符串
+	2、后台处理JSON
+		1、前后台JSON数据交互流程(后 -> 前)
+			1、后台先获取数据
+				类型允许为：
+					1、元组
+					2、列表
+					3、字典
+					4、QuerySet
+			2、在后台将数据转换为符合JSON格式的字符串
+			3、在后台将JSON格式的字符串响应给前端
+				return HttpResponse(JSON格式字符串)
+			4、在前端将响应回来的JSON串解析成JSON的对象
+		2、Python(Django)的JSON处理
+			1、元组，列表，字典
+				使用 Python 的 JSON 类就可以完成转换
+				语法：
+					import json
+					jsonStr = json.dumps(元组|列表|字典)
+					return HttpResponse(jsonStr)
+			2、Django中的查询结果集
+				使用 Django 提供的 序列化类 来完成QuerySet 到 JSON字符串的转换
+
+				from django.core import serializers
+				str=serializers.serialize('json',QuerySet)
+				return HttpResponse(str)
+			3、Django中的单个对象
+				使用 Entry.objects.get() 得到的单个对象是不可序列化的，也不能用 json.dumps() 去转换
+				1、方案1
+					使用 Entry.objects.filter() 替换 Entry.objects.get() , 替换后可以正常使用 序列化
+				2、方案2
+					将 Entry.objects.get() 得到的对象转换为 字典然后再使用 json.dumps()
+
+					class Users(models.Model):
+						... ...
+						
+						def to_dict(self):
+							dic = {
+								"name":self.name,
+								"age":self.age,
+							}
+							return dic
+	3、前端处理JSON
+		将后端响应回来的JSON字符串转换成JSON对象即可
+		语法：
+			在 JS 中
+			JSON对象=JSON.parse(JSON字符串);
+2、JQUERY AJAX
+	在 jquery 中提供了对 原生 AJAX 的封装
+	1、$obj.load();
+		作用：异步加载数据到 $obj 元素中
+		语法：$obj.load(url,data,callback);
+			1、url ：异步请求的地址
+			2、data：传递给请求地址的参数(可选)
+				1、可以传递普通字符串
+					"name=sf.zhang&age=85"
+				2、可以传递JSON
+					{
+						"name":"sf.zhang",
+						"age":85
+					}
+			3、callback：异步请求完成后要执行的操作(可选)
+				function(resText,statusText){
+					resText : 响应数据
+					statusText : 响应状态文本(原因短句)
+				}
+	2、$.get()
+		作用：使用 get 方式异步的向服务器发送请求
+		语法：
+			$.get(url,data,callback,type)
+				1、url ：异步请求的地址
+				2、data ：请求提交的参数
+				3、callback ：请求成功时的回调函数
+				4、type ：返回内容的格式类型
+	3、$.post()
+		作用：使用 post 方式异步的向服务器发送请求
+	4、$.ajax()
+		作用：所有的操作均可自己定制
+		语法：$.ajax({传递参数的JSON对象});
+			JSON对象：
+				1、url:字符串，要异步请求的地址
+				2、type:字符串，提交方式，get 或 post
+				3、data:JSON对象或字符串，传递给后台服务器的参数
+				4、dataType:字符串，响应回来的数据的类型
+					1、'html':响应回来的数据是html文本
+					2、'text':响应回来的数据是普通文本
+					3、'script':响应回来的数据是js脚本
+					4、'json':响应回来的数据是JSON对象
+					5、'xml':响应回来的数据是xml文档
+					6、'jsonp':JSONP格式，跨域时使用
+				5、success:回调函数，请求和响应成功时才回来执行的操作
+					function(data,statusText,jqXHR){
+						data:响应回来的数据
+						statusText:状态文本(可选)
+						jqXHR:jq中的XMLHttpRequest对象(可选)
+					}
+				6、error:
+
+$(function(){
+      $("#btnLoad").click(function(){
+        $("#show").load('/08_request/',function(resText,statusText){
+            var arr=JSON.parse(resText);
+            var html="";
+            $.each(arr,function(i,obj){
+              html+="<h3>"+obj.fields.uname+"</h3>";
+            });
+            $("#show").html(html);
+        });
+      });
+    });
+
+
+
+
+
+
+[<Users: Users object>, <Users: Users object>]
+
+[
+	{
+		"model": "index.users", 
+		"pk": 1, 
+		"fields": {
+			"uname": "zhangwuji", 
+			"upwd": "123456", 
+			"uage": 35, 
+			"uemail": "zhangwuji@163.com"
+		}
+	}, 
+	{"model": "index.users", "pk": 2, "fields": {"uname": "yinsusu", "upwd": "654321", "uage": 46, "uemail": "susu.yin@163.com"}}
+]
+
+Users object
+
+{
+	'id': 1, 
+	'uemail': 'zhangwuji@163.com', 
+	'uname': 'zhangwuji', 
+	'upwd': '123456', 
+	'uage': 35
+}
+
+{
+	"uemail": "zhangwuji@163.com", 
+	"uage": 35, 
+	"uname": "zhangwuji", 
+	"id": 1, 
+	"upwd": "123456"
+}
+
+<tr>
+	<td>zhangwuji</td>
+	<td>123456</td>
+	<td>35</td>
+	<td>zhangwuji@163.com</td>
+</tr>
+<tr>
+	<td>yinsusu</td>
+	<td>654321</td>
+	<td>46</td>
+	<td>susu.yin@163.com</td>
+</tr>
+
+http://localhost:8000/static/html/01_load.html
+http://localhost:8000/static/js/jquery-1.11.3.js

@@ -1,0 +1,108 @@
+Ajax：异步刷新的技术；
+		对客户端而言，提供更好的体验；
+		对服务器而言，改善服务器的性能；
+
+GET：
+   urlencode；
+POST：
+POST http://fanyi.youdao.com/translate_o?smartresult=dict&smartresult=rule HTTP/1.1
+Host: fanyi.youdao.com
+Connection: keep-alive
+Content-Length: 198
+Accept: application/json, text/javascript, */*; q=0.01
+Origin: http://fanyi.youdao.com
+X-Requested-With: XMLHttpRequest
+User-Agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36
+Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+Referer: http://fanyi.youdao.com/
+Accept-Encoding: gzip, deflate
+Accept-Language: zh-CN,zh;q=0.9
+Cookie: OUTFOX_SEARCH_USER_ID=1526788078@10.169.0.84; OUTFOX_SEARCH_USER_ID_NCOO=1576179829.0708966; JSESSIONID=aaaVlJLesJzLT6sqwYHuw; ___rl__test__cookies=1533870098018
+
+i=hi&from=AUTO&to=AUTO&smartresult=dict&client=fanyideskweb&salt=1533870098025&sign=c05ea75932e46a6a3c6c9bb60fc61990&doctype=json&version=2.1&keyfrom=fanyi.web&action=FY_BY_REALTIME&typoResult=false	 
+
+在与服务器进行数据交互时，可以使用get，post方法；
+参数传递时需要做urlencode，post在发送数据时需要转成
+bytes;
+# 使用urllib库时
+# get方法
+req = request.Request(url, headers=headers)
+print(request.urlopen(req).read().decode("utf-8"))
+# post方法
+req = request.Request(url,data,headers,method='POST')
+response=request.urlopen(req)
+info = response.read().decode('utf-8')
+
+使用requests库时
+# get方法
+response = requests.get("http://www.sina.com.cn",
+                        headers=headers)
+response.encoding = "utf-8"
+print(response.status_code)
+# post方法
+req = requests.post(url, headers=headers, data=data)
+print(req.text)
+
+作业：
+		1）输入一个英文句子，翻转句子中单词的顺序，
+但单词内字符的顺序不变。
+例如：输入:"I am a student."
+      输出:"student. a am I"
+不使用额外的空间来完成。
+    2）使用多进程或多线程去把一个
+文件夹下面的至少1000多个文件拷贝到另一
+个文件夹下面：
+A.文件类型要多样；
+B.怎么证明你拷贝的文件是正确的；
+
+
+
+
+Selenium+浏览器：
+	geckodriver.exe可以帮助Selenium驱动
+Firefox浏览器；
+需要把这个文件放入Python解释器所在的路径，
+我这里Anaconda的路径：
+C:\ProgramData\Anaconda3
+
+bing搜索：
+	sb_form_q
+	sb_form_go
+
+Python进程 -Bridge-》 浏览器的进程
+当Python的进程结束任务时，需要通过
+quit和Close让浏览器进程关闭；
+但是有可能浏览器的进程没有关闭，一个补救
+的措施：在恰当的时机，Kill掉这些浏览器
+进程；否则，将来可能没法再有资源来开启新的
+浏览器进程；
+
+使用Selenium+浏览器方案需要考虑的事情？
+	1)时间：由于数据包成倍的增长，时间上
+也是成倍的增长；
+  2)空间：浏览器宽度和高度的处理，
+拖拽多少次，都需要来评估；
+  3)性能上的维护，定期的杀掉浏览器残余
+的进程；
+由于时间上损耗大，投入的机器成本高，
+维护的成本高；所以不是没有办法，一般
+在公司不会考虑使用这种方案；
+
+HASH哈希:
+	对计算机系统中的某一段数据进行打指纹；
+
+现在我们加密算法都是公开的，
+我们需要保护的是每个人的秘钥；
+加密算法分为对称和非对称；
+对称：加密和解密使用同一个秘钥；
+非对称：加密和解密使用两个
+不同的秘钥，公钥和私钥；
+   公钥加密的数据只有私钥能解，
+私钥加密的数据私钥才能解开；
+RSA算法：
+	一种非对称加密算法；
+HTTPS: HTTP+SSL(安全套接层)
+
+
+
+

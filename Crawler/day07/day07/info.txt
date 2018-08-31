@@ -1,0 +1,107 @@
+作业:
+	1)把maoyan2.py，MySqlHelper.py里面的
+print用日志来替换；
+为什么猫眼的数据抓取使用了关系型数据库
+MySQL?
+		因为猫眼电影中的数据比较合适用结构
+化的类型来表述；由于将来有可能对数据
+做增删改查的操作，并且有可能要做数据分析，
+所以应该放入关系型数据库中，
+以便更好的管理；
+
+
+关系型数据库：
+		锁：
+			表级锁：开销最小的策略，
+会锁定整张表，会阻塞其他所有对这张
+表的读写操作；
+				读锁：属于共享锁，读互相之间
+不会引起阻塞；
+        写锁：优先级高于读锁，在队列中，
+写锁插入到读锁之前；
+			行级锁：可以支持最大程度上的并发，
+但锁本身的开销会增大；
+
+ACID:
+	原子性：一个事务被视为
+一个不可分割的单元；
+	一致性：数据库总是从一个
+已知状态转换到另一个一致性状态；
+	隔离性：一个事务所做的修改
+在最终提交前，对其他事务是不可见的；
+	持久性：一旦事务提交，则所有
+的修改就要永久保存到数据中，
+即使系统崩溃，也必须保证数据不会丢失；
+
+关系型数据库 --》 No SQL(Not only SQL)
+《7周7数据库》CAP理论
+数据库的设计，三范式；
+数据库的查询优化；
+
+
+面试题：
+		Google公司有两个机房：两个机房中各放了
+N台机器，一个机房中N台机器中的数据是相应
+另一个机房中N台机器的数据备份。
+突然有一台机器出故障了，怎么快速的把
+这台机器中的数据恢复过来。
+简化：有两个List，其中一个List的数据是
+另一个List的备份。其中一个List丢失了一个
+数据，怎么找出来这个丢失的数据。
+X1+X2+X3+Xk...XN = Sum
+   Xk = Sum-(X1+X2+X3+...XN)
+X1+X2+X3+Xk+...+Xm+...+XN = Sum
+sqrt(X1^2+X2^2+...XN^2) = M
+
+def dfs(tree_node):
+	"""
+	深度优先遍历
+	"""
+	if tree_node is None:
+		print(tree_node.value)
+		if tree_node.left is not None:
+		   dfs(tree_node.left)
+		if tree_node.right is not None:
+		   dfs(tree_node.right)
+
+def bsf(tree_node):
+	"""
+	广度优先遍历
+	"""
+	if tree_node is None:
+	   return 
+
+  # 创建一个队列
+	queue = []
+	node = tree_node
+	queue.append(node)#从底部加入
+	while queue:#判断队列是否为空
+		node = queue.pop(0)#从顶部出
+		print(node.value)
+		if node.left is not None:
+			queue.append(node.left)
+		if node.right is not None:
+		  queue.append(node.right)
+
+怎么来去重，去除URL中的重复？
+怎么把一个list中重复的元素去除？
+    #1.使用set：简单方便，无序；
+    #2.使用dict的key：简单，无序；
+    #3.遍历两个list，把重复的统计出来：
+复杂度高，顺序不变；
+		L = [3,2,1,2,3,4,5]
+		#4.首先对L排序: [1,2,2,3,3,4,5]
+#每次找到一个基准的比较对象，
+#如果下一个对象与其相同，则去掉；
+#否则基准对象将使用下一对象作为开头，
+#直到整个list遍历完；
+
+L.sort() 有一定优化的快速排序；
+比较排序:
+	内排序：
+		O(n^2): 冒泡排序，插入排序，选择排序
+		O(nlgn):快速排序，希尔排序，堆排序
+	外排序：O(nlgn)
+	
+https://www.douban.com/doulist/3516235/?start=.*?
+

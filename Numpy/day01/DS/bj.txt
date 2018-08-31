@@ -1,0 +1,166 @@
+数据分析
+matlab
+matfor
+python
+numpy+scipy+matplotlib+pandas
+scikit-learn+tensorflow
+一、Numpy的特点
+1.擅长数值计算；
+2.足够高的运算性能；
+3.支持矢量化运算；
+4.免费、开源。
+代码：vec.py
+二、Numpy的数组
+1.Numpy中的数组是ndarray类类型的对象
+将实际数据和元数据分开存放，独立操作，以此提升性能。
+2.Numpy数组的元素类型必须相同——同质性。
+3.Numpy数组的元素可以通过基0的下标单独访问。
+size个元素的数组，合理的下标范围：
+[0, size-1]或[-size, -1]
+4.Numpy数组通过dtype和shape属性表示元素的类型和维度，其中维度的类型是元组，按照从高到低的顺序排列每一维的大小。
+1 2 3
+4 5 6
+shape: (2, 3)
+1 2 3通用函数通用函数通用函数范德萨发放范德萨发生的打法
+
+4 5 6
+
+7 8 9
+shape: (3, 1, 3)
+5.创建数组的方法：
+numpy.arange(起始值(0)，终止值，步长(1))
+numpy.array(任意可以被解释为数组的序列)
+代码：shape.py
+三、Numpy的内置数据类型
+1.布尔
+bool_
+2.整数
+1)有符号整数
+int8/int16/int32/int64
+2)无符号整数
+uint8/uint16/uint32/uint64
+3.浮点数
+float16/float32/float64
+4.复数
+complex64/complex128
+5.字符串
+str_
+四、显式使用数据类型
+1.默认数据类型不满足需要，人为指定。
+2.复合类型，在一个元素中含有多个字段。
+3.用不同类型访问同一个元素。
+numpy.array(..., dtype=类型)
+代码：dtype.py
+五、切片
+数组[起始:终止:步长, ...]
+缺省起始：首(+步长)/尾(-步长)
+缺省终止：尾后(+步长)/首前(-步长)
+缺省步长：1
+代码：slice.py
+六、改变维度
+1.视图变维：根据所指定的新维度，构造新的元数据，实际数据共享。
+源数组.reshape(新维度)->目标数组
+     \___________________________/
+                            |
+                  共享实际数据
+                            |
+           ____________________
+         /                                \
+   源数组.ravel()->一维目标数组
+2.复制变维：
+   源数组.flatten()->一维目标数组
+         |                                   |
+  实际数据<-非共享->实际数据副本
+3.就地变维
+源数组.shape=新维度
+源数组.resize(新维度)
+4.转置
+源数组.transpose()->转置视图
+代码：reshape.py
+七、合并与拆分
+1.垂直合分
+vstack((上, 下))->垂直合并
+concatenate((上, 下), axis=0)
+shape: (3, 4)
+              0  1
+vsplit(数组, 等分份数)->垂直拆分
+split(数组, 等分份数, axis=0)
+代码：ver.py
+2.水平合分
+hstack((左, 右))->水平合并
+concatenate((左, 右), axis=1)
+hsplit(数组, 等分份数)->水平拆分
+split(数组, 等分份数, axis=1)
+代码：hor.py
+3.深度合分
+dstack((前, 后))->深度合并
+dsplit(数组, 等分份数)->深度拆分
+代码：deep.py
+4.行列合并
+row_stack((上, 下))->行合并
+column_stack((左, 右))->列合并
+代码：rc.py
+八、ndarray对象的属性
+dtype - 元素数据类型
+shape - 数组维度，(3, 4)
+ndim - 数组维数，2
+size - 元素数，只有一维数组才等价于len()
+itemsize - 每个元素的字节数
+nbytes - 所有元素的总字节数，size x itemsize
+T - 转置视图
+real/imag - 复数数组的实部/虚部
+flat - 扁平迭代器
+代码：attr.py
+九、数据可视化(matplotlib，数学绘图库)
+1.缺省样式
+曲线图：plot(水平坐标数组, 垂直坐标数组)
+代码：plt1.py
+2.线型、线宽和颜色
+plot(..., linestyle=线型, linewidth=线宽, color=颜色)
+代码：plt2.py
+3.设置坐标范围
+mp.xlim(最小水平坐标, 最大水平坐标)
+mp.ylim(最小垂直坐标, 最大垂直坐标)
+代码：plt3.py
+4.设置刻度标签
+mp.xticks(刻度位置数组[, 刻度文本数组])
+mp.yticks(刻度位置数组[, 刻度文本数组])
+代码：plt4.py
+5.十字坐标轴
+ax = mp.gca() # 当前坐标图
+ax.spines['left'].set_position((坐标系, 位置坐标))
+ax.spines['right'].set_color(颜色)
+代码：plt5.py
+6.图例
+plot(..., label=图例文本)
+legend(loc=位置)
+代码：plt6.py
+7.特殊点
+scatter(水平坐标数组, 垂直坐标数组)
+代码：plt7.py
+8.备注
+annotate(
+    备注文本,
+    xy=目标位置,
+    xycoords=目标坐标系,
+    xytext=备注位置,
+    textcoords=备注坐标系,
+    fontsize=字体大小,
+    arrowprops=箭头属性)
+代码：plt8.py
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

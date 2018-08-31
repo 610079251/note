@@ -1,0 +1,99 @@
+UA的设置：反反爬的第一步；
+
+http协议：
+	http://slide.fashion.sina.com.cn/fashion/show.php?fashion=2017_1_woman
+	GET请求：是为了从服务器上获取信息，
+	传输给服务器的数据的过程不够安全，数据大小有限制；
+	http://XXX.com.cn/?user=1234&passwod=2345 这种数据传递的过程不安全；
+	POST请求：向服务器传递数据，
+	传输数据的过程是安全的，大小理论上没有限制；
+
+HTTP 状态码：
+200： OK
+
+301/302/304都表示重定向：
+	301表示永久重定向（301 moved permanently），
+表示请求的资源分配了新url，以后应使用新url。
+	302表示临时性重定向（302 found），
+请求的资源临时分配了新url，本次请求暂且使用新url。
+	304当前服务器页面与上一次向服务器发起请求的数据一致，
+没有变化；
+
+4XX：
+	客户端的问题；
+5XX：
+	服务器的问题；
+
+在我们的代码中：
+import requests
+response = requests.get("http://www.sina.com.cn",
+                        headers=headers)
+response.encoding = "utf-8"
+#print(response.status_code)
+print(response.text)
+是没有处理http 请求异常的，不符合工程规范；
+思考：如何来处理各种状态异常的情况；
+
+
+Python 对小整数的定义是 [-5, 256] 这些整数对象
+是提前建立好的；
+作业:
+	1)使用一个UA池管理起Http请求，对新浪发起10次
+请求，要求每次请求都是随机从UA池里面拿出一个UA；
+  2)把这个json的字符串信息中翻译的信息取出来，不限使用哪种方法。
+可以使用json的方法，可以使用字符串处理的方法，
+也可以使用正则表达式。
+{"translateResult":[[{"tgt":"嗨","src":"hi"}]],
+"errorCode":0,
+"type":"en2zh-CHS",
+"smartResult":{"entries":["","int. 嗨！（表示问候或用以唤起注意）\r\n","n. (Hi)人名；(柬)希\r\n"],"type":1}}
+
+
+
+栈，队列：
+ 栈：FILO 先进后出；  比如：进出电梯
+ 队列：FIFO 先进先出；比如：排队买票
+怎么用Python来实现栈和队列？
+面试题：如何用两个栈来实现一个队列？
+# 用两个栈来实现一个队列的过程
+class QueueWithStack:
+    def __init__(self):
+        self.s1 = []
+        self.s2 = []
+    
+    def push(self, e):
+        self.s1.append(e)
+    
+    def pop(self):
+        if (len(self.s2) == 0):
+            while (len(self.s1) > 0):
+                t = self.s1.pop()
+                self.s2.append(t)
+        assert(len(self.s2) > 0) # 这里的断言如果不满足，
+        #说明队列中没有元素，这个pop的行为肯定失败
+        return self.s2.pop()
+
+q = QueueWithStack()
+q.push('a')
+q.push('b')
+q.push('c')
+print(q.pop())
+print(q.pop())
+print(q.pop())
+思考：如何用两个队列来实现一个栈？
+
+
+链接：https://pan.baidu.com/s/1LJBQym1ONxaJAbK38urMNw 密码：man2
+
+
+匹配数据的方法：
+1)XPath：
+	在html页面中如何快速的查找某些节点：
+	在浏览器中，右击检查，在打开高亮的区域处，点击copy
+	--> copy XPath;
+	//*[@id="feedlist_id"]/li[1]/div/dl/dt/a
+	//*[@id="feedlist_id"]/div[1]/li/div/a/div[1]/img
+优点：快捷，简单；
+缺点：没有办法应对变化，很难维护，可读性极差；
+2)BS4:
+	至少要记住findAll方法；
